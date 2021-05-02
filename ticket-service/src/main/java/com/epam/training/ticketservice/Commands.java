@@ -18,12 +18,12 @@ public class Commands {
         this.movieController = movieController;
     }
 
-    @ShellMethod(value = "Create movie.", key = "create movie")
+    @ShellMethod(value = "Create a movie.", key = "create movie")
     public void createMovie(String title, String genre, int length) {
         movieController.createMovie(title, genre, length);
     }
 
-    @ShellMethod(value = "List movies.", key = "list movies")
+    @ShellMethod(value = "List all movies.", key = "list movies")
     public void listAllMovies() {
 
         List<Movie> movies = movieController.getAllMovies();
@@ -42,8 +42,13 @@ public class Commands {
         }
     }
 
-    @ShellMethod(value = "delete movie.", key = "delete movie")
+    @ShellMethod(value = "Delete a movie from the database.", key = "delete movie")
     public void deleteMovie(String title){
         movieController.deleteMovie(title);
+    }
+
+    @ShellMethod(value = "Update a movie that is already exists in the database.", key = "update movie")
+    public void updateMovie(String title, String genre, int length){
+        movieController.updateMovie(title, genre, length);
     }
 }

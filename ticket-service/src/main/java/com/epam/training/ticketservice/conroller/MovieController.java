@@ -30,4 +30,8 @@ public class MovieController {
     public void deleteMovie(String title){
         movieService.deleteMovie(title);
     }
+
+    public void updateMovie(String title, String genre, int length){
+        movieService.updateMovie(title, genre, length);
+    }
 }

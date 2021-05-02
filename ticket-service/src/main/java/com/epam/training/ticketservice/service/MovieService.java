@@ -41,4 +41,11 @@ public class MovieService {
         Movie movie = movieRepository.findByTitle(title);
         movieRepository.delete(movie);
     }
+
+    @Transactional
+    public void updateMovie(String title, String genre, int length){
+        Movie movie = movieRepository.findByTitle(title);
+        movieRepository.delete(movie);
+        movieRepository.save(new Movie(title, genre, length));
+    }
 }
