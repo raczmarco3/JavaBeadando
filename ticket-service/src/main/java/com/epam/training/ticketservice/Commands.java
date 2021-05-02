@@ -24,19 +24,26 @@ public class Commands {
     }
 
     @ShellMethod(value = "List movies.", key = "list movies")
-    public void showMovies() {
+    public void listAllMovies() {
 
         List<Movie> movies = movieController.getAllMovies();
         if(movies.size() == 0)
         {
-            System.out.println("There are no movies at the moment\n");
+            System.out.println("There are no movies at the moment");
         }
         else {
             for (Movie movie : movies) {
-                System.out.println(String.format("%s (%s, %s minutes)\n",
-                        movie.getTitle(), movie.getGenre(),
-                        movie.getLength()));
+                System.out.println(String.format("%s (%s, %s minutes)",
+                        movie.getTitle(),
+                        movie.getGenre(),
+                        movie.getLength()
+                ));
             }
         }
+    }
+
+    @ShellMethod(value = "delete movie.", key = "delete movie")
+    public void deleteMovie(String title){
+        movieController.deleteMovie(title);
     }
 }

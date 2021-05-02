@@ -23,15 +23,22 @@ public class MovieService {
     @Transactional
     public void createMovie(String title, String genre, int length)
     {
-        if(StreamSupport.stream(movieRepository.findAll().spliterator(), false).filter(m -> m.getTitle().equals(title)).count() == 0)
+        if(StreamSupport.stream(movieRepository.findAll().spliterator(), false).filter(movie -> movie.getTitle().equals(title)).count() == 0)
             movieRepository.save(new Movie(title, genre, length));
     }
 
     @Transactional
     public List<Movie> getAllMovies()
     {
-        List<Movie> movieList = new ArrayList<>();
-        movieRepository.findAll().forEach(movie -> movieList.add(movie));
-        return movieList;
+        List<Movie> movies = new ArrayList<>();
+        movieRepository.findAll().forEach(movie -> movies.add(movie));
+        return movies;
+    }
+
+    @Transactional
+    public void deleteMovie(String title)
+    {
+        Movie movie = movieRepository.findByTitle(title);
+        movieRepository.delete(movie);
     }
 }

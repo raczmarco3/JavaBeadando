@@ -26,4 +26,8 @@ public class MovieController {
     {
         movieService.createMovie(title, genre, length);
     }
+
+    public void deleteMovie(String title){
+        movieService.deleteMovie(title);
+    }
 }

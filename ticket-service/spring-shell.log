@@ -6,3 +6,14 @@
 1619955433640:exit
 1619955459333:create movie "Sprited Away" animation 125
 1619955471792:list movies
+1619955786416:exit
+1619955934288:list movies
+1619955938933:exit
+1619956789220:create movie Sátántangó drama 450
+1619956798231:list movies
+1619956816863:exit
+1619957373704:create movie Sátántangó drama 450
+1619957377012:list movies
+1619957396684:delete movie Sátántangó
+1619957402318:list movies
+1619957408034:exit
