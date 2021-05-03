@@ -38,3 +38,12 @@
 1619959149816:delete movie Sátántangó
 1619959152323:list movies
 1619959155847:exit
+1620021525989:create movie Sátántangó drama 450
+1620021529628:list movies
+1620021539870:update movie Sátántangó action 320
+1620021544504:list movies
+1620021553542:delete movie Sátántangó
+1620021556612:list movies
+1620021559714:exit
+1620021995091:list movies
+1620021998936:exit
