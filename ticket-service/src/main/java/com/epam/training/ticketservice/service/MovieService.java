@@ -23,7 +23,7 @@ public class MovieService {
     @Transactional
     public void createMovie(String title, String genre, int length)
     {
-        if(StreamSupport.stream(movieRepository.findAll().spliterator(), false).filter(movie -> movie.getTitle().equals(title)).count() == 0)
+        if(movieRepository.findByTitle(title) == null)
             movieRepository.save(new Movie(title, genre, length));
     }
 
