@@ -22,16 +22,11 @@ public class MovieController {
         return movieService.getAllMovies();
     }
 
-    public void createMovie(String title, String genre, int length)
-    {
-        movieService.createMovie(title, genre, length);
-    }
+    public void createMovie(String title, String genre, int length){ movieService.createMovie(title, genre, length); }
 
     public void deleteMovie(String title){
         movieService.deleteMovie(title);
     }
 
-    public void updateMovie(String title, String genre, int length){
-        movieService.updateMovie(title, genre, length);
-    }
+    public void updateMovie(String title, String genre, int length){ movieService.updateMovie(title, genre, length); }
 }
