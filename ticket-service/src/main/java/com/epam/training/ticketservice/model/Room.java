@@ -29,10 +29,7 @@ public class Room {
 
     public Room(){}
 
-    public String getName()
-    {
-        return this.name;
-    }
+    public String getName(){ return this.name; }
 
     public int getRows()
     {
