@@ -16,14 +16,18 @@ public class Room {
     @Column
     private int columns;
 
-    public Room(){}
+    @Column
+    private int seats;
 
     public Room(String name, int rows, int columns)
     {
         this.name = name;
         this.rows = rows;
         this.columns = columns;
+        this.seats = rows * columns;
     }
+
+    public Room(){}
 
     public String getName()
     {
@@ -38,6 +42,11 @@ public class Room {
     public int getColumns()
     {
         return this.columns;
+    }
+
+    public int getSeats()
+    {
+        return this.seats;
     }
 
     public void setName(String name)

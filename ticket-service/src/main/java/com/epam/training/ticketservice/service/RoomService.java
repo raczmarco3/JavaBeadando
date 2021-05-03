@@ -1,16 +1,15 @@
 package com.epam.training.ticketservice.service;
 
-import com.epam.training.ticketservice.model.Movie;
 import com.epam.training.ticketservice.model.Room;
-import com.epam.training.ticketservice.repository.MovieRepository;
 import com.epam.training.ticketservice.repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.StreamSupport;
 
+@Service
 public class RoomService {
 
     private RoomRepository roomRepository;
