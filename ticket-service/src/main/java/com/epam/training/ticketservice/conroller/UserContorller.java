@@ -17,8 +17,8 @@ public class UserContorller {
         userService.createUser(userName, password);
     }
 
-    public void logIn(String userName, String password) {
-        userService.logIn(userName, password);
+    public Boolean logIn(String userName, String password) {
+        return userService.logIn(userName, password);
     }
 
     public void logOut(String userName) {

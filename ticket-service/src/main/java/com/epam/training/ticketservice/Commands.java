@@ -3,10 +3,11 @@ package com.epam.training.ticketservice;
 import com.epam.training.ticketservice.conroller.MovieController;
 import com.epam.training.ticketservice.conroller.RoomController;
 import com.epam.training.ticketservice.conroller.ScreeningController;
+import com.epam.training.ticketservice.conroller.UserContorller;
 import com.epam.training.ticketservice.model.Movie;
 import com.epam.training.ticketservice.model.Room;
 import com.epam.training.ticketservice.model.Screening;
-import org.springframework.context.annotation.EnableMBeanExport;
+import com.epam.training.ticketservice.model.User;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 import org.springframework.stereotype.Component;
@@ -23,13 +24,15 @@ public class Commands {
     private RoomController roomController;
     private ScreeningController screeningController;
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+    private UserContorller userContorller;
 
 
     public Commands(MovieController movieController, RoomController roomController,
-                    ScreeningController screeningController) {
+                    ScreeningController screeningController, UserContorller userContorller) {
         this.movieController = movieController;
         this.roomController = roomController;
         this.screeningController = screeningController;
+        this.userContorller = userContorller;
     }
 
     @ShellMethod(value = "Create a movie.", key = "create movie")
@@ -152,5 +155,19 @@ public class Commands {
     public void deleteScreening(String movieTitle, String roomName, String dateTime) {
         LocalDateTime date = LocalDateTime.parse(dateTime, formatter);
         screeningController.deleteScreaning(movieTitle, roomName, date);
+    }
+
+    @ShellMethod(value = "Create a new user.", key = "sign up")
+    public void createUser(String userName, String password) {
+        userContorller.createUser(userName, password);
+    }
+
+    @ShellMethod(value = "Login", key = "sign in")
+    public void logIn(String userName, String password) {
+        if(userContorller.logIn(userName, password)) {
+            System.out.println("Login successful");
+        } else {
+            System.out.println("Login failed due to incorrect credentials");
+        }
     }
 }
