@@ -35,11 +35,16 @@ public class Commands {
         this.screeningController = screeningController;
         this.userContorller = userContorller;
         userContorller.createUser("admin", "admin", true);
+        this.user.setLoggedIn(false);
     }
 
     @ShellMethod(value = "Create a movie.", key = "create movie")
     public void createMovie(String title, String genre, int length) {
-        movieController.createMovie(title, genre, length);
+        if (this.user.getAdmin()) {
+            movieController.createMovie(title, genre, length);
+        } else {
+            System.out.println("createMovie command is for privileged users");
+        }
     }
 
     @ShellMethod(value = "List all movies.", key = "list movies")
@@ -61,17 +66,29 @@ public class Commands {
 
     @ShellMethod(value = "Delete a movie from the database.", key = "delete movie")
     public void deleteMovie(String title) {
-        movieController.deleteMovie(title);
+        if (this.user.getAdmin()) {
+            movieController.deleteMovie(title);
+        } else {
+            System.out.println("deleteMovie command is for privileged users");
+        }
     }
 
     @ShellMethod(value = "Update a movie that is already exists in the database.", key = "update movie")
     public void updateMovie(String title, String genre, int length) {
-        movieController.updateMovie(title, genre, length);
+        if (this.user.getAdmin()) {
+            movieController.updateMovie(title, genre, length);
+        } else {
+            System.out.println("updateMovie command is for privileged users");
+        }
     }
 
     @ShellMethod(value = "Create a room.", key = "create room")
     public void createRoom(String name, int rows, int columns) {
-        roomController.createRoom(name, rows, columns);
+        if (this.user.getAdmin()) {
+            roomController.createRoom(name, rows, columns);
+        } else {
+            System.out.println("createRoom command is for privileged users");
+        }
     }
 
     @ShellMethod(value = "List all rooms.", key = "list rooms")
@@ -93,45 +110,57 @@ public class Commands {
 
     @ShellMethod(value = "Update a room that is already exists in the database.", key = "update room")
     public void updateRoom(String name, int rows, int columns) {
-        roomController.updateRoom(name, rows, columns);
+        if (this.user.getAdmin()) {
+            roomController.updateRoom(name, rows, columns);
+        } else {
+            System.out.println("updateRoom command is for privileged users");
+        }
     }
 
     @ShellMethod(value = "Delete a room from the database", key = "delete room")
     public void deleteRoom(String name) {
-        roomController.deleteRoom(name);
+        if (this.user.getAdmin()) {
+            roomController.deleteRoom(name);
+        } else {
+            System.out.println("deleteRoom command is for privileged users");
+        }
     }
 
     @ShellMethod(value = "Create a screening.", key = "create screening")
     public void createScreening(String movieTitle, String roomName, String dateTime) {
-        List<Screening> screenings = screeningController.getAllScreenings();
-        LocalDateTime date = LocalDateTime.parse(dateTime, formatter);
-        if (screenings.size() == 0) {
-            screeningController.createScreaning(movieTitle, roomName, date);
-        } else {
-            List<Screening> screenings2 = new ArrayList<>();
-            screeningController.getAllScreenings().stream()
-                    .filter(screening -> screening.getRoomName().equals(roomName))
-                    .forEach(screening -> screenings2.add(screening));
-            if (screenings2.size() == 0) {
+        if (this.user.getAdmin()) {
+            List<Screening> screenings = screeningController.getAllScreenings();
+            LocalDateTime date = LocalDateTime.parse(dateTime, formatter);
+            if (screenings.size() == 0) {
                 screeningController.createScreaning(movieTitle, roomName, date);
             } else {
-                boolean match = false;
-                for (Screening screening: screenings2) {
-                    if (date.isBefore(screening.getEndTime())) {
-                        System.out.println("There is an overlapping screening");
-                        match = true;
-                        break;
-                    } else if (date.isBefore(screening.getEndTime().plusMinutes(10))
-                            && date.isAfter(screening.getEndTime())) {
-                        System.out.println("This would start in the break period after another screening in this room");
-                        match = true;
-                        break;
+                List<Screening> screenings2 = new ArrayList<>();
+                screeningController.getAllScreenings().stream()
+                        .filter(screening -> screening.getRoomName().equals(roomName))
+                        .forEach(screening -> screenings2.add(screening));
+                if (screenings2.size() == 0) {
+                    screeningController.createScreaning(movieTitle, roomName, date);
+                } else {
+                    boolean match = false;
+                    for (Screening screening : screenings2) {
+                        if (date.isBefore(screening.getEndTime())) {
+                            System.out.println("There is an overlapping screening");
+                            match = true;
+                            break;
+                        } else if (date.isBefore(screening.getEndTime().plusMinutes(10))
+                                && date.isAfter(screening.getEndTime())) {
+                            System.out.println("This would start in the break period after another screening in this room");
+                            match = true;
+                            break;
+                        }
+                    }
+                    if (!match) {
+                        screeningController.createScreaning(movieTitle, roomName, date);
                     }
                 }
-                if (!match) {
-                    screeningController.createScreaning(movieTitle, roomName, date);
-                }
             }
+        } else {
+            System.out.println("createScreening command is for privileged users");
         }
     }
 
@@ -155,8 +184,12 @@ public class Commands {
 
     @ShellMethod(value = "Delete a screening from the database", key = "delete screening")
     public void deleteScreening(String movieTitle, String roomName, String dateTime) {
-        LocalDateTime date = LocalDateTime.parse(dateTime, formatter);
-        screeningController.deleteScreaning(movieTitle, roomName, date);
+        if (this.user.getAdmin()) {
+            LocalDateTime date = LocalDateTime.parse(dateTime, formatter);
+            screeningController.deleteScreaning(movieTitle, roomName, date);
+        } else {
+            System.out.println("deleteScreening command is for privileged users");
+        }
     }
 
     @ShellMethod(value = "Create a new user.", key = "sign up")
@@ -198,8 +231,25 @@ public class Commands {
 
     @ShellMethod(value = "Account description.", key = "describe account")
     public void describeAccount() {
-        System.out.println(String.format("Signed in with account %s",
-                this.user.getUserName()
-                ));
+        if (!this.user.getAdmin()) {
+            System.out.println(String.format("Signed in with account %s",
+                    this.user.getUserName()
+            ));
+        } else {
+            System.out.println(String.format("Signed in with privileged account %s",
+                    this.user.getUserName()
+            ));
+        }
+    }
+
+    @ShellMethod(value = "Sign out for admins", key = "sign out")
+    public void logOut() {
+        if (this.user.getAdmin()) {
+            this.user.setAdmin(false);
+            this.user.setLoggedIn(false);
+            System.out.println("You logged out");
+        } else {
+            System.out.println("This command is for admins");
+        }
     }
 }

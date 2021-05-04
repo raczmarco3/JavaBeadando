@@ -22,10 +22,6 @@ public class UserContorller {
         return userService.logIn(userName, password);
     }
 
-    public void logOut(String userName) {
-        userService.logOut(userName);
-    }
-
     public User getUser(String userName) {
         return userService.getUser(userName);
     }

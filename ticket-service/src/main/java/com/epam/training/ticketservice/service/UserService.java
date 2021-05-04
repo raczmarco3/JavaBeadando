@@ -32,13 +32,6 @@ public class UserService {
     }
 
     @Transactional
-    public void logOut(String userName) {
-        User user = userRepository.findByUserName(userName);
-        user.setLoggedIn(false);
-        userRepository.save(user);
-    }
-
-    @Transactional
     public User getUser(String userName) {
         return userRepository.findByUserName(userName);
     }

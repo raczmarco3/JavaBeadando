@@ -52,4 +52,12 @@ public class User {
     public void setUserName(String userName) {
         this. userName = userName;
     }
+
+    public void setAdmin(Boolean admin) {
+        this.admin = admin;
+    }
+
+    public void setLoggedIn(Boolean loggedIn) {
+        this.loggedIn = loggedIn;
+    }
 }
