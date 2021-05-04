@@ -23,10 +23,12 @@ public class UserService {
     @Transactional
     public Boolean logIn(String userName, String password) {
         User user = userRepository.findByUserName(userName);
-        if (user.getPassword().equals(password)) {
-            user.setLoggedIn(true);
-            userRepository.save(user);
-            return true;
+        if (user != null) {
+            if (user.getPassword().equals(password)) {
+                user.setLoggedIn(true);
+                userRepository.save(user);
+                return true;
+            }
         }
         return false;
     }
