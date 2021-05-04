@@ -1,9 +1,10 @@
 package com.epam.training.ticketservice.repository;
 
-import com.epam.training.ticketservice.model.Screening;
+import com.epam.training.ticketservice.model.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ScreeningRepository extends CrudRepository<Screening, Integer> {
+public interface UserRepository extends CrudRepository<User, String> {
+    User findByUserName(String userName);
 }
