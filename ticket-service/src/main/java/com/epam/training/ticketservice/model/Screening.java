@@ -1,6 +1,10 @@
 package com.epam.training.ticketservice.model;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import java.time.LocalDateTime;
 
 @Entity
@@ -27,10 +31,9 @@ public class Screening {
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int Id;
+    private int id;
 
-    public Screening(String movieTitle, String roomName, LocalDateTime dateTime, int movieLength, String movieGenre)
-    {
+    public Screening(String movieTitle, String roomName, LocalDateTime dateTime, int movieLength, String movieGenre) {
         this.movieTitle = movieTitle;
         this.roomName = roomName;
         this.dateTime = dateTime;
@@ -39,27 +42,50 @@ public class Screening {
         this.endTime = dateTime.plusMinutes(movieLength);
     }
 
-    public Screening(){}
+    public Screening() {
+    }
 
-    public String getMovieTitle(){ return this.movieTitle; }
+    public String getMovieTitle() {
+        return this.movieTitle;
+    }
 
-    public String getRoomName(){ return this.roomName; }
+    public String getRoomName() {
+        return this.roomName;
+    }
 
-    public LocalDateTime getDateTime(){ return this.dateTime; }
+    public LocalDateTime getDateTime() {
+        return this.dateTime;
+    }
 
-    public String getMovieGenre(){ return this.movieGenre; }
+    public String getMovieGenre() {
+        return this.movieGenre;
+    }
 
-    public int getMovieLength(){ return this.movieLength; }
+    public int getMovieLength() {
+        return this.movieLength;
+    }
 
-    public LocalDateTime getEndTime(){ return this.endTime; }
+    public LocalDateTime getEndTime() {
+        return this.endTime;
+    }
 
-    public void setMovieTitle(String movieTitle){ this.movieTitle = movieTitle; }
+    public void setMovieTitle(String movieTitle) {
+        this.movieTitle = movieTitle;
+    }
 
-    public void setRoomName(String roomName){ this.roomName = roomName; }
+    public void setRoomName(String roomName) {
+        this.roomName = roomName;
+    }
 
-    public void setDateTime(LocalDateTime dateTime){ this.dateTime = dateTime; }
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
+    }
 
-    public void setMovieLength(int movieLength){ this.movieLength = movieLength; }
+    public void setMovieLength(int movieLength) {
+        this.movieLength = movieLength;
+    }
 
-    public void setMovieGenre(String movieGenre){ this.movieGenre = movieGenre; }
+    public void setMovieGenre(String movieGenre) {
+        this.movieGenre = movieGenre;
+    }
 }

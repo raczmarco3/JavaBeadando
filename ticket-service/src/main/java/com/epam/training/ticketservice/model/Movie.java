@@ -1,6 +1,8 @@
 package com.epam.training.ticketservice.model;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Entity
 public class Movie {
@@ -14,35 +16,36 @@ public class Movie {
     @Column
     private String genre;
 
-    public Movie(String title, String genre, int length){
+    public Movie(String title, String genre, int length) {
         this.title = title;
         this.length = length;
         this.genre = genre;
     }
 
-    public Movie(){}
+    public Movie() {
+    }
 
-    public String getTitle(){
+    public String getTitle() {
         return title;
     }
 
-    public String getGenre(){
+    public String getGenre() {
         return genre;
     }
 
-    public int getLength(){
+    public int getLength() {
         return length;
     }
 
-    public void setTitle(String title){
+    public void setTitle(String title) {
         this.title = title;
     }
 
-    public void setLength(int length){
+    public void setLength(int length) {
         this.length = length;
     }
 
-    public void setGenre(String genre){
+    public void setGenre(String genre) {
         this.genre = genre;
     }
 }

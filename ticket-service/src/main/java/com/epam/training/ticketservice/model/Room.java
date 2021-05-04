@@ -19,45 +19,42 @@ public class Room {
     @Column
     private int seats;
 
-    public Room(String name, int rows, int columns)
-    {
+    public Room(String name, int rows, int columns) {
         this.name = name;
         this.rows = rows;
         this.columns = columns;
         this.seats = rows * columns;
     }
 
-    public Room(){}
+    public Room() {
 
-    public String getName(){ return this.name; }
+    }
 
-    public int getRows()
-    {
+    public String getName() {
+        return this.name;
+    }
+
+    public int getRows() {
         return this.rows;
     }
 
-    public int getColumns()
-    {
+    public int getColumns() {
         return this.columns;
     }
 
-    public int getSeats()
-    {
+    public int getSeats() {
         return this.seats;
     }
 
-    public void setName(String name)
-    {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public void setRows(int rows)
-    {
+    public void setRows(int rows) {
         this.rows = rows;
     }
 
-    public void setColumns(int columns)
-    {
+    public void setColumns(int columns) {
         this.columns = columns;
     }
 }

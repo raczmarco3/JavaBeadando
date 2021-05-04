@@ -15,34 +15,32 @@ public class RoomService {
     private RoomRepository roomRepository;
 
     @Autowired
-    public RoomService(RoomRepository roomRepository) { this.roomRepository = roomRepository; }
+    public RoomService(RoomRepository roomRepository) {
+        this.roomRepository = roomRepository;
+    }
 
     @Transactional
-    public void createRoom(String name, int rows, int columns)
-    {
-        if(roomRepository.findByName(name) == null) {
+    public void createRoom(String name, int rows, int columns) {
+        if (roomRepository.findByName(name) == null) {
             roomRepository.save(new Room(name, rows, columns));
         }
     }
 
     @Transactional
-    public void updateRoom(String name, int rows, int columns)
-    {
+    public void updateRoom(String name, int rows, int columns) {
         Room room = roomRepository.findByName(name);
         roomRepository.delete(room);
         roomRepository.save(new Room(name, rows, columns));
     }
 
     @Transactional
-    public void deleteRoom(String name)
-    {
+    public void deleteRoom(String name) {
         Room room = roomRepository.findByName(name);
         roomRepository.delete(room);
     }
 
     @Transactional
-    public List<Room> getAllRooms()
-    {
+    public List<Room> getAllRooms() {
         List<Room> rooms = new ArrayList<>();
         roomRepository.findAll().forEach(room -> rooms.add(room));
         return rooms;

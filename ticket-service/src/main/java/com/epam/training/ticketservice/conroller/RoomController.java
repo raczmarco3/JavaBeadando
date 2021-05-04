@@ -12,15 +12,25 @@ public class RoomController {
     private RoomService roomService;
 
     @Autowired
-    public RoomController(RoomService roomService){ this.roomService = roomService; }
+    public RoomController(RoomService roomService) {
+        this.roomService = roomService;
+    }
 
-    public void createRoom(String name, int rows, int columns){ roomService.createRoom(name, rows, columns); }
+    public void createRoom(String name, int rows, int columns) {
+        roomService.createRoom(name, rows, columns);
+    }
 
-    public void updateRoom(String name, int rows, int columns){ roomService.updateRoom(name, rows, columns); }
+    public void updateRoom(String name, int rows, int columns) {
+        roomService.updateRoom(name, rows, columns);
+    }
 
-    public void deleteRoom(String name){ roomService.deleteRoom(name); }
+    public void deleteRoom(String name) {
+        roomService.deleteRoom(name);
+    }
 
-    public List<Room> getAllRooms(){ return roomService.getAllRooms(); }
+    public List<Room> getAllRooms() {
+        return roomService.getAllRooms();
+    }
 
 
 }

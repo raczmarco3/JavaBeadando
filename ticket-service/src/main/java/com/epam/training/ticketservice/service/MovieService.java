@@ -14,35 +14,32 @@ public class MovieService {
     private MovieRepository movieRepository;
 
     @Autowired
-    public MovieService(MovieRepository movieRepository)
-    {
+    public MovieService(MovieRepository movieRepository) {
         this.movieRepository = movieRepository;
     }
 
     @Transactional
-    public void createMovie(String title, String genre, int length)
-    {
-        if(movieRepository.findByTitle(title) == null)
+    public void createMovie(String title, String genre, int length) {
+        if (movieRepository.findByTitle(title) == null) {
             movieRepository.save(new Movie(title, genre, length));
+        }
     }
 
     @Transactional
-    public List<Movie> getAllMovies()
-    {
+    public List<Movie> getAllMovies() {
         List<Movie> movies = new ArrayList<>();
         movieRepository.findAll().forEach(movie -> movies.add(movie));
         return movies;
     }
 
     @Transactional
-    public void deleteMovie(String title)
-    {
+    public void deleteMovie(String title) {
         Movie movie = movieRepository.findByTitle(title);
         movieRepository.delete(movie);
     }
 
     @Transactional
-    public void updateMovie(String title, String genre, int length){
+    public void updateMovie(String title, String genre, int length) {
         Movie movie = movieRepository.findByTitle(title);
         movieRepository.delete(movie);
         movieRepository.save(new Movie(title, genre, length));
