@@ -1,31 +1,45 @@
 package com.epam.training.ticketservice.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
 public class Screening {
 
-    @Id
     @Column
     private String movieTitle;
 
-    @Id
     @Column
     private String roomName;
 
-    @Id
     @Column
     private LocalDateTime dateTime;
 
-    public Screening(String movieTitle, String roomName, LocalDateTime dateTime)
+    @Column
+    private int movieLength;
+
+    @Column
+    private String movieGenre;
+
+    @Column
+    private LocalDateTime endTime;
+
+    @Id
+    @Column
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int Id;
+
+    public Screening(String movieTitle, String roomName, LocalDateTime dateTime, int movieLength, String movieGenre)
     {
         this.movieTitle = movieTitle;
         this.roomName = roomName;
         this.dateTime = dateTime;
+        this.movieLength = movieLength;
+        this.movieGenre = movieGenre;
+        this.endTime = dateTime.plusMinutes(movieLength);
     }
+
+    public Screening(){}
 
     public String getMovieTitle(){ return this.movieTitle; }
 
@@ -33,9 +47,19 @@ public class Screening {
 
     public LocalDateTime getDateTime(){ return this.dateTime; }
 
+    public String getMovieGenre(){ return this.movieGenre; }
+
+    public int getMovieLength(){ return this.movieLength; }
+
+    public LocalDateTime getEndTime(){ return this.endTime; }
+
     public void setMovieTitle(String movieTitle){ this.movieTitle = movieTitle; }
 
     public void setRoomName(String roomName){ this.roomName = roomName; }
 
     public void setDateTime(LocalDateTime dateTime){ this.dateTime = dateTime; }
+
+    public void setMovieLength(int movieLength){ this.movieLength = movieLength; }
+
+    public void setMovieGenre(String movieGenre){ this.movieGenre = movieGenre; }
 }

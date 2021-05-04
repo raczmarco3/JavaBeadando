@@ -1,5 +1,6 @@
 package com.epam.training.ticketservice.service;
 
+import com.epam.training.ticketservice.model.Movie;
 import com.epam.training.ticketservice.model.Screening;
 import com.epam.training.ticketservice.repository.MovieRepository;
 import com.epam.training.ticketservice.repository.RoomRepository;
@@ -8,11 +9,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.text.ParseException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.TemporalAccessor;
+import java.util.*;
 import java.util.stream.StreamSupport;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Service
 public class ScreeningService {
@@ -29,11 +34,13 @@ public class ScreeningService {
     }
 
     @Transactional
-    public void createScreening(String movieTitle, String roomName, LocalDateTime dateTime)
-    {
+    public void createScreening(String movieTitle, String roomName, LocalDateTime dateTime){
         if(movieRepository.findByTitle(movieTitle) != null && roomRepository.findByName(roomName) != null)
         {
-            screeningRepository.save(new Screening(movieTitle, roomName, dateTime));
+            Movie movie = movieRepository.findByTitle(movieTitle);
+            int movieLength = movie.getLength();
+            String movieGenre = movie.getGenre();
+            screeningRepository.save(new Screening(movieTitle, roomName, dateTime, movieLength, movieGenre));
         }
     }
 
@@ -44,7 +51,7 @@ public class ScreeningService {
                 .filter(s -> s.getRoomName().equals(roomName) &&
                         s.getMovieTitle().equals(movieTitle) &&
                         s.getDateTime().equals(dateTime)).findAny();
-        if(screening != null){ screeningRepository.delete(screening.get()); }
+        if(screening.isPresent()){ screeningRepository.delete(screening.get()); }
     }
 
     @Transactional

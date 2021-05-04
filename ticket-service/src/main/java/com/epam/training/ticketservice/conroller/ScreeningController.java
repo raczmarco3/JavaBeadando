@@ -15,8 +15,7 @@ public class ScreeningController {
     @Autowired
     public ScreeningController(ScreeningService screeningService){ this.screeningService = screeningService; }
 
-    public void createScreaning(String movieTitle, String roomName, LocalDateTime dateTime)
-    {
+    public void createScreaning(String movieTitle, String roomName, LocalDateTime dateTime){
         screeningService.createScreening(movieTitle, roomName, dateTime);
     }
 
@@ -25,6 +24,6 @@ public class ScreeningController {
         screeningService.deleteScreening(movieTitle, roomName, dateTime);
     }
 
-    public List<Screening> listScreenings(){ return screeningService.listScreenings();
+    public List<Screening> getAllScreenings(){ return screeningService.listScreenings();
     }
 }
