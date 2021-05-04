@@ -16,8 +16,8 @@ public class UserService {
     }
 
     @Transactional
-    public void createUser(String userName, String password) {
-        userRepository.save(new User(userName, password, false, false));
+    public void createUser(String userName, String password, Boolean admin) {
+        userRepository.save(new User(userName, password, admin, false));
     }
 
     @Transactional
@@ -36,5 +36,10 @@ public class UserService {
         User user = userRepository.findByUserName(userName);
         user.setLoggedIn(false);
         userRepository.save(user);
+    }
+
+    @Transactional
+    public User getUser(String userName) {
+        return userRepository.findByUserName(userName);
     }
 }

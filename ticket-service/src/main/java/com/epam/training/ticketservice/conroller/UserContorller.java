@@ -1,5 +1,6 @@
 package com.epam.training.ticketservice.conroller;
 
+import com.epam.training.ticketservice.model.User;
 import com.epam.training.ticketservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,8 +14,8 @@ public class UserContorller {
         this.userService = userService;
     }
 
-    public void createUser(String userName, String password) {
-        userService.createUser(userName, password);
+    public void createUser(String userName, String password, Boolean admin) {
+        userService.createUser(userName, password, admin);
     }
 
     public Boolean logIn(String userName, String password) {
@@ -23,5 +24,9 @@ public class UserContorller {
 
     public void logOut(String userName) {
         userService.logOut(userName);
+    }
+
+    public User getUser(String userName) {
+        return userService.getUser(userName);
     }
 }

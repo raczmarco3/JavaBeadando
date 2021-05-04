@@ -25,6 +25,7 @@ public class Commands {
     private ScreeningController screeningController;
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
     private UserContorller userContorller;
+    private User user = new User();
 
 
     public Commands(MovieController movieController, RoomController roomController,
@@ -33,6 +34,7 @@ public class Commands {
         this.roomController = roomController;
         this.screeningController = screeningController;
         this.userContorller = userContorller;
+        userContorller.createUser("admin", "admin", true);
     }
 
     @ShellMethod(value = "Create a movie.", key = "create movie")
@@ -159,15 +161,45 @@ public class Commands {
 
     @ShellMethod(value = "Create a new user.", key = "sign up")
     public void createUser(String userName, String password) {
-        userContorller.createUser(userName, password);
+        userContorller.createUser(userName, password, false);
     }
 
     @ShellMethod(value = "Login", key = "sign in")
     public void logIn(String userName, String password) {
-        if(userContorller.logIn(userName, password)) {
-            System.out.println("Login successful");
+        if (userContorller.logIn(userName, password)) {
+            this.user = userContorller.getUser(userName);
+            if (!this.user.getAdmin()) {
+                this.user.setLoggedIn(true);
+                System.out.println("Login successful");
+            } else {
+                System.out.println("Admins can sing in only with sign in privileged");
+                this.user = new User();
+            }
         } else {
             System.out.println("Login failed due to incorrect credentials");
         }
+    }
+
+    @ShellMethod(value = "Login", key = "sign in privileged")
+    public void adminLogIn(String userName, String password) {
+        if (userContorller.logIn(userName, password)) {
+            this.user = userContorller.getUser(userName);
+            if (this.user.getAdmin()) {
+                this.user.setLoggedIn(true);
+                System.out.println("Login successful");
+            } else {
+                System.out.println("Users can sing in only with sign in");
+                this.user = new User();
+            }
+        } else {
+            System.out.println("Login failed due to incorrect credentials");
+        }
+    }
+
+    @ShellMethod(value = "Account description.", key = "describe account")
+    public void describeAccount() {
+        System.out.println(String.format("Signed in with account %s",
+                this.user.getUserName()
+                ));
     }
 }

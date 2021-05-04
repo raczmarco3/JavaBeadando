@@ -1,16 +1,16 @@
-#Tue May 04 15:40:37 CEST 2021
+#Tue May 04 16:13:08 CEST 2021
 C\:\\Users\\Marco\\Documents\\JavaBeadando\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\repository\\UserRepository.java=1620134416174
 configuration*?=AD992FA7780BBD603835F127272AF2B3F973152C
 C\:\\Users\\Marco\\Documents\\JavaBeadando\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\service\\ScreeningService.java=1620132138451
 C\:\\Users\\Marco\\Documents\\JavaBeadando\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\service\\RoomService.java=1620131144155
-C\:\\Users\\Marco\\Documents\\JavaBeadando\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\model\\User.java=1620135256521
-C\:\\Users\\Marco\\Documents\\JavaBeadando\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\Commands.java=1620131949125
-C\:\\Users\\Marco\\Documents\\JavaBeadando\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\model\\Movie.java=1620131587765
+C\:\\Users\\Marco\\Documents\\JavaBeadando\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\model\\User.java=1620137514601
+C\:\\Users\\Marco\\Documents\\JavaBeadando\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\Commands.java=1620137432542
+C\:\\Users\\Marco\\Documents\\JavaBeadando\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\model\\Movie.java=1620137565944
 C\:\\Users\\Marco\\Documents\\JavaBeadando\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\model\\Screening.java=1620132065730
 C\:\\Users\\Marco\\Documents\\JavaBeadando\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\Application.java=1619950752774
 C\:\\Users\\Marco\\Documents\\JavaBeadando\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\repository\\RoomRepository.java=1620023113400
 C\:\\Users\\Marco\\Documents\\JavaBeadando\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\repository\\ScreeningRepository.java=1620134361247
-C\:\\Users\\Marco\\Documents\\JavaBeadando\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\conroller\\UserContorller.java=1620135628186
+C\:\\Users\\Marco\\Documents\\JavaBeadando\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\conroller\\UserContorller.java=1620136290799
 C\:\\Users\\Marco\\Documents\\JavaBeadando\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\conroller\\ScreeningController.java=1620131605471
 C\:\\Users\\Marco\\Documents\\JavaBeadando\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\repository\\MovieRepository.java=1619954343710
 C\:\\Users\\Marco\\Documents\\JavaBeadando\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\service\\MovieService.java=1620131302520
@@ -20,4 +20,4 @@ module-resource*?\:checkstyle-suppressions.xml=E9589B484DD38F02F1D4853BD10538A01
 C\:\\Users\\Marco\\Documents\\JavaBeadando\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\conroller\\MovieController.java=1620131687332
 C\:\\Users\\Marco\\Documents\\JavaBeadando\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\conroller\\RoomController.java=1620131641718
 C\:\\Users\\Marco\\Documents\\JavaBeadando\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\SpringShellCustomPrompt.java=1620021954317
-C\:\\Users\\Marco\\Documents\\JavaBeadando\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\service\\UserService.java=1620135346203
+C\:\\Users\\Marco\\Documents\\JavaBeadando\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\service\\UserService.java=1620136723582
