@@ -148,7 +148,8 @@ public class Commands {
                             break;
                         } else if (date.isBefore(screening.getEndTime().plusMinutes(10))
                                 && date.isAfter(screening.getEndTime())) {
-                            System.out.println("This would start in the break period after another screening in this room");
+                            System.out.println("This would start in the break"
+                                    + "period after another screening in this room");
                             match = true;
                             break;
                         }
