@@ -13,7 +13,8 @@ public class PriceComponent {
     @Column
     private int componentPrice;
 
-    public PriceComponent() {}
+    public PriceComponent() {
+    }
 
     public PriceComponent(String componentName, int componentPrice) {
         this.componentName = componentName;
