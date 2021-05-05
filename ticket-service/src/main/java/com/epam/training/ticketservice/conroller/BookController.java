@@ -21,7 +21,7 @@ public class BookController {
         return bookService.listBooks(userName);
     }
 
-    public void createBook(String userName, String movieTitle, String roomName, LocalDateTime date, String seats) {
-        bookService.createBook(userName, movieTitle, roomName, date, seats);
+    public void createBook(String userName, String movieTitle, String roomName, LocalDateTime date, String seats, int price) {
+        bookService.createBook(userName, movieTitle, roomName, date, seats, price);
     }
 }

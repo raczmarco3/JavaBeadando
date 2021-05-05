@@ -1,15 +1,7 @@
 package com.epam.training.ticketservice;
 
-import com.epam.training.ticketservice.conroller.MovieController;
-import com.epam.training.ticketservice.conroller.RoomController;
-import com.epam.training.ticketservice.conroller.ScreeningController;
-import com.epam.training.ticketservice.conroller.UserContorller;
-import com.epam.training.ticketservice.conroller.BookController;
-import com.epam.training.ticketservice.model.Movie;
-import com.epam.training.ticketservice.model.Room;
-import com.epam.training.ticketservice.model.User;
-import com.epam.training.ticketservice.model.Screening;
-import com.epam.training.ticketservice.model.Book;
+import com.epam.training.ticketservice.conroller.*;
+import com.epam.training.ticketservice.model.*;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 import org.springframework.stereotype.Component;
@@ -17,6 +9,7 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 import java.util.List;
 
 @Component
@@ -29,6 +22,7 @@ public class Commands {
     private UserContorller userContorller;
     private BookController bookController;
     private User user = new User();
+    private Price price = new Price();
 
 
     public Commands(MovieController movieController, RoomController roomController,
@@ -42,6 +36,7 @@ public class Commands {
         userContorller.createUser("admin", "admin", true);
         this.user.setLoggedIn(false);
         this.user.setAdmin(false);
+        this.price.setPrice(1500);
     }
 
     @ShellMethod(value = "Create a movie.", key = "create movie")
@@ -274,11 +269,20 @@ public class Commands {
     }
 
     @ShellMethod(value = "Add a book", key = "book")
-    public void createBook(String movieTitle, String roomName, String date, String seats) {
+    public void createBook(String movieTitle, String roomName, String date, String seats, int price) {
         if (!this.user.getAdmin()) {
             LocalDateTime dateTime = LocalDateTime.parse(date, formatter);
             String userName = this.user.getUserName();
-            bookController.createBook(userName, movieTitle, roomName, dateTime, seats);
+            bookController.createBook(userName, movieTitle, roomName, dateTime, seats, this.price.getPrice());
+        }
+    }
+
+    @ShellMethod(value = "Update base price", key = "update base price")
+    public void updatePrice(int price) {
+        if (this.user.getAdmin()) {
+            this.price.setPrice(price);
+        } else {
+            System.out.println("This command is for admins");
         }
     }
 }
