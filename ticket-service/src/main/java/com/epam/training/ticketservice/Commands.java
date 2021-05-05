@@ -49,7 +49,6 @@ public class Commands {
 
     @ShellMethod(value = "List all movies.", key = "list movies")
     public void listAllMovies() {
-
         List<Movie> movies = movieController.getAllMovies();
         if (movies.size() == 0) {
             System.out.println("There are no movies at the moment");
