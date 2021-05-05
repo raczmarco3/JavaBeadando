@@ -5,6 +5,7 @@ import com.epam.training.ticketservice.conroller.RoomController;
 import com.epam.training.ticketservice.conroller.ScreeningController;
 import com.epam.training.ticketservice.conroller.UserContorller;
 import com.epam.training.ticketservice.conroller.BookController;
+import com.epam.training.ticketservice.conroller.PriceComponentController;
 import com.epam.training.ticketservice.model.Price;
 import com.epam.training.ticketservice.model.User;
 import com.epam.training.ticketservice.model.Room;
@@ -30,18 +31,20 @@ public class Commands {
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
     private UserContorller userContorller;
     private BookController bookController;
+    private PriceComponentController priceComponentController;
     private User user = new User();
     private Price price = new Price();
 
 
     public Commands(MovieController movieController, RoomController roomController,
                     ScreeningController screeningController, UserContorller userContorller,
-                    BookController bookController) {
+                    BookController bookController, PriceComponentController priceComponentController) {
         this.movieController = movieController;
         this.roomController = roomController;
         this.screeningController = screeningController;
         this.userContorller = userContorller;
         this.bookController = bookController;
+        this.priceComponentController = priceComponentController;
         userContorller.createUser("admin", "admin", true);
         this.user.setLoggedIn(false);
         this.user.setAdmin(false);
@@ -292,6 +295,15 @@ public class Commands {
             this.price.setPrice(price);
         } else {
             System.out.println("This command is for admins");
+        }
+    }
+
+    @ShellMethod(value = "Create a componentprice.", key = "create price component")
+    public void createComponentPrice(String componentName, int componentPrice) {
+        if (this.user.getAdmin()) {
+            priceComponentController.createPriceComponent(componentName, componentPrice);
+        } else {
+            System.out.println("createRoom command is for privileged users");
         }
     }
 }

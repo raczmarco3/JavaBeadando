@@ -1,6 +1,5 @@
 package com.epam.training.ticketservice.model;
 
-
 public class Price {
     private int price;
 
