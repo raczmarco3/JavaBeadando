@@ -30,15 +30,19 @@ public class Book {
     @Column
     private String seats;
 
+    @Column
+    int price;
+
     public Book() {
     }
 
-    public Book(String userName, String movieTitle, String roomName, LocalDateTime date, String seats) {
+    public Book(String userName, String movieTitle, String roomName, LocalDateTime date, String seats, int price) {
         this.userName = userName;
         this.movieTitle = movieTitle;
         this.roomName = roomName;
         this.date = date;
         this.seats = seats;
+        this.price = price;
     }
 
     public String getUserName() {
@@ -61,6 +65,8 @@ public class Book {
         return this.seats;
     }
 
+    public int getPrice() { return this.price; }
+
     public void setUserName(String userName) {
         this.userName = userName;
     }
@@ -79,5 +85,9 @@ public class Book {
 
     public void setSeats(String seats) {
         this.seats = seats;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 }

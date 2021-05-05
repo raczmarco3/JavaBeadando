@@ -229,14 +229,28 @@ public class Commands {
 
     @ShellMethod(value = "Account description.", key = "describe account")
     public void describeAccount() {
-        if (!this.user.getAdmin()) {
-            System.out.println(String.format("Signed in with account %s",
-                    this.user.getUserName()
-            ));
+        if (!this.user.getAdmin() && this.user.getLoggedIn()) {
+            List<Book> books = bookController.listBooks(this.user.getUserName());
+            System.out.printf("Signed in with account %s%n", this.user.getUserName());
+            if(books.isEmpty()) {
+                System.out.println("You have not booked any tickets yet");
+            } else {
+                System.out.println("Your previous bookings are");
+                for (Book book : books) {
+                    System.out.println(String.format("Seats %s on %s in room %s starting at %s for %d",
+                            book.getSeats(),
+                            book.getMovieTitle(),
+                            book.getRoomName(),
+                            book.getDate().toString().replace("T", " "),
+                            book.getPrice()
+                    ));
+                }
+            }
+
+        } else if(this.user.getAdmin() && this.user.getLoggedIn()){
+            System.out.printf("Signed in with privileged account %s%n", this.user.getUserName());
         } else {
-            System.out.println(String.format("Signed in with privileged account %s",
-                    this.user.getUserName()
-            ));
+            System.out.println("You are not signed in");
         }
     }
 

@@ -70,7 +70,7 @@ public class BookService {
                 System.out.println("Seat" + nonExistentSeats + " does not exist in this room");
             } else if(nonExistentSeats == "" && occupiedSeats == "") {
                 System.out.println("Seats booked: " + bookedSeats + " the price for this booking is " + price +" HUF");
-                bookRepository.save(new Book(userName, movieTitle, roomName, date, seats));
+                bookRepository.save(new Book(userName, movieTitle, roomName, date, seats, price));
             } else if (nonExistentSeats == "" && occupiedSeats != "") {
                 System.out.println("Seat" + occupiedSeats + " is already taken");
             }
@@ -78,9 +78,10 @@ public class BookService {
     }
 
     @Transactional
-    public List<Book> listBooks() {
+    public List<Book> listBooks(String userName) {
         List<Book> books = new ArrayList<>();
-        bookRepository.findAll().forEach(book -> books.add(book));
+        StreamSupport.stream(bookRepository.findAll().spliterator(), false)
+                .filter(book1 -> book1.getUserName().equals(userName)).forEach(book -> books.add(book));
         return books;
     }
 }

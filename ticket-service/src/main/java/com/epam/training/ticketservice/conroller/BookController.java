@@ -17,8 +17,8 @@ public class BookController {
         this.bookService = bookService;
     }
 
-    public List<Book> listBooks() {
-        return bookService.listBooks();
+    public List<Book> listBooks(String userName) {
+        return bookService.listBooks(userName);
     }
 
     public void createBook(String userName, String movieTitle, String roomName, LocalDateTime date, String seats) {

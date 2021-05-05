@@ -37,6 +37,10 @@ public class User {
         return userName;
     }
 
+    public Boolean getLoggedIn() {
+        return this.loggedIn;
+    }
+
     public void setLoggedIn(boolean loggedIn) {
         this.loggedIn = loggedIn;
     }
