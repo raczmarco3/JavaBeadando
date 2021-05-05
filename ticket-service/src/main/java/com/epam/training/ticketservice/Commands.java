@@ -6,6 +6,7 @@ import com.epam.training.ticketservice.conroller.ScreeningController;
 import com.epam.training.ticketservice.conroller.UserContorller;
 import com.epam.training.ticketservice.conroller.BookController;
 import com.epam.training.ticketservice.conroller.PriceComponentController;
+import com.epam.training.ticketservice.conroller.PriceComponentSetController;
 import com.epam.training.ticketservice.model.Price;
 import com.epam.training.ticketservice.model.User;
 import com.epam.training.ticketservice.model.Room;
@@ -32,19 +33,22 @@ public class Commands {
     private UserContorller userContorller;
     private BookController bookController;
     private PriceComponentController priceComponentController;
+    private PriceComponentSetController priceComponentSetController;
     private User user = new User();
     private Price price = new Price();
 
 
     public Commands(MovieController movieController, RoomController roomController,
                     ScreeningController screeningController, UserContorller userContorller,
-                    BookController bookController, PriceComponentController priceComponentController) {
+                    BookController bookController, PriceComponentController priceComponentController,
+                    PriceComponentSetController priceComponentSetController) {
         this.movieController = movieController;
         this.roomController = roomController;
         this.screeningController = screeningController;
         this.userContorller = userContorller;
         this.bookController = bookController;
         this.priceComponentController = priceComponentController;
+        this.priceComponentSetController = priceComponentSetController;
         userContorller.createUser("admin", "admin", true);
         this.user.setLoggedIn(false);
         this.user.setAdmin(false);
@@ -306,4 +310,23 @@ public class Commands {
             System.out.println("createRoom command is for privileged users");
         }
     }
+
+    @ShellMethod(value = "Attach a price component to a room.", key = "attach price component to room")
+    public void attachToRoom(String componentName, String roomName) {
+        if (this.user.getAdmin()) {
+            priceComponentSetController.setPriceComponentSet(componentName, "room", roomName);
+        } else {
+            System.out.println("createRoom command is for privileged users");
+        }
+    }
+
+    @ShellMethod(value = "Attach a price component to a movie.", key = "attach price component to movie")
+    public void attachToMovie(String componentName, String movieTitle) {
+        if (this.user.getAdmin()) {
+            priceComponentSetController.setPriceComponentSet(componentName, "movie", movieTitle);
+        } else {
+            System.out.println("createRoom command is for privileged users");
+        }
+    }
+
 }
