@@ -1,7 +1,16 @@
 package com.epam.training.ticketservice;
 
-import com.epam.training.ticketservice.conroller.*;
-import com.epam.training.ticketservice.model.*;
+import com.epam.training.ticketservice.conroller.MovieController;
+import com.epam.training.ticketservice.conroller.RoomController;
+import com.epam.training.ticketservice.conroller.ScreeningController;
+import com.epam.training.ticketservice.conroller.UserContorller;
+import com.epam.training.ticketservice.conroller.BookController;
+import com.epam.training.ticketservice.model.Price;
+import com.epam.training.ticketservice.model.User;
+import com.epam.training.ticketservice.model.Room;
+import com.epam.training.ticketservice.model.Screening;
+import com.epam.training.ticketservice.model.Book;
+import com.epam.training.ticketservice.model.Movie;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 import org.springframework.stereotype.Component;
@@ -269,7 +278,7 @@ public class Commands {
     }
 
     @ShellMethod(value = "Add a book", key = "book")
-    public void createBook(String movieTitle, String roomName, String date, String seats, int price) {
+    public void createBook(String movieTitle, String roomName, String date, String seats) {
         if (!this.user.getAdmin()) {
             LocalDateTime dateTime = LocalDateTime.parse(date, formatter);
             String userName = this.user.getUserName();

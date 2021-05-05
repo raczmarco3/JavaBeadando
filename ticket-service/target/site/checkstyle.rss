@@ -46,7 +46,7 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.epam.training.ticketservice.Commands.java">com/epam/training/ticketservice/Commands.java</a>
+                  <a href="${project.url}/checkstyle.html#com.epam.training.ticketservice.service.BookService.java">com/epam/training/ticketservice/service/BookService.java</a>
                 </td>
                 <td>
                   0
