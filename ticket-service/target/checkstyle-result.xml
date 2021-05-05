@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <checkstyle version="8.29">
-<file name="C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\model\User.java">
-</file>
-<file name="C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\repository\BookRepository.java">
+<file name="C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\Commands.java">
 </file>
 </checkstyle>

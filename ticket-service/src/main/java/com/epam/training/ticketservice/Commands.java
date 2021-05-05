@@ -1,7 +1,15 @@
 package com.epam.training.ticketservice;
 
-import com.epam.training.ticketservice.conroller.*;
-import com.epam.training.ticketservice.model.*;
+import com.epam.training.ticketservice.conroller.MovieController;
+import com.epam.training.ticketservice.conroller.RoomController;
+import com.epam.training.ticketservice.conroller.ScreeningController;
+import com.epam.training.ticketservice.conroller.UserContorller;
+import com.epam.training.ticketservice.conroller.BookController;
+import com.epam.training.ticketservice.model.Movie;
+import com.epam.training.ticketservice.model.Room;
+import com.epam.training.ticketservice.model.User;
+import com.epam.training.ticketservice.model.Screening;
+import com.epam.training.ticketservice.model.Book;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 import org.springframework.stereotype.Component;
@@ -232,7 +240,7 @@ public class Commands {
         if (!this.user.getAdmin() && this.user.getLoggedIn()) {
             List<Book> books = bookController.listBooks(this.user.getUserName());
             System.out.printf("Signed in with account %s%n", this.user.getUserName());
-            if(books.isEmpty()) {
+            if (books.isEmpty()) {
                 System.out.println("You have not booked any tickets yet");
             } else {
                 System.out.println("Your previous bookings are");
@@ -247,7 +255,7 @@ public class Commands {
                 }
             }
 
-        } else if(this.user.getAdmin() && this.user.getLoggedIn()){
+        } else if (this.user.getAdmin() && this.user.getLoggedIn()) {
             System.out.printf("Signed in with privileged account %s%n", this.user.getUserName());
         } else {
             System.out.println("You are not signed in");
@@ -267,7 +275,7 @@ public class Commands {
 
     @ShellMethod(value = "Add a book", key = "book")
     public void createBook(String movieTitle, String roomName, String date, String seats) {
-        if(!this.user.getAdmin()) {
+        if (!this.user.getAdmin()) {
             LocalDateTime dateTime = LocalDateTime.parse(date, formatter);
             String userName = this.user.getUserName();
             bookController.createBook(userName, movieTitle, roomName, dateTime, seats);

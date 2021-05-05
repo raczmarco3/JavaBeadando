@@ -23,7 +23,8 @@ public class BookService {
     private RoomRepository roomRepository;
 
     @Autowired
-    public BookService(BookRepository bookRepository, ScreeningRepository screeningRepository, RoomRepository roomRepository) {
+    public BookService(BookRepository bookRepository, ScreeningRepository screeningRepository,
+                       RoomRepository roomRepository) {
         this.bookRepository = bookRepository;
         this.screeningRepository = screeningRepository;
         this.roomRepository = roomRepository;
@@ -42,7 +43,7 @@ public class BookService {
                         && book1.getRoomName().equals(roomName)
                         && book1.getDate().equals(date)).findAny();
 
-        if(screening.isPresent() && room != null) {
+        if (screening.isPresent() && room != null) {
             String[] arrOfSeats = seats.split(" ", 0);
             String occupiedSeats = "";
             String nonExistentSeats = "";
@@ -55,21 +56,21 @@ public class BookService {
                 String[] tempSeats = a.split(",",0);
                 int tempRow = Integer.parseInt(tempSeats[0]);
                 int tempColumn = Integer.parseInt(tempSeats[1]);
-                if(tempRow > rows || tempRow <= 0 || tempColumn > columns || tempColumn <= 0) {
+                if (tempRow > rows || tempRow <= 0 || tempColumn > columns || tempColumn <= 0) {
                     nonExistentSeats = nonExistentSeats + " " + a;
                     break;
                 }
-                if(book.isPresent() && book.get().getSeats().contains(a)) {
+                if (book.isPresent() && book.get().getSeats().contains(a)) {
                     occupiedSeats = occupiedSeats + " " + a;
                 }
                 bookedSeats = bookedSeats + "(" + tempRow + "," + tempColumn + ")" + ",";
                 price = price + 1500;
             }
 
-            if(nonExistentSeats != "") {
+            if (nonExistentSeats != "") {
                 System.out.println("Seat" + nonExistentSeats + " does not exist in this room");
-            } else if(nonExistentSeats == "" && occupiedSeats == "") {
-                System.out.println("Seats booked: " + bookedSeats + " the price for this booking is " + price +" HUF");
+            } else if (nonExistentSeats == "" && occupiedSeats == "") {
+                System.out.println("Seats booked: " + bookedSeats + " the price for this booking is " + price + " HUF");
                 bookRepository.save(new Book(userName, movieTitle, roomName, date, seats, price));
             } else if (nonExistentSeats == "" && occupiedSeats != "") {
                 System.out.println("Seat" + occupiedSeats + " is already taken");

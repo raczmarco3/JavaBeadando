@@ -65,7 +65,9 @@ public class Book {
         return this.seats;
     }
 
-    public int getPrice() { return this.price; }
+    public int getPrice() {
+        return this.price;
+    }
 
     public void setUserName(String userName) {
         this.userName = userName;
