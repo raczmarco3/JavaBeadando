@@ -48,26 +48,31 @@ public class BookService {
             String nonExistentSeats = "";
             int rows = room.getRows();
             int columns = room.getColumns();
+            String bookedSeats = "";
+            int price = 0;
 
             for (String a : arrOfSeats) {
                 String[] tempSeats = a.split(",",0);
                 int tempRow = Integer.parseInt(tempSeats[0]);
                 int tempColumn = Integer.parseInt(tempSeats[1]);
-                if(tempRow > rows || tempRow < 0 || tempColumn > columns || tempColumn < 0) {
+                if(tempRow > rows || tempRow <= 0 || tempColumn > columns || tempColumn <= 0) {
                     nonExistentSeats = nonExistentSeats + " " + a;
                     break;
                 }
-                if(book.get().getSeats().contains(a)) {
+                if(book.isPresent() && book.get().getSeats().contains(a)) {
                     occupiedSeats = occupiedSeats + " " + a;
                 }
+                bookedSeats = bookedSeats + "(" + tempRow + "," + tempColumn + ")" + ",";
+                price = price + 1500;
             }
 
             if(nonExistentSeats != "") {
-                System.out.println("Seat " + nonExistentSeats + " does not exist in this room");
+                System.out.println("Seat" + nonExistentSeats + " does not exist in this room");
             } else if(nonExistentSeats == "" && occupiedSeats == "") {
+                System.out.println("Seats booked: " + bookedSeats + " the price for this booking is " + price +" HUF");
                 bookRepository.save(new Book(userName, movieTitle, roomName, date, seats));
             } else if (nonExistentSeats == "" && occupiedSeats != "") {
-                System.out.println("Seat " + nonExistentSeats + " is already taken");
+                System.out.println("Seat" + occupiedSeats + " is already taken");
             }
         }
     }

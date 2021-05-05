@@ -35,8 +35,8 @@ public class Book {
 
     public Book(String userName, String movieTitle, String roomName, LocalDateTime date, String seats) {
         this.userName = userName;
-        this.roomName = roomName;
         this.movieTitle = movieTitle;
+        this.roomName = roomName;
         this.date = date;
         this.seats = seats;
     }

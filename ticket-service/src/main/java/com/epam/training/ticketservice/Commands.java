@@ -1,13 +1,7 @@
 package com.epam.training.ticketservice;
 
-import com.epam.training.ticketservice.conroller.MovieController;
-import com.epam.training.ticketservice.conroller.RoomController;
-import com.epam.training.ticketservice.conroller.ScreeningController;
-import com.epam.training.ticketservice.conroller.UserContorller;
-import com.epam.training.ticketservice.model.Movie;
-import com.epam.training.ticketservice.model.Room;
-import com.epam.training.ticketservice.model.Screening;
-import com.epam.training.ticketservice.model.User;
+import com.epam.training.ticketservice.conroller.*;
+import com.epam.training.ticketservice.model.*;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 import org.springframework.stereotype.Component;
@@ -25,17 +19,21 @@ public class Commands {
     private ScreeningController screeningController;
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
     private UserContorller userContorller;
+    private BookController bookController;
     private User user = new User();
 
 
     public Commands(MovieController movieController, RoomController roomController,
-                    ScreeningController screeningController, UserContorller userContorller) {
+                    ScreeningController screeningController, UserContorller userContorller,
+                    BookController bookController) {
         this.movieController = movieController;
         this.roomController = roomController;
         this.screeningController = screeningController;
         this.userContorller = userContorller;
+        this.bookController = bookController;
         userContorller.createUser("admin", "admin", true);
         this.user.setLoggedIn(false);
+        this.user.setAdmin(false);
     }
 
     @ShellMethod(value = "Create a movie.", key = "create movie")
@@ -250,6 +248,15 @@ public class Commands {
             System.out.println("You logged out");
         } else {
             System.out.println("This command is for admins");
+        }
+    }
+
+    @ShellMethod(value = "Add a book", key = "book")
+    public void createBook(String movieTitle, String roomName, String date, String seats) {
+        if(!this.user.getAdmin()) {
+            LocalDateTime dateTime = LocalDateTime.parse(date, formatter);
+            String userName = this.user.getUserName();
+            bookController.createBook(userName, movieTitle, roomName, dateTime, seats);
         }
     }
 }
