@@ -217,7 +217,7 @@ public class Commands {
 
     @ShellMethod(value = "Login", key = "sign in")
     public void logIn(String userName, String password) {
-        if(!this.user.getLoggedIn()) {
+        if (!this.user.getLoggedIn()) {
             if (userContorller.logIn(userName, password)) {
                 this.user = userContorller.getUser(userName);
                 if (!this.user.getAdmin()) {
@@ -239,23 +239,23 @@ public class Commands {
 
     @ShellMethod(value = "Login", key = "sign in privileged")
     public void adminLogIn(String userName, String password) {
-       if(!this.user.getLoggedIn()) {
-           if (userContorller.logIn(userName, password)) {
-               this.user = userContorller.getUser(userName);
-               if (this.user.getAdmin()) {
-                   this.user.setLoggedIn(true);
-                   System.out.println("Login successful");
-               } else {
-                   System.out.println("Users can sing in only with sign in");
-                   this.user = new User();
-                   this.user.setLoggedIn(false);
-               }
-           } else {
-               System.out.println("Login failed due to incorrect credentials");
-           }
-       } else {
-           System.out.println("You are already logged in");
-       }
+        if (!this.user.getLoggedIn()) {
+            if (userContorller.logIn(userName, password)) {
+                this.user = userContorller.getUser(userName);
+                if (this.user.getAdmin()) {
+                    this.user.setLoggedIn(true);
+                    System.out.println("Login successful");
+                } else {
+                    System.out.println("Users can sing in only with sign in");
+                    this.user = new User();
+                    this.user.setLoggedIn(false);
+                }
+            } else {
+                System.out.println("Login failed due to incorrect credentials");
+            }
+        } else {
+            System.out.println("You are already logged in");
+        }
     }
 
     @ShellMethod(value = "Account description.", key = "describe account")

@@ -4,7 +4,10 @@ import com.epam.training.ticketservice.model.Book;
 import com.epam.training.ticketservice.model.PriceComponentSet;
 import com.epam.training.ticketservice.model.Room;
 import com.epam.training.ticketservice.model.Screening;
-import com.epam.training.ticketservice.repository.*;
+import com.epam.training.ticketservice.repository.BookRepository;
+import com.epam.training.ticketservice.repository.PriceComponentSetRepository;
+import com.epam.training.ticketservice.repository.RoomRepository;
+import com.epam.training.ticketservice.repository.ScreeningRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,7 +20,8 @@ import java.util.stream.StreamSupport;
 
 @Service
 public class BookService {
-    private BookRepository bookRepository;
+    private
+    BookRepository bookRepository;
     private ScreeningRepository screeningRepository;
     private RoomRepository roomRepository;
     private PriceComponentSetRepository priceComponentSetRepository;
@@ -52,7 +56,7 @@ public class BookService {
         List<Integer> prices = new ArrayList<>();
 
         for (PriceComponentSet priceComponent : priceSets) {
-            if( priceComponent.getAttachedId().equals(movieTitle)
+            if (priceComponent.getAttachedId().equals(movieTitle)
                     || priceComponent.getAttachedId().equals(roomName)
                     || priceComponent.getAttachedId().equals(screeningId)) {
                 prices.add(priceComponent.getPrice());
@@ -79,7 +83,7 @@ public class BookService {
             String bookedSeats = "";
             int finalPrice = 0;
 
-            if(priceComponents.size() > 0) {
+            if (priceComponents.size() > 0) {
                 for (int tempPrice : priceComponents) {
                     finalPrice = finalPrice + tempPrice;
                 }
