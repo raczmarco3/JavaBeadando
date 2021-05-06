@@ -215,7 +215,7 @@ public class Commands {
         if (userContorller.getUser(userName) == null) {
             userContorller.createUser(userName, password, false);
         } else {
-            System.out.println("This username is already exists.");
+            System.out.println("This username is already exist.");
         }
     }
 
