@@ -21,4 +21,8 @@ public class PriceComponent {
         this.componentPrice = componentPrice;
     }
 
+    public int getComponentPrice() {
+        return this.componentPrice;
+    }
+
 }

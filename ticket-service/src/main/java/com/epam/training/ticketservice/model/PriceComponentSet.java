@@ -23,12 +23,25 @@ public class PriceComponentSet {
     @Column
     private String attachedId;
 
+    @Column
+    private int price;
+
     public PriceComponentSet() {
     }
 
-    public PriceComponentSet(String componentName, String typeName, String attachedId) {
+    public PriceComponentSet(String componentName, String typeName, String attachedId, int price) {
         this.componentName = componentName;
         this.typeName = typeName;
         this.attachedId = attachedId;
+        this.price = price;
     }
+
+    public String getAttachedId() {
+        return this.attachedId;
+    }
+
+    public int getPrice() {
+        return this.price;
+    }
+
 }

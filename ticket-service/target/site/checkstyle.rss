@@ -25,9 +25,9 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2021</copyright>
     <item>
-      <title>File: 5,
+      <title>File: 4,
              Errors: 0,
-             Warnings: 0,
+             Warnings: 1,
              Infos: 0
       </title>
             <link>${project.url}/checkstyle.html</link>
@@ -46,34 +46,6 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.epam.training.ticketservice.conroller.PriceComponentSetController.java">com/epam/training/ticketservice/conroller/PriceComponentSetController.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#com.epam.training.ticketservice.repository.PriceComponentSetRepository.java">com/epam/training/ticketservice/repository/PriceComponentSetRepository.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#com.epam.training.ticketservice.Commands.java">com/epam/training/ticketservice/Commands.java</a>
                 </td>
                 <td>
@@ -88,7 +60,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.epam.training.ticketservice.service.PriceComponentSetService.java">com/epam/training/ticketservice/service/PriceComponentSetService.java</a>
+                  <a href="${project.url}/checkstyle.html#com.epam.training.ticketservice.conroller.ScreeningController.java">com/epam/training/ticketservice/conroller/ScreeningController.java</a>
                 </td>
                 <td>
                   0
@@ -102,7 +74,21 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.epam.training.ticketservice.model.PriceComponentSet.java">com/epam/training/ticketservice/model/PriceComponentSet.java</a>
+                  <a href="${project.url}/checkstyle.html#com.epam.training.ticketservice.service.ScreeningService.java">com/epam/training/ticketservice/service/ScreeningService.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.epam.training.ticketservice.model.Screening.java">com/epam/training/ticketservice/model/Screening.java</a>
                 </td>
                 <td>
                   0

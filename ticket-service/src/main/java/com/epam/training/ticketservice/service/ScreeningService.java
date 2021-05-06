@@ -54,7 +54,7 @@ public class ScreeningService {
         return screenings;
     }
 
-    public Optional<Screening> getScreening(String movieTitle, String roomName, LocalDateTime dateTime){
+    public Optional<Screening> getScreening(String movieTitle, String roomName, LocalDateTime dateTime) {
         var screening = StreamSupport.stream(screeningRepository.findAll().spliterator(), false)
                 .filter(s -> s.getRoomName().equals(roomName)
                         && s.getMovieTitle().equals(movieTitle)
