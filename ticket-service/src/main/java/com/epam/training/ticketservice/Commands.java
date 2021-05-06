@@ -212,7 +212,11 @@ public class Commands {
 
     @ShellMethod(value = "Create a new user.", key = "sign up")
     public void createUser(String userName, String password) {
-        userContorller.createUser(userName, password, false);
+        if (userContorller.getUser(userName) == null) {
+            userContorller.createUser(userName, password, false);
+        } else {
+            System.out.println("This username is already exists.");
+        }
     }
 
     @ShellMethod(value = "Login", key = "sign in")
