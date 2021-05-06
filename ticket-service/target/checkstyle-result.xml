@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <checkstyle version="8.29">
-<file name="C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\Commands.java">
-</file>
 <file name="C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\service\BookService.java">
-<error line="7" severity="warning" message="Using the &apos;.*&apos; form of import should be avoided - com.epam.training.ticketservice.repository.*." source="com.puppycrawl.tools.checkstyle.checks.imports.AvoidStarImportCheck"/>
 </file>
 </checkstyle>

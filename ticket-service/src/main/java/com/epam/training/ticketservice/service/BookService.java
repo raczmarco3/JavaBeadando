@@ -20,8 +20,7 @@ import java.util.stream.StreamSupport;
 
 @Service
 public class BookService {
-    private
-    BookRepository bookRepository;
+    private BookRepository bookRepository;
     private ScreeningRepository screeningRepository;
     private RoomRepository roomRepository;
     private PriceComponentSetRepository priceComponentSetRepository;
