@@ -23,6 +23,11 @@ public class BookController {
 
     public void createBook(String userName, String movieTitle, String roomName,
                            LocalDateTime date, String seats, int price) {
-        bookService.createBook(userName, movieTitle, roomName, date, seats, price);
+        bookService.createBook(userName, movieTitle, roomName, date, seats, price, false);
+    }
+
+    public void showPrice(String userName, String movieTitle, String roomName,
+                           LocalDateTime date, String seats, int price) {
+        bookService.createBook(userName, movieTitle, roomName, date, seats, price, true);
     }
 }

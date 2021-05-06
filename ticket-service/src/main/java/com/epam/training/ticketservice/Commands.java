@@ -355,4 +355,11 @@ public class Commands {
             System.out.println("createRoom command is for privileged users");
         }
     }
+
+    @ShellMethod(value = "Show price", key = "show price for")
+    public void showPrice(String movieTitle, String roomName, String date, String seats) {
+        LocalDateTime dateTime = LocalDateTime.parse(date, formatter);
+        String userName = this.user.getUserName();
+        bookController.showPrice(userName, movieTitle, roomName, dateTime, seats, this.price.getPrice());
+    }
 }

@@ -66,7 +66,7 @@ public class BookService {
 
     @Transactional
     public void createBook(String userName, String movieTitle,
-                           String roomName, LocalDateTime date, String seats, int price) {
+                           String roomName, LocalDateTime date, String seats, int price, Boolean showPrice) {
 
         Room room = roomRepository.findByName(roomName);
         var screening = getScreening(movieTitle, roomName, date);
@@ -103,14 +103,16 @@ public class BookService {
                 finalPrice = finalPrice + price;
             }
 
-            if (nonExistentSeats != "") {
+            if (nonExistentSeats != "" && !showPrice) {
                 System.out.println("Seat" + nonExistentSeats + " does not exist in this room");
-            } else if (nonExistentSeats == "" && occupiedSeats == "") {
+            } else if (nonExistentSeats == "" && occupiedSeats == "" && !showPrice) {
                 System.out.println("Seats booked: " + bookedSeats
                         + " the price for this booking is " + finalPrice + " HUF");
                 bookRepository.save(new Book(userName, movieTitle, roomName, date, seats, finalPrice));
-            } else if (nonExistentSeats == "" && occupiedSeats != "") {
+            } else if (nonExistentSeats == "" && occupiedSeats != "" && !showPrice) {
                 System.out.println("Seat" + occupiedSeats + " is already taken");
+            } else if (showPrice) {
+                System.out.println("The price for this booking would be " + finalPrice + " HUF");
             }
         }
     }
