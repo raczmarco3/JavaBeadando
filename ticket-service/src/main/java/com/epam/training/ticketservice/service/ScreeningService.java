@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.StreamSupport;
 
 @Service
@@ -40,14 +41,10 @@ public class ScreeningService {
 
     @Transactional
     public void deleteScreening(String movieTitle, String roomName, LocalDateTime dateTime) {
-        var screening = StreamSupport.stream(screeningRepository.findAll().spliterator(), false)
-                .filter(s -> s.getRoomName().equals(roomName)
-                        && s.getMovieTitle().equals(movieTitle)
-                        && s.getDateTime().equals(dateTime)).findAny();
+        var screening = getScreening(movieTitle, roomName, dateTime);
         if (screening.isPresent()) {
             screeningRepository.delete(screening.get());
         }
-
     }
 
     @Transactional
@@ -55,5 +52,22 @@ public class ScreeningService {
         List<Screening> screenings = new ArrayList<>();
         screeningRepository.findAll().forEach(screening -> screenings.add(screening));
         return screenings;
+    }
+
+    public Optional<Screening> getScreening(String movieTitle, String roomName, LocalDateTime dateTime){
+        var screening = StreamSupport.stream(screeningRepository.findAll().spliterator(), false)
+                .filter(s -> s.getRoomName().equals(roomName)
+                        && s.getMovieTitle().equals(movieTitle)
+                        && s.getDateTime().equals(dateTime)).findAny();
+        return screening;
+    }
+
+    @Transactional
+    public int getScreeningId(String movieTitle, String roomName, LocalDateTime dateTime) {
+        var screening = getScreening(movieTitle, roomName, dateTime);
+        if (screening.isPresent()) {
+            return screening.get().getId();
+        }
+        return -1;
     }
 }

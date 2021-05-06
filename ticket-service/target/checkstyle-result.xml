@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <checkstyle version="8.29">
-<file name="C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\model\PriceComponent.java">
+<file name="C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\Commands.java">
+</file>
+<file name="C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\conroller\PriceComponentSetController.java">
+</file>
+<file name="C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\model\PriceComponentSet.java">
+</file>
+<file name="C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\repository\PriceComponentSetRepository.java">
+</file>
+<file name="C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\service\PriceComponentSetService.java">
 </file>
 </checkstyle>

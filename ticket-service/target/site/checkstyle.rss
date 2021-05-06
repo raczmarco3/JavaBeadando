@@ -25,7 +25,7 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2021</copyright>
     <item>
-      <title>File: 1,
+      <title>File: 5,
              Errors: 0,
              Warnings: 0,
              Infos: 0
@@ -46,7 +46,63 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.epam.training.ticketservice.model.PriceComponent.java">com/epam/training/ticketservice/model/PriceComponent.java</a>
+                  <a href="${project.url}/checkstyle.html#com.epam.training.ticketservice.conroller.PriceComponentSetController.java">com/epam/training/ticketservice/conroller/PriceComponentSetController.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.epam.training.ticketservice.repository.PriceComponentSetRepository.java">com/epam/training/ticketservice/repository/PriceComponentSetRepository.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.epam.training.ticketservice.Commands.java">com/epam/training/ticketservice/Commands.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.epam.training.ticketservice.service.PriceComponentSetService.java">com/epam/training/ticketservice/service/PriceComponentSetService.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.epam.training.ticketservice.model.PriceComponentSet.java">com/epam/training/ticketservice/model/PriceComponentSet.java</a>
                 </td>
                 <td>
                   0

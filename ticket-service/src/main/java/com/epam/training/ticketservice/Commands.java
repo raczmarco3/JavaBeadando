@@ -22,6 +22,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
 import java.util.List;
+import java.util.stream.StreamSupport;
 
 @Component
 @ShellComponent
@@ -329,4 +330,14 @@ public class Commands {
         }
     }
 
+    @ShellMethod(value = "Attach a price component to a screening.", key = "attach price component to screening")
+    public void attachToScreening(String componentName, String movieTitle, String roomName, String dateTime) {
+        if (this.user.getAdmin()) {
+            LocalDateTime date = LocalDateTime.parse(dateTime, formatter);
+            int id = screeningController.getScreeningId(movieTitle, roomName, date);
+            priceComponentSetController.setPriceComponentSet(componentName, "screening", String.valueOf(id));
+        } else {
+            System.out.println("createRoom command is for privileged users");
+        }
+    }
 }

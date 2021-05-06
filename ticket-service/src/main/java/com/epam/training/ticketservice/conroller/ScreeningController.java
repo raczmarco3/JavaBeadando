@@ -28,4 +28,8 @@ public class ScreeningController {
     public List<Screening> getAllScreenings() {
         return screeningService.listScreenings();
     }
+
+    public int getScreeningId(String movieTitle, String roomName, LocalDateTime dateTime) {
+        return screeningService.getScreeningId(movieTitle, roomName, dateTime);
+    }
 }

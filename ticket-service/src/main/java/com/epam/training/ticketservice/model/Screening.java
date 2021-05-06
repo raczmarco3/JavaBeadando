@@ -69,6 +69,10 @@ public class Screening {
         return this.endTime;
     }
 
+    public int getId() {
+        return this.id;
+    }
+
     public void setMovieTitle(String movieTitle) {
         this.movieTitle = movieTitle;
     }
