@@ -4,7 +4,6 @@ import com.epam.training.ticketservice.model.Movie;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.Assert;
 
 public class MovieTest {
     private Movie testMovie;
