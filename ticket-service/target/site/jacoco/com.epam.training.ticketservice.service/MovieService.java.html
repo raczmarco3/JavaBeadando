@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="hu"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MovieService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ticket-service</a> &gt; <a href="index.source.html" class="el_package">com.epam.training.ticketservice.service</a> &gt; <span class="el_source">MovieService.java</span></div><h1>MovieService.java</h1><pre class="source lang-java linenums">package com.epam.training.ticketservice.service;
+
+import com.epam.training.ticketservice.model.Movie;
+import com.epam.training.ticketservice.repository.MovieRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import java.util.List;
+import java.util.ArrayList;
+
+@Service
+public class MovieService {
+
+    private MovieRepository movieRepository;
+
+    @Autowired
+<span class="nc" id="L17">    public MovieService(MovieRepository movieRepository) {</span>
+<span class="nc" id="L18">        this.movieRepository = movieRepository;</span>
+<span class="nc" id="L19">    }</span>
+
+    @Transactional
+    public void createMovie(String title, String genre, int length) {
+<span class="nc bnc" id="L23" title="All 2 branches missed.">        if (movieRepository.findByTitle(title) == null) {</span>
+<span class="nc" id="L24">            movieRepository.save(new Movie(title, genre, length));</span>
+        }
+<span class="nc" id="L26">    }</span>
+
+    @Transactional
+    public List&lt;Movie&gt; getAllMovies() {
+<span class="nc" id="L30">        List&lt;Movie&gt; movies = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L31">        movieRepository.findAll().forEach(movie -&gt; movies.add(movie));</span>
+<span class="nc" id="L32">        return movies;</span>
+    }
+
+    @Transactional
+    public void deleteMovie(String title) {
+<span class="nc" id="L37">        Movie movie = movieRepository.findByTitle(title);</span>
+<span class="nc" id="L38">        movieRepository.delete(movie);</span>
+<span class="nc" id="L39">    }</span>
+
+    @Transactional
+    public void updateMovie(String title, String genre, int length) {
+<span class="nc" id="L43">        Movie movie = movieRepository.findByTitle(title);</span>
+<span class="nc" id="L44">        movieRepository.delete(movie);</span>
+<span class="nc" id="L45">        movieRepository.save(new Movie(title, genre, length));</span>
+<span class="nc" id="L46">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

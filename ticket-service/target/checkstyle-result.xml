@@ -1,9 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <checkstyle version="8.29">
+<file name="C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\Application.java">
+</file>
 <file name="C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\Commands.java">
 </file>
 <file name="C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\conroller\BookController.java">
 </file>
+<file name="C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\conroller\MovieController.java">
+</file>
+<file name="C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\conroller\PriceComponentController.java">
+</file>
+<file name="C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\conroller\PriceComponentSetController.java">
+</file>
+<file name="C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\conroller\RoomController.java">
+</file>
+<file name="C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\conroller\ScreeningController.java">
+</file>
+<file name="C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\conroller\UserContorller.java">
+</file>
+<file name="C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\model\Book.java">
+</file>
+<file name="C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\model\Movie.java">
+</file>
+<file name="C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\model\Price.java">
+</file>
+<file name="C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\model\PriceComponent.java">
+</file>
+<file name="C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\model\PriceComponentSet.java">
+</file>
+<file name="C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\model\Room.java">
+</file>
+<file name="C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\model\Screening.java">
+</file>
+<file name="C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\model\User.java">
+</file>
+<file name="C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\repository\BookRepository.java">
+</file>
+<file name="C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\repository\MovieRepository.java">
+</file>
+<file name="C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\repository\PriceComponentRepository.java">
+</file>
+<file name="C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\repository\PriceComponentSetRepository.java">
+</file>
+<file name="C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\repository\RoomRepository.java">
+</file>
+<file name="C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\repository\ScreeningRepository.java">
+</file>
+<file name="C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\repository\UserRepository.java">
+</file>
 <file name="C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\service\BookService.java">
+</file>
+<file name="C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\service\MovieService.java">
+</file>
+<file name="C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\service\PriceComponentService.java">
+</file>
+<file name="C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\service\PriceComponentSetService.java">
+</file>
+<file name="C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\service\RoomService.java">
+</file>
+<file name="C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\service\ScreeningService.java">
+</file>
+<file name="C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\service\UserService.java">
+</file>
+<file name="C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\SpringShellCustomPrompt.java">
 </file>
 </checkstyle>

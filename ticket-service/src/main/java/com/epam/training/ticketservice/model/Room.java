@@ -45,16 +45,4 @@ public class Room {
     public int getSeats() {
         return this.seats;
     }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setRows(int rows) {
-        this.rows = rows;
-    }
-
-    public void setColumns(int columns) {
-        this.columns = columns;
-    }
 }
