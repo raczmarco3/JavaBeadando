@@ -19,43 +19,31 @@ public class Room {
     @Column
     private int seats;
 
-<span class="nc" id="L22">    public Room(String name, int rows, int columns) {</span>
-<span class="nc" id="L23">        this.name = name;</span>
-<span class="nc" id="L24">        this.rows = rows;</span>
-<span class="nc" id="L25">        this.columns = columns;</span>
-<span class="nc" id="L26">        this.seats = rows * columns;</span>
-<span class="nc" id="L27">    }</span>
+<span class="fc" id="L22">    public Room(String name, int rows, int columns) {</span>
+<span class="fc" id="L23">        this.name = name;</span>
+<span class="fc" id="L24">        this.rows = rows;</span>
+<span class="fc" id="L25">        this.columns = columns;</span>
+<span class="fc" id="L26">        this.seats = rows * columns;</span>
+<span class="fc" id="L27">    }</span>
 
 <span class="nc" id="L29">    public Room() {</span>
 
 <span class="nc" id="L31">    }</span>
 
     public String getName() {
-<span class="nc" id="L34">        return this.name;</span>
+<span class="fc" id="L34">        return this.name;</span>
     }
 
     public int getRows() {
-<span class="nc" id="L38">        return this.rows;</span>
+<span class="fc" id="L38">        return this.rows;</span>
     }
 
     public int getColumns() {
-<span class="nc" id="L42">        return this.columns;</span>
+<span class="fc" id="L42">        return this.columns;</span>
     }
 
     public int getSeats() {
-<span class="nc" id="L46">        return this.seats;</span>
+<span class="fc" id="L46">        return this.seats;</span>
     }
-
-    public void setName(String name) {
-<span class="nc" id="L50">        this.name = name;</span>
-<span class="nc" id="L51">    }</span>
-
-    public void setRows(int rows) {
-<span class="nc" id="L54">        this.rows = rows;</span>
-<span class="nc" id="L55">    }</span>
-
-    public void setColumns(int columns) {
-<span class="nc" id="L58">        this.columns = columns;</span>
-<span class="nc" id="L59">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

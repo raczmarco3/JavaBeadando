@@ -1,12 +1,12 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
-ticket-service,com.epam.training.ticketservice.model,Room,44,0,0,0,18,0,9,0,9,0
+ticket-service,com.epam.training.ticketservice.model,Room,3,29,0,0,2,10,1,5,1,5
 ticket-service,com.epam.training.ticketservice.model,User,47,0,0,0,20,0,10,0,10,0
-ticket-service,com.epam.training.ticketservice.model,Price,16,0,0,0,8,0,4,0,4,0
+ticket-service,com.epam.training.ticketservice.model,Price,3,13,0,0,2,6,1,3,1,3
 ticket-service,com.epam.training.ticketservice.model,Movie,3,33,0,0,2,14,1,7,1,7
-ticket-service,com.epam.training.ticketservice.model,Screening,68,0,0,0,27,0,14,0,14,0
+ticket-service,com.epam.training.ticketservice.model,Screening,3,45,0,0,2,15,1,8,1,8
 ticket-service,com.epam.training.ticketservice.model,Book,3,63,0,0,2,26,1,13,1,13
-ticket-service,com.epam.training.ticketservice.model,PriceComponentSet,24,0,0,0,10,0,4,0,4,0
-ticket-service,com.epam.training.ticketservice.model,PriceComponent,15,0,0,0,7,0,3,0,3,0
+ticket-service,com.epam.training.ticketservice.model,PriceComponentSet,3,21,0,0,2,8,1,3,1,3
+ticket-service,com.epam.training.ticketservice.model,PriceComponent,3,12,0,0,2,5,1,2,1,2
 ticket-service,com.epam.training.ticketservice,SpringShellCustomPrompt,8,0,0,0,2,0,2,0,2,0
 ticket-service,com.epam.training.ticketservice,Application,8,0,0,0,3,0,2,0,2,0
 ticket-service,com.epam.training.ticketservice,Commands,838,0,82,0,192,0,67,0,26,0

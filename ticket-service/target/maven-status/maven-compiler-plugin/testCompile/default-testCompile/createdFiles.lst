@@ -1,3 +1,8 @@
-model\BookTest.class
-ApplicationTest.class
 model\MovieTest.class
+model\PriceComponentSetTest.class
+model\PriceTest.class
+model\BookTest.class
+model\ScreeningTest.class
+model\PriceComponentTest.class
+model\RoomTest.class
+ApplicationTest.class

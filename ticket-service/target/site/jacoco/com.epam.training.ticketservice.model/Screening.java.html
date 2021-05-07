@@ -33,64 +33,44 @@ public class Screening {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-<span class="nc" id="L36">    public Screening(String movieTitle, String roomName, LocalDateTime dateTime, int movieLength, String movieGenre) {</span>
-<span class="nc" id="L37">        this.movieTitle = movieTitle;</span>
-<span class="nc" id="L38">        this.roomName = roomName;</span>
-<span class="nc" id="L39">        this.dateTime = dateTime;</span>
-<span class="nc" id="L40">        this.movieLength = movieLength;</span>
-<span class="nc" id="L41">        this.movieGenre = movieGenre;</span>
-<span class="nc" id="L42">        this.endTime = dateTime.plusMinutes(movieLength);</span>
-<span class="nc" id="L43">    }</span>
+<span class="fc" id="L36">    public Screening(String movieTitle, String roomName, LocalDateTime dateTime, int movieLength, String movieGenre) {</span>
+<span class="fc" id="L37">        this.movieTitle = movieTitle;</span>
+<span class="fc" id="L38">        this.roomName = roomName;</span>
+<span class="fc" id="L39">        this.dateTime = dateTime;</span>
+<span class="fc" id="L40">        this.movieLength = movieLength;</span>
+<span class="fc" id="L41">        this.movieGenre = movieGenre;</span>
+<span class="fc" id="L42">        this.endTime = dateTime.plusMinutes(movieLength);</span>
+<span class="fc" id="L43">    }</span>
 
 <span class="nc" id="L45">    public Screening() {</span>
 <span class="nc" id="L46">    }</span>
 
     public String getMovieTitle() {
-<span class="nc" id="L49">        return this.movieTitle;</span>
+<span class="fc" id="L49">        return this.movieTitle;</span>
     }
 
     public String getRoomName() {
-<span class="nc" id="L53">        return this.roomName;</span>
+<span class="fc" id="L53">        return this.roomName;</span>
     }
 
     public LocalDateTime getDateTime() {
-<span class="nc" id="L57">        return this.dateTime;</span>
+<span class="fc" id="L57">        return this.dateTime;</span>
     }
 
     public String getMovieGenre() {
-<span class="nc" id="L61">        return this.movieGenre;</span>
+<span class="fc" id="L61">        return this.movieGenre;</span>
     }
 
     public int getMovieLength() {
-<span class="nc" id="L65">        return this.movieLength;</span>
+<span class="fc" id="L65">        return this.movieLength;</span>
     }
 
     public LocalDateTime getEndTime() {
-<span class="nc" id="L69">        return this.endTime;</span>
+<span class="fc" id="L69">        return this.endTime;</span>
     }
 
     public int getId() {
-<span class="nc" id="L73">        return this.id;</span>
+<span class="fc" id="L73">        return this.id;</span>
     }
-
-    public void setMovieTitle(String movieTitle) {
-<span class="nc" id="L77">        this.movieTitle = movieTitle;</span>
-<span class="nc" id="L78">    }</span>
-
-    public void setRoomName(String roomName) {
-<span class="nc" id="L81">        this.roomName = roomName;</span>
-<span class="nc" id="L82">    }</span>
-
-    public void setDateTime(LocalDateTime dateTime) {
-<span class="nc" id="L85">        this.dateTime = dateTime;</span>
-<span class="nc" id="L86">    }</span>
-
-    public void setMovieLength(int movieLength) {
-<span class="nc" id="L89">        this.movieLength = movieLength;</span>
-<span class="nc" id="L90">    }</span>
-
-    public void setMovieGenre(String movieGenre) {
-<span class="nc" id="L93">        this.movieGenre = movieGenre;</span>
-<span class="nc" id="L94">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
