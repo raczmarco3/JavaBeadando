@@ -158,7 +158,7 @@ public class Commands {
                 } else {
                     boolean match = false;
                     for (Screening screening : screenings2) {
-                        if (date.isBefore(screening.getEndTime())) {
+                        if (date.isBefore(screening.getEndTime()) && date.isAfter(screening.getDateTime())) {
                             System.out.println("There is an overlapping screening");
                             match = true;
                             break;
@@ -287,15 +287,11 @@ public class Commands {
         }
     }
 
-    @ShellMethod(value = "Sign out for admins", key = "sign out")
+    @ShellMethod(value = "Sign out", key = "sign out")
     public void logOut() {
-        if (this.user.getAdmin()) {
-            this.user.setAdmin(false);
-            this.user.setLoggedIn(false);
-            System.out.println("You logged out");
-        } else {
-            System.out.println("This command is for admins");
-        }
+        this.user.setAdmin(false);
+        this.user.setLoggedIn(false);
+        System.out.println("You logged out");
     }
 
     @ShellMethod(value = "Add a book", key = "book")
