@@ -1,12 +1,12 @@
 package com.epam.training.ticketservice;
 
-import com.epam.training.ticketservice.conroller.MovieController;
-import com.epam.training.ticketservice.conroller.RoomController;
-import com.epam.training.ticketservice.conroller.ScreeningController;
-import com.epam.training.ticketservice.conroller.UserContorller;
-import com.epam.training.ticketservice.conroller.BookController;
-import com.epam.training.ticketservice.conroller.PriceComponentController;
-import com.epam.training.ticketservice.conroller.PriceComponentSetController;
+import com.epam.training.ticketservice.controller.MovieController;
+import com.epam.training.ticketservice.controller.RoomController;
+import com.epam.training.ticketservice.controller.ScreeningController;
+import com.epam.training.ticketservice.controller.UserContorller;
+import com.epam.training.ticketservice.controller.BookController;
+import com.epam.training.ticketservice.controller.PriceComponentController;
+import com.epam.training.ticketservice.controller.PriceComponentSetController;
 import com.epam.training.ticketservice.model.Price;
 import com.epam.training.ticketservice.model.User;
 import com.epam.training.ticketservice.model.Room;
@@ -20,9 +20,7 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.ConcurrentModificationException;
 import java.util.List;
-import java.util.stream.StreamSupport;
 
 @Component
 @ShellComponent

@@ -14,35 +14,35 @@ public class MovieService {
     private MovieRepository movieRepository;
 
     @Autowired
-<span class="nc" id="L17">    public MovieService(MovieRepository movieRepository) {</span>
-<span class="nc" id="L18">        this.movieRepository = movieRepository;</span>
-<span class="nc" id="L19">    }</span>
+<span class="fc" id="L17">    public MovieService(MovieRepository movieRepository) {</span>
+<span class="fc" id="L18">        this.movieRepository = movieRepository;</span>
+<span class="fc" id="L19">    }</span>
 
     @Transactional
     public void createMovie(String title, String genre, int length) {
-<span class="nc bnc" id="L23" title="All 2 branches missed.">        if (movieRepository.findByTitle(title) == null) {</span>
-<span class="nc" id="L24">            movieRepository.save(new Movie(title, genre, length));</span>
+<span class="pc bpc" id="L23" title="1 of 2 branches missed.">        if (movieRepository.findByTitle(title) == null) {</span>
+<span class="fc" id="L24">            movieRepository.save(new Movie(title, genre, length));</span>
         }
-<span class="nc" id="L26">    }</span>
+<span class="fc" id="L26">    }</span>
 
     @Transactional
     public List&lt;Movie&gt; getAllMovies() {
-<span class="nc" id="L30">        List&lt;Movie&gt; movies = new ArrayList&lt;&gt;();</span>
-<span class="nc" id="L31">        movieRepository.findAll().forEach(movie -&gt; movies.add(movie));</span>
-<span class="nc" id="L32">        return movies;</span>
+<span class="fc" id="L30">        List&lt;Movie&gt; movies = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L31">        movieRepository.findAll().forEach(movie -&gt; movies.add(movie));</span>
+<span class="fc" id="L32">        return movies;</span>
     }
 
     @Transactional
     public void deleteMovie(String title) {
-<span class="nc" id="L37">        Movie movie = movieRepository.findByTitle(title);</span>
-<span class="nc" id="L38">        movieRepository.delete(movie);</span>
-<span class="nc" id="L39">    }</span>
+<span class="fc" id="L37">        Movie movie = movieRepository.findByTitle(title);</span>
+<span class="fc" id="L38">        movieRepository.delete(movie);</span>
+<span class="fc" id="L39">    }</span>
 
     @Transactional
     public void updateMovie(String title, String genre, int length) {
-<span class="nc" id="L43">        Movie movie = movieRepository.findByTitle(title);</span>
-<span class="nc" id="L44">        movieRepository.delete(movie);</span>
-<span class="nc" id="L45">        movieRepository.save(new Movie(title, genre, length));</span>
-<span class="nc" id="L46">    }</span>
+<span class="fc" id="L43">        Movie movie = movieRepository.findByTitle(title);</span>
+<span class="fc" id="L44">        movieRepository.delete(movie);</span>
+<span class="fc" id="L45">        movieRepository.save(new Movie(title, genre, length));</span>
+<span class="fc" id="L46">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

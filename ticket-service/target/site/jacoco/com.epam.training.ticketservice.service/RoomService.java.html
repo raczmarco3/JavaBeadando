@@ -15,35 +15,35 @@ public class RoomService {
     private RoomRepository roomRepository;
 
     @Autowired
-<span class="nc" id="L18">    public RoomService(RoomRepository roomRepository) {</span>
-<span class="nc" id="L19">        this.roomRepository = roomRepository;</span>
-<span class="nc" id="L20">    }</span>
+<span class="fc" id="L18">    public RoomService(RoomRepository roomRepository) {</span>
+<span class="fc" id="L19">        this.roomRepository = roomRepository;</span>
+<span class="fc" id="L20">    }</span>
 
     @Transactional
     public void createRoom(String name, int rows, int columns) {
-<span class="nc bnc" id="L24" title="All 2 branches missed.">        if (roomRepository.findByName(name) == null) {</span>
-<span class="nc" id="L25">            roomRepository.save(new Room(name, rows, columns));</span>
+<span class="pc bpc" id="L24" title="1 of 2 branches missed.">        if (roomRepository.findByName(name) == null) {</span>
+<span class="fc" id="L25">            roomRepository.save(new Room(name, rows, columns));</span>
         }
-<span class="nc" id="L27">    }</span>
+<span class="fc" id="L27">    }</span>
 
     @Transactional
     public void updateRoom(String name, int rows, int columns) {
-<span class="nc" id="L31">        Room room = roomRepository.findByName(name);</span>
-<span class="nc" id="L32">        roomRepository.delete(room);</span>
-<span class="nc" id="L33">        roomRepository.save(new Room(name, rows, columns));</span>
-<span class="nc" id="L34">    }</span>
+<span class="fc" id="L31">        Room room = roomRepository.findByName(name);</span>
+<span class="fc" id="L32">        roomRepository.delete(room);</span>
+<span class="fc" id="L33">        roomRepository.save(new Room(name, rows, columns));</span>
+<span class="fc" id="L34">    }</span>
 
     @Transactional
     public void deleteRoom(String name) {
-<span class="nc" id="L38">        Room room = roomRepository.findByName(name);</span>
-<span class="nc" id="L39">        roomRepository.delete(room);</span>
-<span class="nc" id="L40">    }</span>
+<span class="fc" id="L38">        Room room = roomRepository.findByName(name);</span>
+<span class="fc" id="L39">        roomRepository.delete(room);</span>
+<span class="fc" id="L40">    }</span>
 
     @Transactional
     public List&lt;Room&gt; getAllRooms() {
-<span class="nc" id="L44">        List&lt;Room&gt; rooms = new ArrayList&lt;&gt;();</span>
-<span class="nc" id="L45">        roomRepository.findAll().forEach(room -&gt; rooms.add(room));</span>
-<span class="nc" id="L46">        return rooms;</span>
+<span class="fc" id="L44">        List&lt;Room&gt; rooms = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L45">        roomRepository.findAll().forEach(room -&gt; rooms.add(room));</span>
+<span class="fc" id="L46">        return rooms;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
