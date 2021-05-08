@@ -1,12 +1,7 @@
 package com.epam.training.ticketservice;
 
-import com.epam.training.ticketservice.controller.MovieController;
-import com.epam.training.ticketservice.controller.RoomController;
-import com.epam.training.ticketservice.controller.ScreeningController;
-import com.epam.training.ticketservice.controller.UserContorller;
-import com.epam.training.ticketservice.controller.BookController;
-import com.epam.training.ticketservice.controller.PriceComponentController;
-import com.epam.training.ticketservice.controller.PriceComponentSetController;
+import com.epam.training.ticketservice.controller.*;
+import com.epam.training.ticketservice.controller.UserController;
 import com.epam.training.ticketservice.model.Price;
 import com.epam.training.ticketservice.model.User;
 import com.epam.training.ticketservice.model.Room;
@@ -29,7 +24,7 @@ public class Commands {
     private RoomController roomController;
     private ScreeningController screeningController;
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-    private UserContorller userContorller;
+    private UserController userContorller;
     private BookController bookController;
     private PriceComponentController priceComponentController;
     private PriceComponentSetController priceComponentSetController;
@@ -38,7 +33,7 @@ public class Commands {
 
 
     public Commands(MovieController movieController, RoomController roomController,
-                    ScreeningController screeningController, UserContorller userContorller,
+                    ScreeningController screeningController, UserController userContorller,
                     BookController bookController, PriceComponentController priceComponentController,
                     PriceComponentSetController priceComponentSetController) {
         this.movieController = movieController;
@@ -53,7 +48,9 @@ public class Commands {
         this.user.setAdmin(false);
         this.price.setPrice(1500);
     }
-
+    public void setAdmin() {
+        this.user.setAdmin(true);
+    }
     @ShellMethod(value = "Create a movie.", key = "create movie")
     public void createMovie(String title, String genre, int length) {
         if (this.user.getAdmin()) {
@@ -164,7 +161,7 @@ public class Commands {
                             break;
                         } else if (date.isBefore(screening.getEndTime().plusMinutes(10))
                                 && date.isAfter(screening.getEndTime())) {
-                            System.out.println("This would start in the break"
+                            System.out.println("This would start in the break "
                                     + "period after another screening in this room");
                             match = true;
                             break;
@@ -187,7 +184,7 @@ public class Commands {
             System.out.println("There are no screenings");
         } else {
             for (Screening screening : screenings) {
-                System.out.println(String.format("%s  (%s, %d minutes), screened in room %s, at %s",
+                System.out.println(String.format("%s (%s, %d minutes), screened in room %s, at %s",
                         screening.getMovieTitle(),
                         screening.getMovieGenre(),
                         screening.getMovieLength(),
@@ -281,7 +278,7 @@ public class Commands {
             }
 
         } else if (this.user.getAdmin() && this.user.getLoggedIn()) {
-            System.out.printf("Signed in with privileged account %s%n", this.user.getUserName());
+            System.out.println(String.format("Signed in with privileged account '%s'", this.user.getUserName()));
         } else {
             System.out.println("You are not signed in");
         }

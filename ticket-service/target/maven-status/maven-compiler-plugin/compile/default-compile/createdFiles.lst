@@ -17,10 +17,10 @@ com\epam\training\ticketservice\repository\UserRepository.class
 com\epam\training\ticketservice\repository\PriceComponentRepository.class
 com\epam\training\ticketservice\model\PriceComponentSet.class
 com\epam\training\ticketservice\controller\PriceComponentController.class
+com\epam\training\ticketservice\controller\UserController.class
 com\epam\training\ticketservice\service\PriceComponentService.class
 com\epam\training\ticketservice\controller\ScreeningController.class
 com\epam\training\ticketservice\controller\BookController.class
-com\epam\training\ticketservice\controller\UserContorller.class
 com\epam\training\ticketservice\repository\PriceComponentSetRepository.class
 com\epam\training\ticketservice\model\Book.class
 com\epam\training\ticketservice\service\ScreeningService.class

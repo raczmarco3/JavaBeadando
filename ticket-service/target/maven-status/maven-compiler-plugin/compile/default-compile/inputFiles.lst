@@ -11,7 +11,6 @@ C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\trai
 C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\controller\RoomController.java
 C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\repository\ScreeningRepository.java
 C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\controller\ScreeningController.java
-C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\controller\UserContorller.java
 C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\service\PriceComponentService.java
 C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\service\ScreeningService.java
 C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\model\PriceComponent.java
@@ -26,6 +25,7 @@ C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\trai
 C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\controller\MovieController.java
 C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\service\BookService.java
 C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\model\Movie.java
+C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\controller\UserController.java
 C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\model\Screening.java
 C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\model\User.java
 C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\repository\PriceComponentSetRepository.java

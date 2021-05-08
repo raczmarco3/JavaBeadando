@@ -1,5 +1,6 @@
 com\epam\training\ticketservice\controller\PriceComponentControllerTest.class
 com\epam\training\ticketservice\controller\ScreeningControllerTest.class
+com\epam\training\ticketservice\service\BookServiceTest.class
 com\epam\training\ticketservice\controller\UserControllerTest.class
 com\epam\training\ticketservice\service\RoomServiceTest.class
 com\epam\training\ticketservice\controller\RoomControllerTest.class
@@ -13,7 +14,8 @@ com\epam\training\ticketservice\controller\MovieControllerTest.class
 com\epam\training\ticketservice\service\PriceComponentServiceTest.class
 com\epam\training\ticketservice\model\PriceComponentTest.class
 com\epam\training\ticketservice\model\PriceTest.class
+com\epam\training\ticketservice\CommandsTest.class
 com\epam\training\ticketservice\model\MovieTest.class
+com\epam\training\ticketservice\service\PriceComponentSetServiceTest.class
 com\epam\training\ticketservice\model\UserTest.class
-ApplicationTest.class
 com\epam\training\ticketservice\service\UserServiceTest.class

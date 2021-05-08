@@ -21,7 +21,7 @@ public class RoomService {
 
     @Transactional
     public void createRoom(String name, int rows, int columns) {
-<span class="pc bpc" id="L24" title="1 of 2 branches missed.">        if (roomRepository.findByName(name) == null) {</span>
+<span class="fc bfc" id="L24" title="All 2 branches covered.">        if (roomRepository.findByName(name) == null) {</span>
 <span class="fc" id="L25">            roomRepository.save(new Room(name, rows, columns));</span>
         }
 <span class="fc" id="L27">    }</span>

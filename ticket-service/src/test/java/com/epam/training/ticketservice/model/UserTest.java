@@ -14,6 +14,12 @@ public class UserTest {
     }
 
     @Test
+    public void User() {
+        User user = new User("user", "pw", false, false);
+        Assertions.assertEquals("user", testUser.getUserName());
+    }
+
+    @Test
     public void getUserName() {
         Assertions.assertEquals("user", testUser.getUserName());
     }

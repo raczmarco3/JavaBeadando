@@ -1,6 +1,6 @@
 package com.epam.training.ticketservice.service;
 
-import com.epam.training.ticketservice.controller.UserContorller;
+import com.epam.training.ticketservice.controller.UserController;
 import com.epam.training.ticketservice.model.User;
 import com.epam.training.ticketservice.repository.UserRepository;
 import org.junit.jupiter.api.Assertions;

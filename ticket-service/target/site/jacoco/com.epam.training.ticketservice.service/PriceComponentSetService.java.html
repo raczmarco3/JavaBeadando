@@ -15,16 +15,16 @@ public class PriceComponentSetService {
 
     @Autowired
     public PriceComponentSetService(PriceComponentSetRepository priceComponentSetRepository,
-<span class="nc" id="L18">                                    PriceComponentRepository priceComponentRepository) {</span>
-<span class="nc" id="L19">        this.priceComponentSetRepository = priceComponentSetRepository;</span>
-<span class="nc" id="L20">        this.priceComponentRepository = priceComponentRepository;</span>
-<span class="nc" id="L21">    }</span>
+<span class="fc" id="L18">                                    PriceComponentRepository priceComponentRepository) {</span>
+<span class="fc" id="L19">        this.priceComponentSetRepository = priceComponentSetRepository;</span>
+<span class="fc" id="L20">        this.priceComponentRepository = priceComponentRepository;</span>
+<span class="fc" id="L21">    }</span>
 
     @Transactional
     public void setPriceComponentSet(String componentName, String typeName, String attachedId) {
-<span class="nc" id="L25">        PriceComponent priceComponent = priceComponentRepository.findByComponentName(componentName);</span>
-<span class="nc" id="L26">        int price = priceComponent.getComponentPrice();</span>
-<span class="nc" id="L27">        priceComponentSetRepository.save(new PriceComponentSet(componentName, typeName, attachedId, price));</span>
-<span class="nc" id="L28">    }</span>
+<span class="fc" id="L25">        PriceComponent priceComponent = priceComponentRepository.findByComponentName(componentName);</span>
+<span class="fc" id="L26">        int price = priceComponent.getComponentPrice();</span>
+<span class="fc" id="L27">        priceComponentSetRepository.save(new PriceComponentSet(componentName, typeName, attachedId, price));</span>
+<span class="fc" id="L28">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

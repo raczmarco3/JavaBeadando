@@ -21,7 +21,7 @@ public class UserControllerTest {
     @Mock
     UserService userService;
 
-    UserContorller userController;
+    UserController userController;
 
     User user = new User("user","pw",false,false);
     List<User> userList = new ArrayList<>();
@@ -31,7 +31,7 @@ public class UserControllerTest {
     {
         MockitoAnnotations.initMocks(this);
         userService = new UserService(userRepository);
-        userController = new UserContorller(userService);
+        userController = new UserController(userService);
     }
 
     @Test

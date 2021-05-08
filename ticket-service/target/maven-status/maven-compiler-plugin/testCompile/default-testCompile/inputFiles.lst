@@ -1,5 +1,5 @@
 C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\test\java\com\epam\training\ticketservice\controller\MovieControllerTest.java
-C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\test\java\ApplicationTest.java
+C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\test\java\com\epam\training\ticketservice\service\BookServiceTest.java
 C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\test\java\com\epam\training\ticketservice\controller\RoomControllerTest.java
 C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\test\java\com\epam\training\ticketservice\service\PriceComponentServiceTest.java
 C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\test\java\com\epam\training\ticketservice\model\PriceComponentTest.java
@@ -15,5 +15,7 @@ C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\test\java\com\epam\trai
 C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\test\java\com\epam\training\ticketservice\model\MovieTest.java
 C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\test\java\com\epam\training\ticketservice\model\ScreeningTest.java
 C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\test\java\com\epam\training\ticketservice\model\BookTest.java
+C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\test\java\com\epam\training\ticketservice\service\PriceComponentSetServiceTest.java
+C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\test\java\com\epam\training\ticketservice\CommandsTest.java
 C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\test\java\com\epam\training\ticketservice\controller\PriceComponentControllerTest.java
 C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\test\java\com\epam\training\ticketservice\model\PriceComponentSetTest.java
