@@ -1,13 +1,19 @@
 package com.epam.training.ticketservice;
 
-import com.epam.training.ticketservice.controller.*;
+
+import com.epam.training.ticketservice.controller.MovieController;
+import com.epam.training.ticketservice.controller.RoomController;
+import com.epam.training.ticketservice.controller.ScreeningController;
 import com.epam.training.ticketservice.controller.UserController;
-import com.epam.training.ticketservice.model.Price;
+import com.epam.training.ticketservice.controller.BookController;
+import com.epam.training.ticketservice.controller.PriceComponentController;
+import com.epam.training.ticketservice.controller.PriceComponentSetController;
 import com.epam.training.ticketservice.model.User;
 import com.epam.training.ticketservice.model.Room;
 import com.epam.training.ticketservice.model.Screening;
 import com.epam.training.ticketservice.model.Book;
 import com.epam.training.ticketservice.model.Movie;
+import com.epam.training.ticketservice.model.Price;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 import org.springframework.stereotype.Component;
@@ -48,9 +54,11 @@ public class Commands {
         this.user.setAdmin(false);
         this.price.setPrice(1500);
     }
+
     public void setAdmin() {
         this.user.setAdmin(true);
     }
+
     @ShellMethod(value = "Create a movie.", key = "create movie")
     public void createMovie(String title, String genre, int length) {
         if (this.user.getAdmin()) {

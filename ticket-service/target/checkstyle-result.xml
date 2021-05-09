@@ -3,9 +3,6 @@
 <file name="C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\Application.java">
 </file>
 <file name="C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\Commands.java">
-<error line="3" severity="warning" message="Using the &apos;.*&apos; form of import should be avoided - com.epam.training.ticketservice.controller.*." source="com.puppycrawl.tools.checkstyle.checks.imports.AvoidStarImportCheck"/>
-<error line="51" severity="warning" message="&apos;METHOD_DEF&apos; should be separated from previous statement." source="com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"/>
-<error line="54" severity="warning" message="&apos;METHOD_DEF&apos; should be separated from previous statement." source="com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"/>
 </file>
 <file name="C:\Users\Marco\Documents\JavaBeadando\ticket-service\src\main\java\com\epam\training\ticketservice\controller\BookController.java">
 </file>
