@@ -3,16 +3,22 @@ package com.epam.training.ticketservice;
 import com.epam.training.ticketservice.controller.*;
 import com.epam.training.ticketservice.model.*;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 
+import javax.validation.constraints.AssertTrue;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.PrintStream;
 import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
+import static org.junit.jupiter.api.Assertions.*;
 
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 import static org.mockito.MockitoAnnotations.openMocks;
 
 class CommandsTest {
@@ -59,6 +65,16 @@ class CommandsTest {
     }
 
     @Test
+    void testCreateMovieFailWithoutPrivilegisedAccount() throws IOException {
+        ByteArrayOutputStream bo = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(bo));
+        commandsUnderTest.createMovie("title", "genre", 0);
+        bo.flush();
+        String allWrittenLines = bo.toString();
+        assertTrue(allWrittenLines.contains("createMovie command is for privileged users"));
+    }
+
+    @Test
     void testListAllMovies() {
         // Setup
         when(mockMovieController.getAllMovies()).thenReturn(List.of(new Movie("title", "genre", 0)));
@@ -92,6 +108,16 @@ class CommandsTest {
     }
 
     @Test
+    void testDeleteMovieFailWithoutPrivilegizedAccount() throws IOException {
+        ByteArrayOutputStream bo = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(bo));
+        commandsUnderTest.deleteMovie("title");
+        bo.flush();
+        String allWrittenLines = bo.toString();
+        assertTrue(allWrittenLines.contains("deleteMovie command is for privileged users"));
+    }
+
+    @Test
     void testUpdateMovie() {
         // Setup
         commandsUnderTest.setAdmin();
@@ -103,6 +129,16 @@ class CommandsTest {
     }
 
     @Test
+    void testUpdateMovieFailWithoutPrivilegizedAccount() throws IOException {
+        ByteArrayOutputStream bo = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(bo));
+        commandsUnderTest.updateMovie("title", "genre", 120);
+        bo.flush();
+        String allWrittenLines = bo.toString();
+        assertTrue(allWrittenLines.contains("updateMovie command is for privileged users"));
+    }
+
+    @Test
     void testCreateRoom() {
         // Setup
         commandsUnderTest.setAdmin();
@@ -111,6 +147,16 @@ class CommandsTest {
 
         // Verify the results
         verify(mockRoomController).createRoom("name", 0, 0);
+    }
+
+    @Test
+    void testCreateRoomFailWithoutPrivilegizedAccount() throws IOException {
+        ByteArrayOutputStream bo = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(bo));
+        commandsUnderTest.createRoom("name", 0, 0);
+        bo.flush();
+        String allWrittenLines = bo.toString();
+        assertTrue(allWrittenLines.contains("createRoom command is for privileged users"));
     }
 
     @Test
@@ -147,6 +193,16 @@ class CommandsTest {
     }
 
     @Test
+    void testUpdateRoomFailWithoutPrivilegizedAccount() throws IOException {
+        ByteArrayOutputStream bo = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(bo));
+        commandsUnderTest.updateRoom("name", 0, 0);
+        bo.flush();
+        String allWrittenLines = bo.toString();
+        assertTrue(allWrittenLines.contains("updateRoom command is for privileged users"));
+    }
+
+    @Test
     void testDeleteRoom() {
         // Setup
         commandsUnderTest.setAdmin();
@@ -158,19 +214,44 @@ class CommandsTest {
     }
 
     @Test
+    void testDeleteRoomFailWithoutPrivilegizedAccount() throws IOException {
+        ByteArrayOutputStream bo = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(bo));
+        commandsUnderTest.deleteRoom("name");
+        bo.flush();
+        String allWrittenLines = bo.toString();
+        assertTrue(allWrittenLines.contains("deleteRoom command is for privileged users"));
+    }
+
+    @Test
     void testCreateScreening() {
         // Setup
         commandsUnderTest.setAdmin();
         // Configure ScreeningController.getAllScreenings(...).
-        final List<Screening> screenings = List.of(new Screening("movieTitle", "roomName", LocalDateTime.of(2020, 1, 1, 0, 0, 0), 0, "movieGenre"));
+        final List<Screening> screenings = List.of(new Screening("movieTitle",
+                "roomName",
+                LocalDateTime.of(2020, 1, 1, 0, 0, 0),
+                0, "movieGenre"));
         when(mockScreeningController.getAllScreenings()).thenReturn(screenings);
 
         // Run the test
-        commandsUnderTest.createScreening("movieTitle", "roomName", "2021-03-14 16:00");
+        commandsUnderTest.createScreening("movieTitle", "roomName",
+                "2021-03-14 16:00");
 
         // Verify the results
         verify(mockScreeningController).createScreaning("movieTitle", "roomName",
                 LocalDateTime.of(2021, 3, 14, 16, 0));
+    }
+
+    @Test
+    void testCreateScreeningFailWithoutPrivilegizedAccount() throws IOException {
+        ByteArrayOutputStream bo = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(bo));
+        commandsUnderTest.createScreening("movieTitle", "roomName",
+                "2021-03-14 16:00");
+        bo.flush();
+        String allWrittenLines = bo.toString();
+        assertTrue(allWrittenLines.contains("createScreening command is for privileged users"));
     }
 
     @Test
@@ -227,6 +308,17 @@ class CommandsTest {
     }
 
     @Test
+    void testDeleteScreeningFailWithoutPrivilegizedAccount() throws IOException {
+        ByteArrayOutputStream bo = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(bo));
+        commandsUnderTest.deleteScreening("movieTitle", "roomName",
+                "2021-03-14 16:00");
+        bo.flush();
+        String allWrittenLines = bo.toString();
+        assertTrue(allWrittenLines.contains("deleteScreening command is for privileged users"));
+    }
+
+    @Test
     void testCreateUser() {
         // Setup
 
@@ -253,6 +345,16 @@ class CommandsTest {
     }
 
     @Test
+    void testLogInFail() throws IOException {
+        ByteArrayOutputStream bo = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(bo));
+        commandsUnderTest.logIn("user", "password");
+        bo.flush();
+        String allWrittenLines = bo.toString();
+        assertTrue(allWrittenLines.contains("Login failed due to incorrect credentials"));
+    }
+
+    @Test
     void testAdminLogIn() {
         // Setup
         when(mockUserContorller.logIn("userName", "password")).thenReturn(false);
@@ -265,6 +367,16 @@ class CommandsTest {
         commandsUnderTest.adminLogIn("userName", "password");
 
         // Verify the results
+    }
+
+    @Test
+    void testLotestAdminLogInFail() throws IOException {
+        ByteArrayOutputStream bo = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(bo));
+        commandsUnderTest.logIn("admin", "admin2");
+        bo.flush();
+        String allWrittenLines = bo.toString();
+        assertTrue(allWrittenLines.contains("Login failed due to incorrect credentials"));
     }
 
     @Test
@@ -313,6 +425,16 @@ class CommandsTest {
     }
 
     @Test
+    void testUpdatePriceFail() throws IOException {
+        ByteArrayOutputStream bo = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(bo));
+        commandsUnderTest.updatePrice(0);
+        bo.flush();
+        String allWrittenLines = bo.toString();
+        assertTrue(allWrittenLines.contains("This command is for admins"));
+    }
+
+    @Test
     void testCreateComponentPrice() {
         // Setup
         commandsUnderTest.setAdmin();
@@ -321,6 +443,16 @@ class CommandsTest {
 
         // Verify the results
         verify(mockPriceComponentController).createPriceComponent("componentName", 0);
+    }
+
+    @Test
+    void testCreateComponentPriceFail() throws IOException {
+        ByteArrayOutputStream bo = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(bo));
+        commandsUnderTest.createComponentPrice("componentName", 0);
+        bo.flush();
+        String allWrittenLines = bo.toString();
+        assertTrue(allWrittenLines.contains("create price component command is for privileged users"));
     }
 
     @Test
@@ -334,6 +466,17 @@ class CommandsTest {
         // Verify the results
         verify(mockPriceComponentSetController).setPriceComponentSet("componentName",
                 "room", "roomName");
+    }
+
+    @Test
+    void testAttachToRoomFail() throws IOException {
+        ByteArrayOutputStream bo = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(bo));
+        // Run the test
+        commandsUnderTest.attachToRoom("componentName", "roomName");
+        bo.flush();
+        String allWrittenLines = bo.toString();
+        assertTrue(allWrittenLines.contains("attach price component to room command is for privileged users"));
     }
 
     @Test

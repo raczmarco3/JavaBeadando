@@ -8,10 +8,12 @@ import com.epam.training.ticketservice.repository.BookRepository;
 import com.epam.training.ticketservice.repository.PriceComponentSetRepository;
 import com.epam.training.ticketservice.repository.RoomRepository;
 import com.epam.training.ticketservice.repository.ScreeningRepository;
+import org.junit.Assert;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
+import static org.mockito.Mockito.verify;
 
 import java.time.LocalDateTime;
 import java.util.Collections;
@@ -52,15 +54,19 @@ class BookServiceTest {
     @Test
     void testGetScreening() {
         // Setup
-
-        // Configure ScreeningRepository.findAll(...).
-        final Iterable<Screening> screenings = List.of(new Screening("movieTitle", "roomName", LocalDateTime.of(2020, 1, 1, 0, 0, 0), 0, "movieGenre"));
+        final Iterable<Screening> screenings = List.of(new Screening("movieTitle",
+                "roomName",
+                LocalDateTime.of(2020, 1, 1, 0, 0, 0),
+                0, "movieGenre"));
         when(mockScreeningRepository.findAll()).thenReturn(screenings);
 
         // Run the test
-        final Optional<Screening> result = bookServiceUnderTest.getScreening("movieTitle", "roomName", LocalDateTime.of(2020, 1, 1, 0, 0, 0));
+        final Optional<Screening> result = bookServiceUnderTest.getScreening("movieTitle",
+                "roomName",
+                LocalDateTime.of(2020, 1, 1, 0, 0, 0));
 
         // Verify the results
+        Assert.assertEquals(true, result.isPresent());
     }
 
     @Test
@@ -69,23 +75,26 @@ class BookServiceTest {
         when(mockScreeningRepository.findAll()).thenReturn(Collections.emptyList());
 
         // Run the test
-        final Optional<Screening> result = bookServiceUnderTest.getScreening("movieTitle", "roomName", LocalDateTime.of(2020, 1, 1, 0, 0, 0));
+        final Optional<Screening> result = bookServiceUnderTest.getScreening("movieTitle",
+                "roomName",
+                LocalDateTime.of(2020, 1, 1, 0, 0, 0));
 
         // Verify the results
+        Assert.assertEquals(true, result.isEmpty());
     }
 
     @Test
     void testGetBook() {
         // Setup
-
-        // Configure BookRepository.findAll(...).
         final Iterable<Book> books = List.of(new Book("userName", "movieTitle", "roomName", LocalDateTime.of(2020, 1, 1, 0, 0, 0), "seats", 0));
         when(mockBookRepository.findAll()).thenReturn(books);
 
         // Run the test
-        final Optional<Book> result = bookServiceUnderTest.getBook("movieTitle", "roomName", LocalDateTime.of(2020, 1, 1, 0, 0, 0));
+        final Optional<Book> result = bookServiceUnderTest.getBook("movieTitle","roomName",
+                LocalDateTime.of(2020, 1, 1, 0, 0, 0));
 
         // Verify the results
+        Assert.assertEquals(true, result.isPresent());
     }
 
     @Test
@@ -94,129 +103,16 @@ class BookServiceTest {
         when(mockBookRepository.findAll()).thenReturn(Collections.emptyList());
 
         // Run the test
-        final Optional<Book> result = bookServiceUnderTest.getBook("movieTitle", "roomName", LocalDateTime.of(2020, 1, 1, 0, 0, 0));
+        final Optional<Book> result = bookServiceUnderTest.getBook("movieTitle", "roomName",
+                LocalDateTime.of(2020, 1, 1, 0, 0, 0));
 
         // Verify the results
-    }
-
-    @Test
-    void testGetPriceComponents() {
-        // Setup
-
-        // Configure ScreeningRepository.findAll(...).
-        final Iterable<Screening> screenings = List.of(new Screening("movieTitle", "roomName", LocalDateTime.of(2020, 1, 1, 0, 0, 0), 0, "movieGenre"));
-        when(mockScreeningRepository.findAll()).thenReturn(screenings);
-
-        // Configure PriceComponentSetRepository.findAll(...).
-        final Iterable<PriceComponentSet> priceComponentSets = List.of(new PriceComponentSet("componentName", "typeName", "attachedId", 0));
-        when(mockPriceComponentSetRepository.findAll()).thenReturn(priceComponentSets);
-
-        // Run the test
-        final List<Integer> result = bookServiceUnderTest.getPriceComponents("movieTitle", "roomName", LocalDateTime.of(2020, 1, 1, 0, 0, 0));
-
-        // Verify the results
-        assertEquals(List.of(), result);
-    }
-
-    @Test
-    void testGetPriceComponents_PriceComponentSetRepositoryReturnsNoItems() {
-        // Setup
-
-        // Configure ScreeningRepository.findAll(...).
-        final Iterable<Screening> screenings = List.of(new Screening("movieTitle", "roomName", LocalDateTime.of(2020, 1, 1, 0, 0, 0), 0, "movieGenre"));
-        when(mockScreeningRepository.findAll()).thenReturn(screenings);
-
-        when(mockPriceComponentSetRepository.findAll()).thenReturn(Collections.emptyList());
-
-        // Run the test
-        final List<Integer> result = bookServiceUnderTest.getPriceComponents("movieTitle", "roomName", LocalDateTime.of(2020, 1, 1, 0, 0, 0));
-
-        // Verify the results
-        assertEquals(List.of(), result);
-    }
-
-    @Test
-    void testCreateBook() {
-        // Setup
-        when(mockRoomRepository.findByName("name")).thenReturn(new Room("name", 0, 0));
-
-        // Configure ScreeningRepository.findAll(...).
-        final Iterable<Screening> screenings = List.of(new Screening("movieTitle", "roomName", LocalDateTime.of(2020, 1, 1, 0, 0, 0), 0, "movieGenre"));
-        when(mockScreeningRepository.findAll()).thenReturn(screenings);
-
-        // Configure BookRepository.findAll(...).
-        final Iterable<Book> books = List.of(new Book("userName", "movieTitle", "roomName", LocalDateTime.of(2020, 1, 1, 0, 0, 0), "seats", 0));
-        when(mockBookRepository.findAll()).thenReturn(books);
-
-        // Configure PriceComponentSetRepository.findAll(...).
-        final Iterable<PriceComponentSet> priceComponentSets = List.of(new PriceComponentSet("componentName", "typeName", "attachedId", 0));
-        when(mockPriceComponentSetRepository.findAll()).thenReturn(priceComponentSets);
-
-        // Configure BookRepository.save(...).
-        final Book book = new Book("userName", "movieTitle", "roomName", LocalDateTime.of(2020, 1, 1, 0, 0, 0), "seats", 0);
-        when(mockBookRepository.save(any(Book.class))).thenReturn(book);
-
-        // Run the test
-        bookServiceUnderTest.createBook("userName", "movieTitle", "roomName", LocalDateTime.of(2020, 1, 1, 0, 0, 0), "seats", 0, false);
-
-        // Verify the results
-    }
-
-    @Test
-    void testCreateBook_BookRepositoryFindAllReturnsNoItems() {
-        // Setup
-        when(mockRoomRepository.findByName("name")).thenReturn(new Room("name", 0, 0));
-
-        // Configure ScreeningRepository.findAll(...).
-        final Iterable<Screening> screenings = List.of(new Screening("movieTitle", "roomName", LocalDateTime.of(2020, 1, 1, 0, 0, 0), 0, "movieGenre"));
-        when(mockScreeningRepository.findAll()).thenReturn(screenings);
-
-        when(mockBookRepository.findAll()).thenReturn(Collections.emptyList());
-
-        // Configure PriceComponentSetRepository.findAll(...).
-        final Iterable<PriceComponentSet> priceComponentSets = List.of(new PriceComponentSet("componentName", "typeName", "attachedId", 0));
-        when(mockPriceComponentSetRepository.findAll()).thenReturn(priceComponentSets);
-
-        // Configure BookRepository.save(...).
-        final Book book = new Book("userName", "movieTitle", "roomName", LocalDateTime.of(2020, 1, 1, 0, 0, 0), "seats", 0);
-        when(mockBookRepository.save(any(Book.class))).thenReturn(book);
-
-        // Run the test
-        bookServiceUnderTest.createBook("userName", "movieTitle", "roomName", LocalDateTime.of(2020, 1, 1, 0, 0, 0), "seats", 0, false);
-
-        // Verify the results
-    }
-
-    @Test
-    void testCreateBook_PriceComponentSetRepositoryReturnsNoItems() {
-        // Setup
-        when(mockRoomRepository.findByName("name")).thenReturn(new Room("name", 0, 0));
-
-        // Configure ScreeningRepository.findAll(...).
-        final Iterable<Screening> screenings = List.of(new Screening("movieTitle", "roomName", LocalDateTime.of(2020, 1, 1, 0, 0, 0), 0, "movieGenre"));
-        when(mockScreeningRepository.findAll()).thenReturn(screenings);
-
-        // Configure BookRepository.findAll(...).
-        final Iterable<Book> books = List.of(new Book("userName", "movieTitle", "roomName", LocalDateTime.of(2020, 1, 1, 0, 0, 0), "seats", 0));
-        when(mockBookRepository.findAll()).thenReturn(books);
-
-        when(mockPriceComponentSetRepository.findAll()).thenReturn(Collections.emptyList());
-
-        // Configure BookRepository.save(...).
-        final Book book = new Book("userName", "movieTitle", "roomName", LocalDateTime.of(2020, 1, 1, 0, 0, 0), "seats", 0);
-        when(mockBookRepository.save(any(Book.class))).thenReturn(book);
-
-        // Run the test
-        bookServiceUnderTest.createBook("userName", "movieTitle", "roomName", LocalDateTime.of(2020, 1, 1, 0, 0, 0), "seats", 0, false);
-
-        // Verify the results
+        Assert.assertEquals(true, result.isEmpty());
     }
 
     @Test
     void testListBooks() {
         // Setup
-
-        // Configure BookRepository.findAll(...).
         final Iterable<Book> books = List.of(new Book("userName", "movieTitle", "roomName", LocalDateTime.of(2020, 1, 1, 0, 0, 0), "seats", 0));
         when(mockBookRepository.findAll()).thenReturn(books);
 
@@ -224,6 +120,7 @@ class BookServiceTest {
         final List<Book> result = bookServiceUnderTest.listBooks("userName");
 
         // Verify the results
+        Assert.assertEquals(true, result.size() > 0);
     }
 
     @Test
@@ -235,5 +132,6 @@ class BookServiceTest {
         final List<Book> result = bookServiceUnderTest.listBooks("userName");
 
         // Verify the results
+        Assert.assertEquals(true, result.size() == 0);
     }
 }

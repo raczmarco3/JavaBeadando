@@ -49,31 +49,31 @@ public class BookService {
     }
 
     public List&lt;Integer&gt; getPriceComponents(String movieTitle, String roomName, LocalDateTime date) {
-<span class="fc" id="L52">        var screening = getScreening(movieTitle, roomName, date);</span>
-<span class="fc" id="L53">        String screeningId = String.valueOf(screening.get().getId());</span>
-<span class="fc" id="L54">        List&lt;PriceComponentSet&gt; priceSets = (List&lt;PriceComponentSet&gt;) priceComponentSetRepository.findAll();</span>
-<span class="fc" id="L55">        List&lt;Integer&gt; prices = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L52">        var screening = getScreening(movieTitle, roomName, date);</span>
+<span class="nc" id="L53">        String screeningId = String.valueOf(screening.get().getId());</span>
+<span class="nc" id="L54">        List&lt;PriceComponentSet&gt; priceSets = (List&lt;PriceComponentSet&gt;) priceComponentSetRepository.findAll();</span>
+<span class="nc" id="L55">        List&lt;Integer&gt; prices = new ArrayList&lt;&gt;();</span>
 
-<span class="fc bfc" id="L57" title="All 2 branches covered.">        for (PriceComponentSet priceComponent : priceSets) {</span>
-<span class="pc bpc" id="L58" title="1 of 2 branches missed.">            if (priceComponent.getAttachedId().equals(movieTitle)</span>
-<span class="pc bpc" id="L59" title="1 of 2 branches missed.">                    || priceComponent.getAttachedId().equals(roomName)</span>
-<span class="pc bpc" id="L60" title="1 of 2 branches missed.">                    || priceComponent.getAttachedId().equals(screeningId)) {</span>
+<span class="nc bnc" id="L57" title="All 2 branches missed.">        for (PriceComponentSet priceComponent : priceSets) {</span>
+<span class="nc bnc" id="L58" title="All 2 branches missed.">            if (priceComponent.getAttachedId().equals(movieTitle)</span>
+<span class="nc bnc" id="L59" title="All 2 branches missed.">                    || priceComponent.getAttachedId().equals(roomName)</span>
+<span class="nc bnc" id="L60" title="All 2 branches missed.">                    || priceComponent.getAttachedId().equals(screeningId)) {</span>
 <span class="nc" id="L61">                prices.add(priceComponent.getPrice());</span>
             }
-<span class="fc" id="L63">        }</span>
-<span class="fc" id="L64">        return prices;</span>
+<span class="nc" id="L63">        }</span>
+<span class="nc" id="L64">        return prices;</span>
     }
 
     @Transactional
     public void createBook(String userName, String movieTitle,
                            String roomName, LocalDateTime date, String seats, int price, Boolean showPrice) {
 
-<span class="fc" id="L71">        Room room = roomRepository.findByName(roomName);</span>
-<span class="fc" id="L72">        var screening = getScreening(movieTitle, roomName, date);</span>
-<span class="fc" id="L73">        var book = getBook(movieTitle, roomName, date);</span>
-<span class="fc" id="L74">        List&lt;Integer&gt; priceComponents = getPriceComponents(movieTitle, roomName, date);</span>
+<span class="nc" id="L71">        Room room = roomRepository.findByName(roomName);</span>
+<span class="nc" id="L72">        var screening = getScreening(movieTitle, roomName, date);</span>
+<span class="nc" id="L73">        var book = getBook(movieTitle, roomName, date);</span>
+<span class="nc" id="L74">        List&lt;Integer&gt; priceComponents = getPriceComponents(movieTitle, roomName, date);</span>
 
-<span class="pc bpc" id="L76" title="2 of 4 branches missed.">        if (screening.isPresent() &amp;&amp; room != null) {</span>
+<span class="nc bnc" id="L76" title="All 4 branches missed.">        if (screening.isPresent() &amp;&amp; room != null) {</span>
 <span class="nc" id="L77">            String[] arrOfSeats = seats.split(&quot; &quot;, 0);</span>
 <span class="nc" id="L78">            String occupiedSeats = &quot;&quot;;</span>
 <span class="nc" id="L79">            String nonExistentSeats = &quot;&quot;;</span>
@@ -115,7 +115,7 @@ public class BookService {
 <span class="nc" id="L115">                System.out.println(&quot;The price for this booking would be &quot; + finalPrice + &quot; HUF&quot;);</span>
             }
         }
-<span class="fc" id="L118">    }</span>
+<span class="nc" id="L118">    }</span>
 
     @Transactional
     public List&lt;Book&gt; listBooks(String userName) {

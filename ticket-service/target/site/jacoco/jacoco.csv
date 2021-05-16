@@ -16,11 +16,11 @@ ticket-service,com.epam.training.ticketservice.controller,BookController,35,0,0,
 ticket-service,com.epam.training.ticketservice.controller,ScreeningController,7,24,0,0,1,8,1,4,1,4
 ticket-service,com.epam.training.ticketservice,SpringShellCustomPrompt,8,0,0,0,2,0,2,0,2,0
 ticket-service,com.epam.training.ticketservice,Application,8,0,0,0,3,0,2,0,2,0
-ticket-service,com.epam.training.ticketservice,Commands,269,571,41,41,58,134,34,34,1,26
-ticket-service,com.epam.training.ticketservice.service,MovieService,0,69,0,2,0,16,0,7,0,6
+ticket-service,com.epam.training.ticketservice,Commands,239,601,31,51,48,144,24,44,1,26
+ticket-service,com.epam.training.ticketservice.service,MovieService,0,69,1,1,0,16,1,6,0,6
 ticket-service,com.epam.training.ticketservice.service,PriceComponentSetService,0,29,0,0,0,8,0,2,0,2
 ticket-service,com.epam.training.ticketservice.service,UserService,3,47,2,2,1,12,2,4,0,4
 ticket-service,com.epam.training.ticketservice.service,PriceComponentService,0,16,0,0,0,5,0,2,0,2
 ticket-service,com.epam.training.ticketservice.service,ScreeningService,29,100,7,7,4,23,6,9,0,8
-ticket-service,com.epam.training.ticketservice.service,BookService,175,183,47,13,32,34,29,11,0,10
-ticket-service,com.epam.training.ticketservice.service,RoomService,0,69,0,2,0,16,0,7,0,6
+ticket-service,com.epam.training.ticketservice.service,BookService,253,105,54,6,48,18,32,8,2,8
+ticket-service,com.epam.training.ticketservice.service,RoomService,0,69,1,1,0,16,1,6,0,6

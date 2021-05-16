@@ -12,6 +12,7 @@ import org.mockito.Mock;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.openMocks;
+import static org.mockito.Mockito.verify;
 
 class PriceComponentSetServiceTest {
 
@@ -48,5 +49,6 @@ class PriceComponentSetServiceTest {
         priceComponentSetServiceUnderTest.setPriceComponentSet("componentName", "typeName", "attachedId");
 
         // Verify the results
+        verify(mockPriceComponentSetRepository).save(any(PriceComponentSet.class));
     }
 }

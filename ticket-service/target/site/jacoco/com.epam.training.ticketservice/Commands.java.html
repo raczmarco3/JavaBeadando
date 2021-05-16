@@ -37,329 +37,328 @@ public class Commands {
 <span class="fc" id="L37">    private User user = new User();</span>
 <span class="fc" id="L38">    private Price price = new Price();</span>
 
-
     public Commands(MovieController movieController, RoomController roomController,
                     ScreeningController screeningController, UserController userContorller,
                     BookController bookController, PriceComponentController priceComponentController,
-<span class="fc" id="L44">                    PriceComponentSetController priceComponentSetController) {</span>
-<span class="fc" id="L45">        this.movieController = movieController;</span>
-<span class="fc" id="L46">        this.roomController = roomController;</span>
-<span class="fc" id="L47">        this.screeningController = screeningController;</span>
-<span class="fc" id="L48">        this.userContorller = userContorller;</span>
-<span class="fc" id="L49">        this.bookController = bookController;</span>
-<span class="fc" id="L50">        this.priceComponentController = priceComponentController;</span>
-<span class="fc" id="L51">        this.priceComponentSetController = priceComponentSetController;</span>
-<span class="fc" id="L52">        userContorller.createUser(&quot;admin&quot;, &quot;admin&quot;, true);</span>
-<span class="fc" id="L53">        this.user.setLoggedIn(false);</span>
-<span class="fc" id="L54">        this.user.setAdmin(false);</span>
-<span class="fc" id="L55">        this.price.setPrice(1500);</span>
-<span class="fc" id="L56">    }</span>
-
-    public void setAdmin() {
-<span class="fc" id="L59">        this.user.setAdmin(true);</span>
-<span class="fc" id="L60">    }</span>
+<span class="fc" id="L43">                    PriceComponentSetController priceComponentSetController) {</span>
+<span class="fc" id="L44">        this.movieController = movieController;</span>
+<span class="fc" id="L45">        this.roomController = roomController;</span>
+<span class="fc" id="L46">        this.screeningController = screeningController;</span>
+<span class="fc" id="L47">        this.userContorller = userContorller;</span>
+<span class="fc" id="L48">        this.bookController = bookController;</span>
+<span class="fc" id="L49">        this.priceComponentController = priceComponentController;</span>
+<span class="fc" id="L50">        this.priceComponentSetController = priceComponentSetController;</span>
+<span class="fc" id="L51">        userContorller.createUser(&quot;admin&quot;, &quot;admin&quot;, true);</span>
+<span class="fc" id="L52">        this.user.setLoggedIn(false);</span>
+<span class="fc" id="L53">        this.user.setAdmin(false);</span>
+<span class="fc" id="L54">        this.price.setPrice(1500);</span>
+<span class="fc" id="L55">    }</span>
 
     @ShellMethod(value = &quot;Create a movie.&quot;, key = &quot;create movie&quot;)
     public void createMovie(String title, String genre, int length) {
-<span class="pc bpc" id="L64" title="1 of 2 branches missed.">        if (this.user.getAdmin()) {</span>
-<span class="fc" id="L65">            movieController.createMovie(title, genre, length);</span>
+<span class="fc bfc" id="L59" title="All 2 branches covered.">        if (this.user.getAdmin()) {</span>
+<span class="fc" id="L60">            movieController.createMovie(title, genre, length);</span>
         } else {
-<span class="nc" id="L67">            System.out.println(&quot;createMovie command is for privileged users&quot;);</span>
+<span class="fc" id="L62">            System.out.println(&quot;createMovie command is for privileged users&quot;);</span>
         }
-<span class="fc" id="L69">    }</span>
+<span class="fc" id="L64">    }</span>
 
     @ShellMethod(value = &quot;List all movies.&quot;, key = &quot;list movies&quot;)
     public void listAllMovies() {
-<span class="fc" id="L73">        List&lt;Movie&gt; movies = movieController.getAllMovies();</span>
-<span class="fc bfc" id="L74" title="All 2 branches covered.">        if (movies.size() == 0) {</span>
-<span class="fc" id="L75">            System.out.println(&quot;There are no movies at the moment&quot;);</span>
+<span class="fc" id="L68">        List&lt;Movie&gt; movies = movieController.getAllMovies();</span>
+<span class="fc bfc" id="L69" title="All 2 branches covered.">        if (movies.size() == 0) {</span>
+<span class="fc" id="L70">            System.out.println(&quot;There are no movies at the moment&quot;);</span>
         } else {
-<span class="fc bfc" id="L77" title="All 2 branches covered.">            for (Movie movie : movies) {</span>
-<span class="fc" id="L78">                System.out.println(String.format(&quot;%s (%s, %s minutes)&quot;,</span>
-<span class="fc" id="L79">                        movie.getTitle(),</span>
-<span class="fc" id="L80">                        movie.getGenre(),</span>
-<span class="fc" id="L81">                        movie.getLength()</span>
+<span class="fc bfc" id="L72" title="All 2 branches covered.">            for (Movie movie : movies) {</span>
+<span class="fc" id="L73">                System.out.println(String.format(&quot;%s (%s, %s minutes)&quot;,</span>
+<span class="fc" id="L74">                        movie.getTitle(),</span>
+<span class="fc" id="L75">                        movie.getGenre(),</span>
+<span class="fc" id="L76">                        movie.getLength()</span>
                 ));
-<span class="fc" id="L83">            }</span>
+<span class="fc" id="L78">            }</span>
         }
-<span class="fc" id="L85">    }</span>
+<span class="fc" id="L80">    }</span>
 
     @ShellMethod(value = &quot;Delete a movie from the database.&quot;, key = &quot;delete movie&quot;)
     public void deleteMovie(String title) {
-<span class="pc bpc" id="L89" title="1 of 2 branches missed.">        if (this.user.getAdmin()) {</span>
-<span class="fc" id="L90">            movieController.deleteMovie(title);</span>
+<span class="fc bfc" id="L84" title="All 2 branches covered.">        if (this.user.getAdmin()) {</span>
+<span class="fc" id="L85">            movieController.deleteMovie(title);</span>
         } else {
-<span class="nc" id="L92">            System.out.println(&quot;deleteMovie command is for privileged users&quot;);</span>
+<span class="fc" id="L87">            System.out.println(&quot;deleteMovie command is for privileged users&quot;);</span>
         }
-<span class="fc" id="L94">    }</span>
+<span class="fc" id="L89">    }</span>
 
     @ShellMethod(value = &quot;Update a movie that is already exists in the database.&quot;, key = &quot;update movie&quot;)
     public void updateMovie(String title, String genre, int length) {
-<span class="pc bpc" id="L98" title="1 of 2 branches missed.">        if (this.user.getAdmin()) {</span>
-<span class="fc" id="L99">            movieController.updateMovie(title, genre, length);</span>
+<span class="fc bfc" id="L93" title="All 2 branches covered.">        if (this.user.getAdmin()) {</span>
+<span class="fc" id="L94">            movieController.updateMovie(title, genre, length);</span>
         } else {
-<span class="nc" id="L101">            System.out.println(&quot;updateMovie command is for privileged users&quot;);</span>
+<span class="fc" id="L96">            System.out.println(&quot;updateMovie command is for privileged users&quot;);</span>
         }
-<span class="fc" id="L103">    }</span>
+<span class="fc" id="L98">    }</span>
 
     @ShellMethod(value = &quot;Create a room.&quot;, key = &quot;create room&quot;)
     public void createRoom(String name, int rows, int columns) {
-<span class="pc bpc" id="L107" title="1 of 2 branches missed.">        if (this.user.getAdmin()) {</span>
-<span class="fc" id="L108">            roomController.createRoom(name, rows, columns);</span>
+<span class="fc bfc" id="L102" title="All 2 branches covered.">        if (this.user.getAdmin()) {</span>
+<span class="fc" id="L103">            roomController.createRoom(name, rows, columns);</span>
         } else {
-<span class="nc" id="L110">            System.out.println(&quot;createRoom command is for privileged users&quot;);</span>
+<span class="fc" id="L105">            System.out.println(&quot;createRoom command is for privileged users&quot;);</span>
         }
-<span class="fc" id="L112">    }</span>
+<span class="fc" id="L107">    }</span>
 
     @ShellMethod(value = &quot;List all rooms.&quot;, key = &quot;list rooms&quot;)
     public void listAllRooms() {
-<span class="fc" id="L116">        List&lt;Room&gt; rooms = roomController.getAllRooms();</span>
-<span class="fc bfc" id="L117" title="All 2 branches covered.">        if (rooms.size() == 0) {</span>
-<span class="fc" id="L118">            System.out.println(&quot;There are no rooms at the moment&quot;);</span>
+<span class="fc" id="L111">        List&lt;Room&gt; rooms = roomController.getAllRooms();</span>
+<span class="fc bfc" id="L112" title="All 2 branches covered.">        if (rooms.size() == 0) {</span>
+<span class="fc" id="L113">            System.out.println(&quot;There are no rooms at the moment&quot;);</span>
         } else {
-<span class="fc bfc" id="L120" title="All 2 branches covered.">            for (Room room : rooms) {</span>
-<span class="fc" id="L121">                System.out.println(String.format(&quot;Room %s with %d seats, %d rows and %d columns&quot;,</span>
-<span class="fc" id="L122">                        room.getName(),</span>
-<span class="fc" id="L123">                        room.getSeats(),</span>
-<span class="fc" id="L124">                        room.getRows(),</span>
-<span class="fc" id="L125">                        room.getColumns()</span>
+<span class="fc bfc" id="L115" title="All 2 branches covered.">            for (Room room : rooms) {</span>
+<span class="fc" id="L116">                System.out.println(String.format(&quot;Room %s with %d seats, %d rows and %d columns&quot;,</span>
+<span class="fc" id="L117">                        room.getName(),</span>
+<span class="fc" id="L118">                        room.getSeats(),</span>
+<span class="fc" id="L119">                        room.getRows(),</span>
+<span class="fc" id="L120">                        room.getColumns()</span>
                 ));
-<span class="fc" id="L127">            }</span>
+<span class="fc" id="L122">            }</span>
         }
-<span class="fc" id="L129">    }</span>
+<span class="fc" id="L124">    }</span>
 
     @ShellMethod(value = &quot;Update a room that is already exists in the database.&quot;, key = &quot;update room&quot;)
     public void updateRoom(String name, int rows, int columns) {
-<span class="pc bpc" id="L133" title="1 of 2 branches missed.">        if (this.user.getAdmin()) {</span>
-<span class="fc" id="L134">            roomController.updateRoom(name, rows, columns);</span>
+<span class="fc bfc" id="L128" title="All 2 branches covered.">        if (this.user.getAdmin()) {</span>
+<span class="fc" id="L129">            roomController.updateRoom(name, rows, columns);</span>
         } else {
-<span class="nc" id="L136">            System.out.println(&quot;updateRoom command is for privileged users&quot;);</span>
+<span class="fc" id="L131">            System.out.println(&quot;updateRoom command is for privileged users&quot;);</span>
         }
-<span class="fc" id="L138">    }</span>
+<span class="fc" id="L133">    }</span>
 
     @ShellMethod(value = &quot;Delete a room from the database&quot;, key = &quot;delete room&quot;)
     public void deleteRoom(String name) {
-<span class="pc bpc" id="L142" title="1 of 2 branches missed.">        if (this.user.getAdmin()) {</span>
-<span class="fc" id="L143">            roomController.deleteRoom(name);</span>
+<span class="fc bfc" id="L137" title="All 2 branches covered.">        if (this.user.getAdmin()) {</span>
+<span class="fc" id="L138">            roomController.deleteRoom(name);</span>
         } else {
-<span class="nc" id="L145">            System.out.println(&quot;deleteRoom command is for privileged users&quot;);</span>
+<span class="fc" id="L140">            System.out.println(&quot;deleteRoom command is for privileged users&quot;);</span>
         }
-<span class="fc" id="L147">    }</span>
+<span class="fc" id="L142">    }</span>
 
     @ShellMethod(value = &quot;Create a screening.&quot;, key = &quot;create screening&quot;)
     public void createScreening(String movieTitle, String roomName, String dateTime) {
-<span class="pc bpc" id="L151" title="1 of 2 branches missed.">        if (this.user.getAdmin()) {</span>
-<span class="fc" id="L152">            List&lt;Screening&gt; screenings = screeningController.getAllScreenings();</span>
-<span class="fc" id="L153">            LocalDateTime date = LocalDateTime.parse(dateTime, formatter);</span>
-<span class="fc bfc" id="L154" title="All 2 branches covered.">            if (screenings.size() == 0) {</span>
-<span class="fc" id="L155">                screeningController.createScreaning(movieTitle, roomName, date);</span>
+<span class="fc bfc" id="L146" title="All 2 branches covered.">        if (this.user.getAdmin()) {</span>
+<span class="fc" id="L147">            List&lt;Screening&gt; screenings = screeningController.getAllScreenings();</span>
+<span class="fc" id="L148">            LocalDateTime date = LocalDateTime.parse(dateTime, formatter);</span>
+<span class="fc bfc" id="L149" title="All 2 branches covered.">            if (screenings.size() == 0) {</span>
+<span class="fc" id="L150">                screeningController.createScreaning(movieTitle, roomName, date);</span>
             } else {
-<span class="fc" id="L157">                List&lt;Screening&gt; screenings2 = new ArrayList&lt;&gt;();</span>
-<span class="fc" id="L158">                screeningController.getAllScreenings().stream()</span>
-<span class="fc" id="L159">                        .filter(screening -&gt; screening.getRoomName().equals(roomName))</span>
-<span class="fc" id="L160">                        .forEach(screening -&gt; screenings2.add(screening));</span>
-<span class="pc bpc" id="L161" title="1 of 2 branches missed.">                if (screenings2.size() == 0) {</span>
-<span class="nc" id="L162">                    screeningController.createScreaning(movieTitle, roomName, date);</span>
+<span class="fc" id="L152">                List&lt;Screening&gt; screenings2 = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L153">                screeningController.getAllScreenings().stream()</span>
+<span class="fc" id="L154">                        .filter(screening -&gt; screening.getRoomName().equals(roomName))</span>
+<span class="fc" id="L155">                        .forEach(screening -&gt; screenings2.add(screening));</span>
+<span class="pc bpc" id="L156" title="1 of 2 branches missed.">                if (screenings2.size() == 0) {</span>
+<span class="nc" id="L157">                    screeningController.createScreaning(movieTitle, roomName, date);</span>
                 } else {
-<span class="fc" id="L164">                    boolean match = false;</span>
-<span class="fc bfc" id="L165" title="All 2 branches covered.">                    for (Screening screening : screenings2) {</span>
-<span class="pc bpc" id="L166" title="3 of 4 branches missed.">                        if (date.isBefore(screening.getEndTime()) &amp;&amp; date.isAfter(screening.getDateTime())) {</span>
-<span class="nc" id="L167">                            System.out.println(&quot;There is an overlapping screening&quot;);</span>
-<span class="nc" id="L168">                            match = true;</span>
-<span class="nc" id="L169">                            break;</span>
-<span class="pc bpc" id="L170" title="1 of 2 branches missed.">                        } else if (date.isBefore(screening.getEndTime().plusMinutes(10))</span>
-<span class="nc bnc" id="L171" title="All 2 branches missed.">                                &amp;&amp; date.isAfter(screening.getEndTime())) {</span>
-<span class="nc" id="L172">                            System.out.println(&quot;This would start in the break &quot;</span>
+<span class="fc" id="L159">                    boolean match = false;</span>
+<span class="fc bfc" id="L160" title="All 2 branches covered.">                    for (Screening screening : screenings2) {</span>
+<span class="pc bpc" id="L161" title="3 of 4 branches missed.">                        if (date.isBefore(screening.getEndTime()) &amp;&amp; date.isAfter(screening.getDateTime())) {</span>
+<span class="nc" id="L162">                            System.out.println(&quot;There is an overlapping screening&quot;);</span>
+<span class="nc" id="L163">                            match = true;</span>
+<span class="nc" id="L164">                            break;</span>
+<span class="pc bpc" id="L165" title="1 of 2 branches missed.">                        } else if (date.isBefore(screening.getEndTime().plusMinutes(10))</span>
+<span class="nc bnc" id="L166" title="All 2 branches missed.">                                &amp;&amp; date.isAfter(screening.getEndTime())) {</span>
+<span class="nc" id="L167">                            System.out.println(&quot;This would start in the break &quot;</span>
                                     + &quot;period after another screening in this room&quot;);
-<span class="nc" id="L174">                            match = true;</span>
-<span class="nc" id="L175">                            break;</span>
+<span class="nc" id="L169">                            match = true;</span>
+<span class="nc" id="L170">                            break;</span>
                         }
-<span class="fc" id="L177">                    }</span>
-<span class="pc bpc" id="L178" title="1 of 2 branches missed.">                    if (!match) {</span>
-<span class="fc" id="L179">                        screeningController.createScreaning(movieTitle, roomName, date);</span>
+<span class="fc" id="L172">                    }</span>
+<span class="pc bpc" id="L173" title="1 of 2 branches missed.">                    if (!match) {</span>
+<span class="fc" id="L174">                        screeningController.createScreaning(movieTitle, roomName, date);</span>
                     }
                 }
             }
-<span class="fc" id="L183">        } else {</span>
-<span class="nc" id="L184">            System.out.println(&quot;createScreening command is for privileged users&quot;);</span>
+<span class="fc" id="L178">        } else {</span>
+<span class="fc" id="L179">            System.out.println(&quot;createScreening command is for privileged users&quot;);</span>
         }
-<span class="fc" id="L186">    }</span>
+<span class="fc" id="L181">    }</span>
 
     @ShellMethod(value = &quot;List all screenings.&quot;, key = &quot;list screenings&quot;)
     public void listAllscreenings() {
-<span class="fc" id="L190">        List&lt;Screening&gt; screenings = screeningController.getAllScreenings();</span>
-<span class="fc bfc" id="L191" title="All 2 branches covered.">        if (screenings.size() == 0) {</span>
-<span class="fc" id="L192">            System.out.println(&quot;There are no screenings&quot;);</span>
+<span class="fc" id="L185">        List&lt;Screening&gt; screenings = screeningController.getAllScreenings();</span>
+<span class="fc bfc" id="L186" title="All 2 branches covered.">        if (screenings.size() == 0) {</span>
+<span class="fc" id="L187">            System.out.println(&quot;There are no screenings&quot;);</span>
         } else {
-<span class="fc bfc" id="L194" title="All 2 branches covered.">            for (Screening screening : screenings) {</span>
-<span class="fc" id="L195">                System.out.println(String.format(&quot;%s (%s, %d minutes), screened in room %s, at %s&quot;,</span>
-<span class="fc" id="L196">                        screening.getMovieTitle(),</span>
-<span class="fc" id="L197">                        screening.getMovieGenre(),</span>
-<span class="fc" id="L198">                        screening.getMovieLength(),</span>
-<span class="fc" id="L199">                        screening.getRoomName(),</span>
-<span class="fc" id="L200">                        screening.getDateTime().toString().replace(&quot;T&quot;, &quot; &quot;)</span>
+<span class="fc bfc" id="L189" title="All 2 branches covered.">            for (Screening screening : screenings) {</span>
+<span class="fc" id="L190">                System.out.println(String.format(&quot;%s (%s, %d minutes), screened in room %s, at %s&quot;,</span>
+<span class="fc" id="L191">                        screening.getMovieTitle(),</span>
+<span class="fc" id="L192">                        screening.getMovieGenre(),</span>
+<span class="fc" id="L193">                        screening.getMovieLength(),</span>
+<span class="fc" id="L194">                        screening.getRoomName(),</span>
+<span class="fc" id="L195">                        screening.getDateTime().toString().replace(&quot;T&quot;, &quot; &quot;)</span>
                 ));
-<span class="fc" id="L202">            }</span>
+<span class="fc" id="L197">            }</span>
         }
-<span class="fc" id="L204">    }</span>
+<span class="fc" id="L199">    }</span>
 
     @ShellMethod(value = &quot;Delete a screening from the database&quot;, key = &quot;delete screening&quot;)
     public void deleteScreening(String movieTitle, String roomName, String dateTime) {
-<span class="pc bpc" id="L208" title="1 of 2 branches missed.">        if (this.user.getAdmin()) {</span>
-<span class="fc" id="L209">            LocalDateTime date = LocalDateTime.parse(dateTime, formatter);</span>
-<span class="fc" id="L210">            screeningController.deleteScreaning(movieTitle, roomName, date);</span>
-<span class="fc" id="L211">        } else {</span>
-<span class="nc" id="L212">            System.out.println(&quot;deleteScreening command is for privileged users&quot;);</span>
+<span class="fc bfc" id="L203" title="All 2 branches covered.">        if (this.user.getAdmin()) {</span>
+<span class="fc" id="L204">            LocalDateTime date = LocalDateTime.parse(dateTime, formatter);</span>
+<span class="fc" id="L205">            screeningController.deleteScreaning(movieTitle, roomName, date);</span>
+<span class="fc" id="L206">        } else {</span>
+<span class="fc" id="L207">            System.out.println(&quot;deleteScreening command is for privileged users&quot;);</span>
         }
-<span class="fc" id="L214">    }</span>
+<span class="fc" id="L209">    }</span>
 
     @ShellMethod(value = &quot;Create a new user.&quot;, key = &quot;sign up&quot;)
     public void createUser(String userName, String password) {
-<span class="pc bpc" id="L218" title="1 of 2 branches missed.">        if (userContorller.getUser(userName) == null) {</span>
-<span class="fc" id="L219">            userContorller.createUser(userName, password, false);</span>
+<span class="pc bpc" id="L213" title="1 of 2 branches missed.">        if (userContorller.getUser(userName) == null) {</span>
+<span class="fc" id="L214">            userContorller.createUser(userName, password, false);</span>
         } else {
-<span class="nc" id="L221">            System.out.println(&quot;This username is already exist.&quot;);</span>
+<span class="nc" id="L216">            System.out.println(&quot;This username is already exist.&quot;);</span>
         }
-<span class="fc" id="L223">    }</span>
+<span class="fc" id="L218">    }</span>
 
     @ShellMethod(value = &quot;Login&quot;, key = &quot;sign in&quot;)
     public void logIn(String userName, String password) {
-<span class="pc bpc" id="L227" title="1 of 2 branches missed.">        if (!this.user.getLoggedIn()) {</span>
-<span class="pc bpc" id="L228" title="1 of 2 branches missed.">            if (userContorller.logIn(userName, password)) {</span>
-<span class="nc" id="L229">                this.user = userContorller.getUser(userName);</span>
-<span class="nc bnc" id="L230" title="All 2 branches missed.">                if (!this.user.getAdmin()) {</span>
-<span class="nc" id="L231">                    this.user.setLoggedIn(true);</span>
-<span class="nc" id="L232">                    this.user.setAdmin(false);</span>
-<span class="nc" id="L233">                    System.out.println(&quot;Login successful&quot;);</span>
+<span class="pc bpc" id="L222" title="1 of 2 branches missed.">        if (!this.user.getLoggedIn()) {</span>
+<span class="pc bpc" id="L223" title="1 of 2 branches missed.">            if (userContorller.logIn(userName, password)) {</span>
+<span class="nc" id="L224">                this.user = userContorller.getUser(userName);</span>
+<span class="nc bnc" id="L225" title="All 2 branches missed.">                if (!this.user.getAdmin()) {</span>
+<span class="nc" id="L226">                    this.user.setLoggedIn(true);</span>
+<span class="nc" id="L227">                    this.user.setAdmin(false);</span>
+<span class="nc" id="L228">                    System.out.println(&quot;Login successful&quot;);</span>
                 } else {
-<span class="nc" id="L235">                    System.out.println(&quot;Admins can sing in only with sign in privileged&quot;);</span>
-<span class="nc" id="L236">                    this.user = new User();</span>
-<span class="nc" id="L237">                    this.user.setLoggedIn(false);</span>
+<span class="nc" id="L230">                    System.out.println(&quot;Admins can sing in only with sign in privileged&quot;);</span>
+<span class="nc" id="L231">                    this.user = new User();</span>
+<span class="nc" id="L232">                    this.user.setLoggedIn(false);</span>
                 }
             } else {
-<span class="fc" id="L240">                System.out.println(&quot;Login failed due to incorrect credentials&quot;);</span>
+<span class="fc" id="L235">                System.out.println(&quot;Login failed due to incorrect credentials&quot;);</span>
             }
         } else {
-<span class="nc" id="L243">            System.out.println(&quot;You are already logged in&quot;);</span>
+<span class="nc" id="L238">            System.out.println(&quot;You are already logged in&quot;);</span>
         }
-<span class="fc" id="L245">    }</span>
+<span class="fc" id="L240">    }</span>
 
     @ShellMethod(value = &quot;Login&quot;, key = &quot;sign in privileged&quot;)
     public void adminLogIn(String userName, String password) {
-<span class="pc bpc" id="L249" title="1 of 2 branches missed.">        if (!this.user.getLoggedIn()) {</span>
-<span class="pc bpc" id="L250" title="1 of 2 branches missed.">            if (userContorller.logIn(userName, password)) {</span>
-<span class="nc" id="L251">                this.user = userContorller.getUser(userName);</span>
-<span class="nc bnc" id="L252" title="All 2 branches missed.">                if (this.user.getAdmin()) {</span>
-<span class="nc" id="L253">                    this.user.setLoggedIn(true);</span>
-<span class="nc" id="L254">                    System.out.println(&quot;Login successful&quot;);</span>
+<span class="pc bpc" id="L244" title="1 of 2 branches missed.">        if (!this.user.getLoggedIn()) {</span>
+<span class="pc bpc" id="L245" title="1 of 2 branches missed.">            if (userContorller.logIn(userName, password)) {</span>
+<span class="nc" id="L246">                this.user = userContorller.getUser(userName);</span>
+<span class="nc bnc" id="L247" title="All 2 branches missed.">                if (this.user.getAdmin()) {</span>
+<span class="nc" id="L248">                    this.user.setLoggedIn(true);</span>
+<span class="nc" id="L249">                    System.out.println(&quot;Login successful&quot;);</span>
                 } else {
-<span class="nc" id="L256">                    System.out.println(&quot;Users can sing in only with sign in&quot;);</span>
-<span class="nc" id="L257">                    this.user = new User();</span>
-<span class="nc" id="L258">                    this.user.setLoggedIn(false);</span>
+<span class="nc" id="L251">                    System.out.println(&quot;Users can sing in only with sign in&quot;);</span>
+<span class="nc" id="L252">                    this.user = new User();</span>
+<span class="nc" id="L253">                    this.user.setLoggedIn(false);</span>
                 }
             } else {
-<span class="fc" id="L261">                System.out.println(&quot;Login failed due to incorrect credentials&quot;);</span>
+<span class="fc" id="L256">                System.out.println(&quot;Login failed due to incorrect credentials&quot;);</span>
             }
         } else {
-<span class="nc" id="L264">            System.out.println(&quot;You are already logged in&quot;);</span>
+<span class="nc" id="L259">            System.out.println(&quot;You are already logged in&quot;);</span>
         }
-<span class="fc" id="L266">    }</span>
+<span class="fc" id="L261">    }</span>
 
     @ShellMethod(value = &quot;Account description.&quot;, key = &quot;describe account&quot;)
     public void describeAccount() {
-<span class="pc bpc" id="L270" title="2 of 4 branches missed.">        if (!this.user.getAdmin() &amp;&amp; this.user.getLoggedIn()) {</span>
-<span class="nc" id="L271">            List&lt;Book&gt; books = bookController.listBooks(this.user.getUserName());</span>
-<span class="nc" id="L272">            System.out.printf(&quot;Signed in with account %s%n&quot;, this.user.getUserName());</span>
-<span class="nc bnc" id="L273" title="All 2 branches missed.">            if (books.isEmpty()) {</span>
-<span class="nc" id="L274">                System.out.println(&quot;You have not booked any tickets yet&quot;);</span>
+<span class="pc bpc" id="L265" title="2 of 4 branches missed.">        if (!this.user.getAdmin() &amp;&amp; this.user.getLoggedIn()) {</span>
+<span class="nc" id="L266">            List&lt;Book&gt; books = bookController.listBooks(this.user.getUserName());</span>
+<span class="nc" id="L267">            System.out.printf(&quot;Signed in with account %s%n&quot;, this.user.getUserName());</span>
+<span class="nc bnc" id="L268" title="All 2 branches missed.">            if (books.isEmpty()) {</span>
+<span class="nc" id="L269">                System.out.println(&quot;You have not booked any tickets yet&quot;);</span>
             } else {
-<span class="nc" id="L276">                System.out.println(&quot;Your previous bookings are&quot;);</span>
-<span class="nc bnc" id="L277" title="All 2 branches missed.">                for (Book book : books) {</span>
-<span class="nc" id="L278">                    System.out.println(String.format(&quot;Seats %s on %s in room %s starting at %s for %d&quot;,</span>
-<span class="nc" id="L279">                            book.getSeats(),</span>
-<span class="nc" id="L280">                            book.getMovieTitle(),</span>
-<span class="nc" id="L281">                            book.getRoomName(),</span>
-<span class="nc" id="L282">                            book.getDate().toString().replace(&quot;T&quot;, &quot; &quot;),</span>
-<span class="nc" id="L283">                            book.getPrice()</span>
+<span class="nc" id="L271">                System.out.println(&quot;Your previous bookings are&quot;);</span>
+<span class="nc bnc" id="L272" title="All 2 branches missed.">                for (Book book : books) {</span>
+<span class="nc" id="L273">                    System.out.println(String.format(&quot;Seats %s on %s in room %s starting at %s for %d&quot;,</span>
+<span class="nc" id="L274">                            book.getSeats(),</span>
+<span class="nc" id="L275">                            book.getMovieTitle(),</span>
+<span class="nc" id="L276">                            book.getRoomName(),</span>
+<span class="nc" id="L277">                            book.getDate().toString().replace(&quot;T&quot;, &quot; &quot;),</span>
+<span class="nc" id="L278">                            book.getPrice()</span>
                     ));
-<span class="nc" id="L285">                }</span>
+<span class="nc" id="L280">                }</span>
             }
 
-<span class="pc bpc" id="L288" title="3 of 4 branches missed.">        } else if (this.user.getAdmin() &amp;&amp; this.user.getLoggedIn()) {</span>
-<span class="nc" id="L289">            System.out.println(String.format(&quot;Signed in with privileged account '%s'&quot;, this.user.getUserName()));</span>
+<span class="pc bpc" id="L283" title="3 of 4 branches missed.">        } else if (this.user.getAdmin() &amp;&amp; this.user.getLoggedIn()) {</span>
+<span class="nc" id="L284">            System.out.println(String.format(&quot;Signed in with privileged account '%s'&quot;, this.user.getUserName()));</span>
         } else {
-<span class="fc" id="L291">            System.out.println(&quot;You are not signed in&quot;);</span>
+<span class="fc" id="L286">            System.out.println(&quot;You are not signed in&quot;);</span>
         }
-<span class="fc" id="L293">    }</span>
+<span class="fc" id="L288">    }</span>
 
     @ShellMethod(value = &quot;Sign out&quot;, key = &quot;sign out&quot;)
     public void logOut() {
-<span class="fc" id="L297">        this.user.setAdmin(false);</span>
-<span class="fc" id="L298">        this.user.setLoggedIn(false);</span>
-<span class="fc" id="L299">        System.out.println(&quot;You logged out&quot;);</span>
-<span class="fc" id="L300">    }</span>
+<span class="fc" id="L292">        this.user.setAdmin(false);</span>
+<span class="fc" id="L293">        this.user.setLoggedIn(false);</span>
+<span class="fc" id="L294">        System.out.println(&quot;You logged out&quot;);</span>
+<span class="fc" id="L295">    }</span>
 
     @ShellMethod(value = &quot;Add a book&quot;, key = &quot;book&quot;)
     public void createBook(String movieTitle, String roomName, String date, String seats) {
-<span class="nc bnc" id="L304" title="All 2 branches missed.">        if (!this.user.getAdmin()) {</span>
-<span class="nc" id="L305">            LocalDateTime dateTime = LocalDateTime.parse(date, formatter);</span>
-<span class="nc" id="L306">            String userName = this.user.getUserName();</span>
-<span class="nc" id="L307">            bookController.createBook(userName, movieTitle, roomName, dateTime, seats, this.price.getPrice());</span>
+<span class="nc bnc" id="L299" title="All 2 branches missed.">        if (!this.user.getAdmin()) {</span>
+<span class="nc" id="L300">            LocalDateTime dateTime = LocalDateTime.parse(date, formatter);</span>
+<span class="nc" id="L301">            String userName = this.user.getUserName();</span>
+<span class="nc" id="L302">            bookController.createBook(userName, movieTitle, roomName, dateTime, seats, this.price.getPrice());</span>
         }
-<span class="nc" id="L309">    }</span>
+<span class="nc" id="L304">    }</span>
 
     @ShellMethod(value = &quot;Update base price&quot;, key = &quot;update base price&quot;)
     public void updatePrice(int price) {
-<span class="pc bpc" id="L313" title="1 of 2 branches missed.">        if (this.user.getAdmin()) {</span>
-<span class="nc" id="L314">            this.price.setPrice(price);</span>
+<span class="pc bpc" id="L308" title="1 of 2 branches missed.">        if (this.user.getAdmin()) {</span>
+<span class="nc" id="L309">            this.price.setPrice(price);</span>
         } else {
-<span class="fc" id="L316">            System.out.println(&quot;This command is for admins&quot;);</span>
+<span class="fc" id="L311">            System.out.println(&quot;This command is for admins&quot;);</span>
         }
-<span class="fc" id="L318">    }</span>
+<span class="fc" id="L313">    }</span>
 
     @ShellMethod(value = &quot;Create a componentprice.&quot;, key = &quot;create price component&quot;)
     public void createComponentPrice(String componentName, int componentPrice) {
-<span class="pc bpc" id="L322" title="1 of 2 branches missed.">        if (this.user.getAdmin()) {</span>
-<span class="fc" id="L323">            priceComponentController.createPriceComponent(componentName, componentPrice);</span>
+<span class="fc bfc" id="L317" title="All 2 branches covered.">        if (this.user.getAdmin()) {</span>
+<span class="fc" id="L318">            priceComponentController.createPriceComponent(componentName, componentPrice);</span>
         } else {
-<span class="nc" id="L325">            System.out.println(&quot;createRoom command is for privileged users&quot;);</span>
+<span class="fc" id="L320">            System.out.println(&quot;create price component command is for privileged users&quot;);</span>
         }
-<span class="fc" id="L327">    }</span>
+<span class="fc" id="L322">    }</span>
 
     @ShellMethod(value = &quot;Attach a price component to a room.&quot;, key = &quot;attach price component to room&quot;)
     public void attachToRoom(String componentName, String roomName) {
-<span class="pc bpc" id="L331" title="1 of 2 branches missed.">        if (this.user.getAdmin()) {</span>
-<span class="fc" id="L332">            priceComponentSetController.setPriceComponentSet(componentName, &quot;room&quot;, roomName);</span>
+<span class="fc bfc" id="L326" title="All 2 branches covered.">        if (this.user.getAdmin()) {</span>
+<span class="fc" id="L327">            priceComponentSetController.setPriceComponentSet(componentName, &quot;room&quot;, roomName);</span>
         } else {
-<span class="nc" id="L334">            System.out.println(&quot;createRoom command is for privileged users&quot;);</span>
+<span class="fc" id="L329">            System.out.println(&quot;attach price component to room command is for privileged users&quot;);</span>
         }
-<span class="fc" id="L336">    }</span>
+<span class="fc" id="L331">    }</span>
 
     @ShellMethod(value = &quot;Attach a price component to a movie.&quot;, key = &quot;attach price component to movie&quot;)
     public void attachToMovie(String componentName, String movieTitle) {
-<span class="pc bpc" id="L340" title="1 of 2 branches missed.">        if (this.user.getAdmin()) {</span>
-<span class="fc" id="L341">            priceComponentSetController.setPriceComponentSet(componentName, &quot;movie&quot;, movieTitle);</span>
+<span class="pc bpc" id="L335" title="1 of 2 branches missed.">        if (this.user.getAdmin()) {</span>
+<span class="fc" id="L336">            priceComponentSetController.setPriceComponentSet(componentName, &quot;movie&quot;, movieTitle);</span>
         } else {
-<span class="nc" id="L343">            System.out.println(&quot;createRoom command is for privileged users&quot;);</span>
+<span class="nc" id="L338">            System.out.println(&quot;attach price component to movie command is for privileged users&quot;);</span>
         }
-<span class="fc" id="L345">    }</span>
+<span class="fc" id="L340">    }</span>
 
     @ShellMethod(value = &quot;Attach a price component to a screening.&quot;, key = &quot;attach price component to screening&quot;)
     public void attachToScreening(String componentName, String movieTitle, String roomName, String dateTime) {
-<span class="pc bpc" id="L349" title="1 of 2 branches missed.">        if (this.user.getAdmin()) {</span>
-<span class="fc" id="L350">            LocalDateTime date = LocalDateTime.parse(dateTime, formatter);</span>
-<span class="fc" id="L351">            int id = screeningController.getScreeningId(movieTitle, roomName, date);</span>
-<span class="fc" id="L352">            priceComponentSetController.setPriceComponentSet(componentName, &quot;screening&quot;, String.valueOf(id));</span>
-<span class="fc" id="L353">        } else {</span>
-<span class="nc" id="L354">            System.out.println(&quot;createRoom command is for privileged users&quot;);</span>
+<span class="pc bpc" id="L344" title="1 of 2 branches missed.">        if (this.user.getAdmin()) {</span>
+<span class="fc" id="L345">            LocalDateTime date = LocalDateTime.parse(dateTime, formatter);</span>
+<span class="fc" id="L346">            int id = screeningController.getScreeningId(movieTitle, roomName, date);</span>
+<span class="fc" id="L347">            priceComponentSetController.setPriceComponentSet(componentName, &quot;screening&quot;, String.valueOf(id));</span>
+<span class="fc" id="L348">        } else {</span>
+<span class="nc" id="L349">            System.out.println(&quot;attach price component to screening command is for privileged users&quot;);</span>
         }
-<span class="fc" id="L356">    }</span>
+<span class="fc" id="L351">    }</span>
 
     @ShellMethod(value = &quot;Show price&quot;, key = &quot;show price for&quot;)
     public void showPrice(String movieTitle, String roomName, String date, String seats) {
-<span class="fc" id="L360">        LocalDateTime dateTime = LocalDateTime.parse(date, formatter);</span>
-<span class="fc" id="L361">        String userName = this.user.getUserName();</span>
-<span class="fc" id="L362">        bookController.showPrice(userName, movieTitle, roomName, dateTime, seats, this.price.getPrice());</span>
-<span class="fc" id="L363">    }</span>
+<span class="fc" id="L355">        LocalDateTime dateTime = LocalDateTime.parse(date, formatter);</span>
+<span class="fc" id="L356">        String userName = this.user.getUserName();</span>
+<span class="fc" id="L357">        bookController.showPrice(userName, movieTitle, roomName, dateTime, seats, this.price.getPrice());</span>
+<span class="fc" id="L358">    }</span>
+
+    public void setAdmin() {
+<span class="fc" id="L361">        this.user.setAdmin(true);</span>
+<span class="fc" id="L362">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

@@ -20,7 +20,7 @@ public class MovieService {
 
     @Transactional
     public void createMovie(String title, String genre, int length) {
-<span class="fc bfc" id="L23" title="All 2 branches covered.">        if (movieRepository.findByTitle(title) == null) {</span>
+<span class="pc bpc" id="L23" title="1 of 2 branches missed.">        if (movieRepository.findByTitle(title) == null) {</span>
 <span class="fc" id="L24">            movieRepository.save(new Movie(title, genre, length));</span>
         }
 <span class="fc" id="L26">    }</span>

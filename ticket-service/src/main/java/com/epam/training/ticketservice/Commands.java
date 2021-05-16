@@ -37,7 +37,6 @@ public class Commands {
     private User user = new User();
     private Price price = new Price();
 
-
     public Commands(MovieController movieController, RoomController roomController,
                     ScreeningController screeningController, UserController userContorller,
                     BookController bookController, PriceComponentController priceComponentController,
@@ -53,10 +52,6 @@ public class Commands {
         this.user.setLoggedIn(false);
         this.user.setAdmin(false);
         this.price.setPrice(1500);
-    }
-
-    public void setAdmin() {
-        this.user.setAdmin(true);
     }
 
     @ShellMethod(value = "Create a movie.", key = "create movie")
@@ -322,7 +317,7 @@ public class Commands {
         if (this.user.getAdmin()) {
             priceComponentController.createPriceComponent(componentName, componentPrice);
         } else {
-            System.out.println("createRoom command is for privileged users");
+            System.out.println("create price component command is for privileged users");
         }
     }
 
@@ -331,7 +326,7 @@ public class Commands {
         if (this.user.getAdmin()) {
             priceComponentSetController.setPriceComponentSet(componentName, "room", roomName);
         } else {
-            System.out.println("createRoom command is for privileged users");
+            System.out.println("attach price component to room command is for privileged users");
         }
     }
 
@@ -340,7 +335,7 @@ public class Commands {
         if (this.user.getAdmin()) {
             priceComponentSetController.setPriceComponentSet(componentName, "movie", movieTitle);
         } else {
-            System.out.println("createRoom command is for privileged users");
+            System.out.println("attach price component to movie command is for privileged users");
         }
     }
 
@@ -351,7 +346,7 @@ public class Commands {
             int id = screeningController.getScreeningId(movieTitle, roomName, date);
             priceComponentSetController.setPriceComponentSet(componentName, "screening", String.valueOf(id));
         } else {
-            System.out.println("createRoom command is for privileged users");
+            System.out.println("attach price component to screening command is for privileged users");
         }
     }
 
@@ -360,5 +355,9 @@ public class Commands {
         LocalDateTime dateTime = LocalDateTime.parse(date, formatter);
         String userName = this.user.getUserName();
         bookController.showPrice(userName, movieTitle, roomName, dateTime, seats, this.price.getPrice());
+    }
+
+    public void setAdmin() {
+        this.user.setAdmin(true);
     }
 }

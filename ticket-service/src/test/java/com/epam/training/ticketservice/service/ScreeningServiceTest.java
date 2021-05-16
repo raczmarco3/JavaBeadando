@@ -6,6 +6,7 @@ import com.epam.training.ticketservice.model.Screening;
 import com.epam.training.ticketservice.repository.MovieRepository;
 import com.epam.training.ticketservice.repository.RoomRepository;
 import com.epam.training.ticketservice.repository.ScreeningRepository;
+import org.junit.Assert;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -35,10 +36,16 @@ class ScreeningServiceTest {
 
     private AutoCloseable mockitoCloseable;
 
+    private MovieService movieService;
+
+    private RoomService roomService;
+
     @BeforeEach
     void setUp() {
         mockitoCloseable = openMocks(this);
         screeningServiceUnderTest = new ScreeningService(mockScreeningRepository, mockMovieRepository, mockRoomRepository);
+        movieService = new MovieService(mockMovieRepository);
+        roomService = new RoomService(mockRoomRepository);
     }
 
     @AfterEach
@@ -49,24 +56,23 @@ class ScreeningServiceTest {
     @Test
     void testCreateScreening() {
         // Setup
-        when(mockMovieRepository.findByTitle("title")).thenReturn(new Movie("title", "genre", 0));
-        when(mockRoomRepository.findByName("name")).thenReturn(new Room("name", 0, 0));
-
-        // Configure ScreeningRepository.save(...).
-        final Screening screening = new Screening("movieTitle", "roomName", LocalDateTime.of(2020, 1, 1, 0, 0, 0), 0, "movieGenre");
-        when(mockScreeningRepository.save(any(Screening.class))).thenReturn(screening);
+        final Iterable<Screening> screenings = List.of(new Screening("movieTitle", "roomName",
+                LocalDateTime.of(2020, 1, 1, 0, 0, 0),
+                0, "movieGenre"));
+        when(mockScreeningRepository.findAll()).thenReturn(screenings);
 
         // Run the test
-        screeningServiceUnderTest.createScreening("movieTitle", "roomName", LocalDateTime.of(2020, 1, 1, 0, 0, 0));
+        screeningServiceUnderTest.createScreening("movieTitle", "roomName",
+                LocalDateTime.of(2020, 1, 1, 0, 0, 0));
 
         // Verify the results
+        final List<Screening> screenings1 = screeningServiceUnderTest.listScreenings();
+        Assert.assertEquals(true, screenings1.size() > 0);
     }
 
     @Test
     void testDeleteScreening() {
         // Setup
-
-        // Configure ScreeningRepository.findAll(...).
         final Iterable<Screening> screenings = List.of(new Screening("movieTitle", "roomName", LocalDateTime.of(2020, 1, 1, 0, 0, 0), 0, "movieGenre"));
         when(mockScreeningRepository.findAll()).thenReturn(screenings);
 
@@ -86,9 +92,10 @@ class ScreeningServiceTest {
         when(mockScreeningRepository.findAll()).thenReturn(screenings);
 
         // Run the test
-        final List<Screening> result = screeningServiceUnderTest.listScreenings();
+        final List<Screening> screenings1 = screeningServiceUnderTest.listScreenings();
 
         // Verify the results
+        Assert.assertEquals(true, screenings1.size() > 0);
     }
 
     @Test
@@ -97,23 +104,27 @@ class ScreeningServiceTest {
         when(mockScreeningRepository.findAll()).thenReturn(Collections.emptyList());
 
         // Run the test
-        final List<Screening> result = screeningServiceUnderTest.listScreenings();
+        final List<Screening> screenings = screeningServiceUnderTest.listScreenings();
 
         // Verify the results
+        Assert.assertEquals(true, screenings.size() == 0);
     }
 
     @Test
     void testGetScreening() {
         // Setup
-
-        // Configure ScreeningRepository.findAll(...).
-        final Iterable<Screening> screenings = List.of(new Screening("movieTitle", "roomName", LocalDateTime.of(2020, 1, 1, 0, 0, 0), 0, "movieGenre"));
+        final Iterable<Screening> screenings = List.of(new Screening("movieTitle", "roomName",
+                LocalDateTime.of(2020, 1, 1, 0, 0, 0),
+                0, "movieGenre"));
         when(mockScreeningRepository.findAll()).thenReturn(screenings);
 
         // Run the test
-        final Optional<Screening> result = screeningServiceUnderTest.getScreening("movieTitle", "roomName", LocalDateTime.of(2020, 1, 1, 0, 0, 0));
+        final Optional<Screening> screenings1 = screeningServiceUnderTest.getScreening(
+                "movieTitle", "roomName",
+                LocalDateTime.of(2020, 1, 1, 0, 0, 0));
 
         // Verify the results
+        verify(mockScreeningRepository).findAll();
     }
 
     @Test
@@ -122,16 +133,17 @@ class ScreeningServiceTest {
         when(mockScreeningRepository.findAll()).thenReturn(Collections.emptyList());
 
         // Run the test
-        final Optional<Screening> result = screeningServiceUnderTest.getScreening("movieTitle", "roomName", LocalDateTime.of(2020, 1, 1, 0, 0, 0));
+        final Optional<Screening> screening = screeningServiceUnderTest.getScreening("movieTitle",
+                "roomName",
+                LocalDateTime.of(2020, 1, 1, 0, 0, 0));
 
         // Verify the results
+        Assert.assertEquals(true, screening.isEmpty());
     }
 
     @Test
     void testGetScreeningId() {
         // Setup
-
-        // Configure ScreeningRepository.findAll(...).
         final Iterable<Screening> screenings = List.of(new Screening("movieTitle", "roomName", LocalDateTime.of(2020, 1, 1, 0, 0, 0), 0, "movieGenre"));
         when(mockScreeningRepository.findAll()).thenReturn(screenings);
 
@@ -148,7 +160,8 @@ class ScreeningServiceTest {
         when(mockScreeningRepository.findAll()).thenReturn(Collections.emptyList());
 
         // Run the test
-        final int result = screeningServiceUnderTest.getScreeningId("movieTitle", "roomName", LocalDateTime.of(2020, 1, 1, 0, 0, 0));
+        final int result = screeningServiceUnderTest.getScreeningId("movieTitle", "roomName",
+                LocalDateTime.of(2020, 1, 1, 0, 0, 0));
 
         // Verify the results
         assertEquals(-1, result);

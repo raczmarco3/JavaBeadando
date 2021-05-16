@@ -2,6 +2,7 @@ package com.epam.training.ticketservice.service;
 
 import com.epam.training.ticketservice.model.Room;
 import com.epam.training.ticketservice.repository.RoomRepository;
+import org.junit.Assert;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,8 +12,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 import static org.mockito.MockitoAnnotations.openMocks;
 
 class RoomServiceTest {
@@ -38,13 +38,13 @@ class RoomServiceTest {
     @Test
     void testCreateRoom() {
         // Setup
-        when(mockRoomRepository.findByName("name")).thenReturn(new Room("name", 0, 0));
         when(mockRoomRepository.save(any(Room.class))).thenReturn(new Room("name", 0, 0));
 
         // Run the test
         roomServiceUnderTest.createRoom("name", 0, 0);
 
         // Verify the results
+        verify(mockRoomRepository).save(any(Room.class));
     }
 
     @Test
@@ -81,6 +81,7 @@ class RoomServiceTest {
         final List<Room> result = roomServiceUnderTest.getAllRooms();
 
         // Verify the results
+        verify(mockRoomRepository).findAll();
     }
 
     @Test
@@ -89,8 +90,10 @@ class RoomServiceTest {
         when(mockRoomRepository.findAll()).thenReturn(Collections.emptyList());
 
         // Run the test
-        final List<Room> result = roomServiceUnderTest.getAllRooms();
+        final List<Room> rooms = roomServiceUnderTest.getAllRooms();
 
         // Verify the results
+        Assert.assertEquals(true, rooms.size() == 0);
+        verify(mockRoomRepository).findAll();
     }
 }
