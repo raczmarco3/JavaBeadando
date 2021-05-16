@@ -1,4 +1,4 @@
-#Sun May 16 13:08:42 CEST 2021
+#Sun May 16 13:39:52 CEST 2021
 C\:\\Users\\Marco\\Documents\\JavaBeadando\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\model\\PriceComponentSet.java=1620302500591
 C\:\\Users\\Marco\\Documents\\JavaBeadando\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\repository\\UserRepository.java=1620134416174
 C\:\\Users\\Marco\\Documents\\JavaBeadando\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\service\\RoomService.java=1620401184456
@@ -16,8 +16,8 @@ C\:\\Users\\Marco\\Documents\\JavaBeadando\\ticket-service\\src\\main\\java\\com
 C\:\\Users\\Marco\\Documents\\JavaBeadando\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\controller\\MovieController.java=1620445365714
 C\:\\Users\\Marco\\Documents\\JavaBeadando\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\controller\\PriceComponentSetController.java=1620445365736
 C\:\\Users\\Marco\\Documents\\JavaBeadando\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\controller\\RoomController.java=1620445365726
-C\:\\Users\\Marco\\Documents\\JavaBeadando\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\model\\PriceComponent.java=1620302385559
 configuration*?=AD992FA7780BBD603835F127272AF2B3F973152C
+C\:\\Users\\Marco\\Documents\\JavaBeadando\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\model\\PriceComponent.java=1620302385559
 C\:\\Users\\Marco\\Documents\\JavaBeadando\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\service\\ScreeningService.java=1620442946884
 C\:\\Users\\Marco\\Documents\\JavaBeadando\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\controller\\BookController.java=1620445365741
 C\:\\Users\\Marco\\Documents\\JavaBeadando\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\service\\PriceComponentSetService.java=1620302399901
@@ -25,12 +25,12 @@ C\:\\Users\\Marco\\Documents\\JavaBeadando\\ticket-service\\src\\main\\java\\com
 C\:\\Users\\Marco\\Documents\\JavaBeadando\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\model\\Screening.java=1620384433012
 C\:\\Users\\Marco\\Documents\\JavaBeadando\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\Application.java=1619950752774
 C\:\\Users\\Marco\\Documents\\JavaBeadando\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\repository\\RoomRepository.java=1620397898142
-C\:\\Users\\Marco\\Documents\\JavaBeadando\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\model\\Book.java=1620223822939
 C\:\\Users\\Marco\\Documents\\JavaBeadando\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\controller\\UserController.java=1620460101254
+C\:\\Users\\Marco\\Documents\\JavaBeadando\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\model\\Book.java=1620223822939
 C\:\\Users\\Marco\\Documents\\JavaBeadando\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\service\\MovieService.java=1620131302520
 C\:\\Users\\Marco\\Documents\\JavaBeadando\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\model\\Room.java=1620384284391
 C\:\\Users\\Marco\\Documents\\JavaBeadando\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\repository\\PriceComponentSetRepository.java=1620236059201
-module-resource*?\:checkstyle-xpath-suppressions.xml=E2F1A6CD8C7B6D43B02CEAB05E6DC62387718CA
+module-resource*?\:checkstyle-xpath-suppressions.xml=FC297A505B7E11C26D908A4521F09936BE2E8B92
+module-resource*?\:checkstyle-suppressions.xml=E9589B484DD38F02F1D4853BD10538A01261568A
 C\:\\Users\\Marco\\Documents\\JavaBeadando\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\model\\Price.java=1620234783460
-module-resource*?\:checkstyle-suppressions.xml=B47A9C36EC28C196808D2D5E133A926FBD266C22
 C\:\\Users\\Marco\\Documents\\JavaBeadando\\ticket-service\\src\\main\\java\\com\\epam\\training\\ticketservice\\repository\\PriceComponentRepository.java=1620235185323

@@ -36,7 +36,7 @@ class RoomServiceTest {
     }
 
     @Test
-    void testCreateRoom() {
+    void testCreateRoomShouldCreateNewRoom() {
         // Setup
         when(mockRoomRepository.save(any(Room.class))).thenReturn(new Room("name", 0, 0));
 
@@ -48,7 +48,7 @@ class RoomServiceTest {
     }
 
     @Test
-    void testUpdateRoom() {
+    void testUpdateRoomShouldUpdateRoom() {
         // Setup
         when(mockRoomRepository.findByName("name")).thenReturn(new Room("name", 0, 0));
         when(mockRoomRepository.save(any(Room.class))).thenReturn(new Room("name", 0, 0));
@@ -61,7 +61,7 @@ class RoomServiceTest {
     }
 
     @Test
-    void testDeleteRoom() {
+    void testDeleteRoomShouldDeleteRoom() {
         // Setup
         when(mockRoomRepository.findByName("name")).thenReturn(new Room("name", 0, 0));
 
@@ -73,7 +73,7 @@ class RoomServiceTest {
     }
 
     @Test
-    void testGetAllRooms() {
+    void testGetAllRoomsShouldReturnRoomListWhenRepositoryIsNotEmpty() {
         // Setup
         when(mockRoomRepository.findAll()).thenReturn(List.of(new Room("name", 0, 0)));
 
@@ -85,7 +85,7 @@ class RoomServiceTest {
     }
 
     @Test
-    void testGetAllRooms_RoomRepositoryReturnsNoItems() {
+    void testGetAllRoomsShouldReturnEmptyListWhenRepositoryIsEmpty() {
         // Setup
         when(mockRoomRepository.findAll()).thenReturn(Collections.emptyList());
 
@@ -94,6 +94,5 @@ class RoomServiceTest {
 
         // Verify the results
         Assert.assertEquals(true, rooms.size() == 0);
-        verify(mockRoomRepository).findAll();
     }
 }

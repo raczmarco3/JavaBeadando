@@ -55,7 +55,7 @@ class CommandsTest {
     }
 
     @Test
-    void testCreateMovie() {
+    void testCreateMovieShouldCreateMovie() {
         // Setup
         commandsUnderTest.setAdmin();
         // Run the test
@@ -88,7 +88,7 @@ class CommandsTest {
     }
 
     @Test
-    void testListAllMovies_MovieControllerReturnsNoItems() {
+    void testListAllMoviesShouldReturnEmptyListWhenRepositoryIsEmpty() {
         // Setup
         when(mockMovieController.getAllMovies()).thenReturn(Collections.emptyList());
 
@@ -164,7 +164,7 @@ class CommandsTest {
     }
 
     @Test
-    void testListAllRooms() throws IOException {
+    void testListAllRoomsShouldPrintRoomsWhenRepositoryIsNotEmpty() throws IOException {
         // Setup
         when(mockRoomController.getAllRooms()).thenReturn(List.of(new Room("name", 0, 0)));
         ByteArrayOutputStream bo = new ByteArrayOutputStream();
@@ -180,7 +180,7 @@ class CommandsTest {
     }
 
     @Test
-    void testListAllRooms_RoomControllerReturnsNoItems() throws IOException {
+    void testListAllRoomsShouldPrintNoRoomWhenRepositoryIsEmpty() throws IOException {
         // Setup
         when(mockRoomController.getAllRooms()).thenReturn(Collections.emptyList());
         ByteArrayOutputStream bo = new ByteArrayOutputStream();
@@ -269,7 +269,7 @@ class CommandsTest {
     }
 
     @Test
-    void testCreateScreening_ScreeningControllerGetAllScreeningsReturnsNoItems() {
+    void testCreateScreeningShouldReturnEmptyListWhenRepositoryIsEmpty() {
         // Setup
         commandsUnderTest.setAdmin();
         when(mockScreeningController.getAllScreenings()).thenReturn(Collections.emptyList());
@@ -284,7 +284,7 @@ class CommandsTest {
     }
 
     @Test
-    void testListAllscreenings() throws IOException {
+    void testListAllScreeningsShouldReturnScreeningListWhenRepositoryIsNotEmpty() throws IOException {
         // Setup
         ByteArrayOutputStream bo = new ByteArrayOutputStream();
         System.setOut(new PrintStream(bo));
@@ -303,7 +303,7 @@ class CommandsTest {
     }
 
     @Test
-    void testListAllscreenings_ScreeningControllerReturnsNoItems() throws IOException {
+    void testListAllScreeningsShouldPrintNoScreeningsWhenRepositoryIsEmpty() throws IOException {
         // Setup
         ByteArrayOutputStream bo = new ByteArrayOutputStream();
         System.setOut(new PrintStream(bo));
@@ -319,7 +319,7 @@ class CommandsTest {
     }
 
     @Test
-    void testDeleteScreening() {
+    void testDeleteScreeningShouldDeleteScreeningWhenRepositoryIsNotEmpty() {
         // Setup
         commandsUnderTest.setAdmin();
         // Run the test

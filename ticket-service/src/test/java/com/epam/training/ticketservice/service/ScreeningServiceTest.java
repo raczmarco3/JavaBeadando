@@ -54,7 +54,7 @@ class ScreeningServiceTest {
     }
 
     @Test
-    void testCreateScreening() {
+    void testCreateScreeningShouldCreateScreening() {
         // Setup
         final Iterable<Screening> screenings = List.of(new Screening("movieTitle", "roomName",
                 LocalDateTime.of(2020, 1, 1, 0, 0, 0),
@@ -71,7 +71,7 @@ class ScreeningServiceTest {
     }
 
     @Test
-    void testDeleteScreening() {
+    void testDeleteScreeningShouldDeleteScreening() {
         // Setup
         final Iterable<Screening> screenings = List.of(new Screening("movieTitle", "roomName", LocalDateTime.of(2020, 1, 1, 0, 0, 0), 0, "movieGenre"));
         when(mockScreeningRepository.findAll()).thenReturn(screenings);
@@ -84,7 +84,7 @@ class ScreeningServiceTest {
     }
 
     @Test
-    void testListScreenings() {
+    void testListScreeningsShouldReturnScreeningListWhenRepositoryIsNotEmpty() {
         // Setup
 
         // Configure ScreeningRepository.findAll(...).
@@ -99,7 +99,7 @@ class ScreeningServiceTest {
     }
 
     @Test
-    void testListScreenings_ScreeningRepositoryReturnsNoItems() {
+    void testListScreeningsShouldReturnEmptyListWhenRepositoryIsEmpty() {
         // Setup
         when(mockScreeningRepository.findAll()).thenReturn(Collections.emptyList());
 
@@ -111,7 +111,7 @@ class ScreeningServiceTest {
     }
 
     @Test
-    void testGetScreening() {
+    void testGetScreeningShouldReturnScreeningWhenRepositoryIsNotEmpty() {
         // Setup
         final Iterable<Screening> screenings = List.of(new Screening("movieTitle", "roomName",
                 LocalDateTime.of(2020, 1, 1, 0, 0, 0),
@@ -128,7 +128,7 @@ class ScreeningServiceTest {
     }
 
     @Test
-    void testGetScreening_ScreeningRepositoryReturnsNoItems() {
+    void testGetScreeningShouldReturnEmptyListWhenRepositoryIsEmpty() {
         // Setup
         when(mockScreeningRepository.findAll()).thenReturn(Collections.emptyList());
 
@@ -142,7 +142,7 @@ class ScreeningServiceTest {
     }
 
     @Test
-    void testGetScreeningId() {
+    void testGetScreeningIdShouldReturnScreeningIdWhenRepositoryIsNotEmpty() {
         // Setup
         final Iterable<Screening> screenings = List.of(new Screening("movieTitle", "roomName", LocalDateTime.of(2020, 1, 1, 0, 0, 0), 0, "movieGenre"));
         when(mockScreeningRepository.findAll()).thenReturn(screenings);
@@ -155,7 +155,7 @@ class ScreeningServiceTest {
     }
 
     @Test
-    void testGetScreeningId_ScreeningRepositoryReturnsNoItems() {
+    void testGetScreeningIdShouldReturnEmptyListWhenRepositoryIsEmpty() {
         // Setup
         when(mockScreeningRepository.findAll()).thenReturn(Collections.emptyList());
 

@@ -32,7 +32,7 @@ public class PriceComponentServiceTest {
     }
 
     @Test
-    public void createPriceComponent() {
+    public void createPriceComponentShouldCreateNewPriceComponent() {
         priceComponentList.add(priceComponent);
         when(priceComponentRepository.findByComponentName("elso")).thenReturn(priceComponent);
         when(priceComponentRepository.findAll()).thenReturn(priceComponentList);

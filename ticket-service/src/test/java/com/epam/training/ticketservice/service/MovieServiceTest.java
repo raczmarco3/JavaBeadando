@@ -39,7 +39,7 @@ class MovieServiceTest {
     }
 
     @Test
-    void testCreateMovie() {
+    void testCreateMovieShouldCreateMovie() {
         // Setup
         when(mockMovieRepository.save(any(Movie.class))).thenReturn(new Movie("title", "genre", 0));
 
@@ -51,7 +51,7 @@ class MovieServiceTest {
     }
 
     @Test
-    void testGetAllMovies() {
+    void testGetAllMoviesShouldReturnListMovieWhenRepositoryIsNotEmpty() {
         // Setup
         when(mockMovieRepository.findAll()).thenReturn(List.of(new Movie("movieTitle", "genre", 0)));
 
@@ -63,7 +63,7 @@ class MovieServiceTest {
     }
 
     @Test
-    void testGetAllMovies_MovieRepositoryReturnsNoItems() {
+    void testGetAllMoviesShouldReturnEmptyListWhenRepositoryIsEmpty() {
         // Setup
         when(mockMovieRepository.findAll()).thenReturn(Collections.emptyList());
 
@@ -75,7 +75,7 @@ class MovieServiceTest {
     }
 
     @Test
-    void testDeleteMovie() {
+    void testDeleteMovieShouldDeleteMovie() {
         // Setup
         when(mockMovieRepository.findByTitle("title")).thenReturn(new Movie("title", "genre", 0));
 
@@ -87,7 +87,7 @@ class MovieServiceTest {
     }
 
     @Test
-    void testUpdateMovie() {
+    void testUpdateMovieShouldUpdateMovie() {
         // Setup
         when(mockMovieRepository.findByTitle("title")).thenReturn(new Movie("title", "genre", 0));
         when(mockMovieRepository.save(any(Movie.class))).thenReturn(new Movie("title", "genre", 0));

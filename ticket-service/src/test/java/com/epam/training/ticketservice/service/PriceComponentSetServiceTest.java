@@ -37,7 +37,7 @@ class PriceComponentSetServiceTest {
     }
 
     @Test
-    void testSetPriceComponentSet() {
+    void testSetPriceComponentSetShouldSetPriceComponent() {
         // Setup
         when(mockPriceComponentRepository.findByComponentName("componentName")).thenReturn(new PriceComponent("componentName", 0));
 

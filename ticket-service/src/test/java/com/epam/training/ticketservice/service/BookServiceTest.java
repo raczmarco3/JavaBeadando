@@ -13,15 +13,11 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
-import static org.mockito.Mockito.verify;
 
 import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.openMocks;
 
@@ -52,7 +48,7 @@ class BookServiceTest {
     }
 
     @Test
-    void testGetScreening() {
+    void testGetScreeningShouldReturnScreeningWhenRepositoryIsNotEmpty() {
         // Setup
         final Iterable<Screening> screenings = List.of(new Screening("movieTitle",
                 "roomName",
@@ -70,7 +66,7 @@ class BookServiceTest {
     }
 
     @Test
-    void testGetScreening_ScreeningRepositoryReturnsNoItems() {
+    void testGetScreeningShouldReturnEmptyListWhenRepositoryIsEmpty() {
         // Setup
         when(mockScreeningRepository.findAll()).thenReturn(Collections.emptyList());
 
@@ -84,7 +80,7 @@ class BookServiceTest {
     }
 
     @Test
-    void testGetBook() {
+    void testGetBookShouldReturnBookWhenRepositoryIsNotEmpty() {
         // Setup
         final Iterable<Book> books = List.of(new Book("userName", "movieTitle", "roomName", LocalDateTime.of(2020, 1, 1, 0, 0, 0), "seats", 0));
         when(mockBookRepository.findAll()).thenReturn(books);
@@ -98,7 +94,7 @@ class BookServiceTest {
     }
 
     @Test
-    void testGetBook_BookRepositoryReturnsNoItems() {
+    void testGetBookShouldReturnEmptyListWhenRepositoryIsEmpty() {
         // Setup
         when(mockBookRepository.findAll()).thenReturn(Collections.emptyList());
 
@@ -111,7 +107,7 @@ class BookServiceTest {
     }
 
     @Test
-    void testListBooks() {
+    void testListBooksShouldReturnListBookWhenRepositoryIsNotEmpty() {
         // Setup
         final Iterable<Book> books = List.of(new Book("userName", "movieTitle", "roomName", LocalDateTime.of(2020, 1, 1, 0, 0, 0), "seats", 0));
         when(mockBookRepository.findAll()).thenReturn(books);
@@ -124,7 +120,7 @@ class BookServiceTest {
     }
 
     @Test
-    void testListBooks_BookRepositoryReturnsNoItems() {
+    void testListBooksShouldReturnEmptyListWhenRepositoryIsEmpty() {
         // Setup
         when(mockBookRepository.findAll()).thenReturn(Collections.emptyList());
 

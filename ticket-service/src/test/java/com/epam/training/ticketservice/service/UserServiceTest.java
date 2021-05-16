@@ -30,7 +30,7 @@ public class UserServiceTest {
     }
 
     @Test
-    void createRoom() {
+    void createRoomShouldCreateRoom() {
         userList.add(user);
         when(userRepository.findByUserName("user")).thenReturn(user);
         when(userRepository.findAll()).thenReturn(userList);
@@ -39,7 +39,7 @@ public class UserServiceTest {
     }
 
     @Test
-    void logIn() {
+    void logInShouldLogIn() {
         userList.add(user);
         when(userRepository.findByUserName("user")).thenReturn(user);
         when(userRepository.findAll()).thenReturn(userList);
@@ -49,7 +49,7 @@ public class UserServiceTest {
     }
 
     @Test
-    void getUser() {
+    void getUserShouldReturnUser() {
         userList.add(user);
         when(userRepository.findByUserName("user")).thenReturn(user);
         when(userRepository.findAll()).thenReturn(userList);
