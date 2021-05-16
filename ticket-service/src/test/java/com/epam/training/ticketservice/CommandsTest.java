@@ -2,6 +2,7 @@ package com.epam.training.ticketservice;
 
 import com.epam.training.ticketservice.controller.*;
 import com.epam.training.ticketservice.model.*;
+import org.junit.Assert;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -83,6 +84,7 @@ class CommandsTest {
         commandsUnderTest.listAllMovies();
 
         // Verify the results
+        verify(mockMovieController).getAllMovies();
     }
 
     @Test
@@ -94,6 +96,8 @@ class CommandsTest {
         commandsUnderTest.listAllMovies();
 
         // Verify the results
+        List<Movie> movies = mockMovieController.getAllMovies();
+        Assert.assertEquals(true, movies.isEmpty());
     }
 
     @Test
@@ -160,25 +164,35 @@ class CommandsTest {
     }
 
     @Test
-    void testListAllRooms() {
+    void testListAllRooms() throws IOException {
         // Setup
         when(mockRoomController.getAllRooms()).thenReturn(List.of(new Room("name", 0, 0)));
+        ByteArrayOutputStream bo = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(bo));
 
         // Run the test
         commandsUnderTest.listAllRooms();
 
         // Verify the results
+        bo.flush();
+        String allWrittenLines = bo.toString();
+        Assert.assertEquals(true, allWrittenLines.contains("Room name with"));
     }
 
     @Test
-    void testListAllRooms_RoomControllerReturnsNoItems() {
+    void testListAllRooms_RoomControllerReturnsNoItems() throws IOException {
         // Setup
         when(mockRoomController.getAllRooms()).thenReturn(Collections.emptyList());
+        ByteArrayOutputStream bo = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(bo));
 
         // Run the test
         commandsUnderTest.listAllRooms();
 
         // Verify the results
+        bo.flush();
+        String allWrittenLines = bo.toString();
+        Assert.assertEquals(true, allWrittenLines.contains("There are no rooms at the moment"));
     }
 
     @Test
@@ -270,28 +284,38 @@ class CommandsTest {
     }
 
     @Test
-    void testListAllscreenings() {
+    void testListAllscreenings() throws IOException {
         // Setup
-
-        // Configure ScreeningController.getAllScreenings(...).
-        final List<Screening> screenings = List.of(new Screening("movieTitle", "roomName", LocalDateTime.of(2020, 1, 1, 0, 0, 0), 0, "movieGenre"));
-        when(mockScreeningController.getAllScreenings()).thenReturn(screenings);
+        ByteArrayOutputStream bo = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(bo));
+        when(mockScreeningController.getAllScreenings()).thenReturn(List.of(new Screening("movieTitle",
+                "roomName",
+                LocalDateTime.of(2020, 1, 1, 0, 0, 0),
+                0, "movieGenre")));
 
         // Run the test
         commandsUnderTest.listAllscreenings();
 
         // Verify the results
+        bo.flush();
+        String allWrittenLines = bo.toString();
+        Assert.assertEquals(true, allWrittenLines.contains("movieTitle (movieGenre, 0 minutes), screened in room roomName, at 2020-01-01 00:00"));
     }
 
     @Test
-    void testListAllscreenings_ScreeningControllerReturnsNoItems() {
+    void testListAllscreenings_ScreeningControllerReturnsNoItems() throws IOException {
         // Setup
+        ByteArrayOutputStream bo = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(bo));
         when(mockScreeningController.getAllScreenings()).thenReturn(Collections.emptyList());
 
         // Run the test
         commandsUnderTest.listAllscreenings();
 
         // Verify the results
+        bo.flush();
+        String allWrittenLines = bo.toString();
+        Assert.assertEquals(true, allWrittenLines.contains("There are no screenings"));
     }
 
     @Test
@@ -330,18 +354,23 @@ class CommandsTest {
     }
 
     @Test
-    void testLogIn() {
+    void testLogIn() throws IOException {
         // Setup
-        when(mockUserContorller.logIn("userName", "password")).thenReturn(false);
+        ByteArrayOutputStream bo = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(bo));
+        when(mockUserContorller.logIn("userName", "password")).thenReturn(true);
 
         // Configure UserController.getUser(...).
-        final User user = new User("userName", "password", false, false);
+        final User user = new User("userName", "password", false, true);
         when(mockUserContorller.getUser("userName")).thenReturn(user);
 
         // Run the test
         commandsUnderTest.logIn("userName", "password");
 
         // Verify the results
+        bo.flush();
+        String allWrittenLines = bo.toString();
+        assertTrue(allWrittenLines.contains("Login successful"));
     }
 
     @Test
@@ -355,18 +384,23 @@ class CommandsTest {
     }
 
     @Test
-    void testAdminLogIn() {
+    void testAdminLogIn() throws IOException {
         // Setup
-        when(mockUserContorller.logIn("userName", "password")).thenReturn(false);
+        ByteArrayOutputStream bo = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(bo));
+        when(mockUserContorller.logIn("userName", "password")).thenReturn(true);
 
         // Configure UserController.getUser(...).
-        final User user = new User("userName", "password", false, false);
+        final User user = new User("userName", "password", true, true);
         when(mockUserContorller.getUser("userName")).thenReturn(user);
 
         // Run the test
         commandsUnderTest.adminLogIn("userName", "password");
 
         // Verify the results
+        bo.flush();
+        String allWrittenLines = bo.toString();
+        assertTrue(allWrittenLines.contains("Login successful"));
     }
 
     @Test
@@ -380,48 +414,71 @@ class CommandsTest {
     }
 
     @Test
-    void testDescribeAccount() {
+    void testDescribeAccount() throws IOException {
         // Setup
+        ByteArrayOutputStream bo = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(bo));
+        when(mockUserContorller.logIn("userName", "password")).thenReturn(true);
 
-        // Configure BookController.listBooks(...).
-        final List<Book> books = List.of(new Book("userName", "movieTitle", "roomName", LocalDateTime.of(2020, 1, 1, 0, 0, 0), "seats", 0));
-        when(mockBookController.listBooks("userName")).thenReturn(books);
+        // Configure UserController.getUser(...).
+        final User user = new User("userName", "password", true, true);
+        when(mockUserContorller.getUser("userName")).thenReturn(user);
+        commandsUnderTest.adminLogIn("userName", "password");
 
         // Run the test
         commandsUnderTest.describeAccount();
 
         // Verify the results
+        bo.flush();
+        String allWrittenLines = bo.toString();
+        assertTrue(allWrittenLines.contains("Signed in with privileged account 'userName'"));
     }
 
     @Test
-    void testDescribeAccount_BookControllerReturnsNoItems() {
+    void testDescribeAccount_BookControllerReturnsNoItems() throws IOException {
         // Setup
+        ByteArrayOutputStream bo = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(bo));
         when(mockBookController.listBooks("userName")).thenReturn(Collections.emptyList());
 
         // Run the test
         commandsUnderTest.describeAccount();
 
         // Verify the results
+        bo.flush();
+        String allWrittenLines = bo.toString();
+        assertTrue(allWrittenLines.contains("You are not signed in"));
     }
 
     @Test
-    void testLogOut() {
+    void testLogOut() throws IOException {
         // Setup
+        ByteArrayOutputStream bo = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(bo));
 
         // Run the test
         commandsUnderTest.logOut();
 
         // Verify the results
+        bo.flush();
+        String allWrittenLines = bo.toString();
+        assertTrue(allWrittenLines.contains("You logged out"));
     }
 
     @Test
-    void testUpdatePrice() {
+    void testUpdatePrice() throws IOException {
         // Setup
+        ByteArrayOutputStream bo = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(bo));
+        commandsUnderTest.setAdmin();
 
         // Run the test
         commandsUnderTest.updatePrice(0);
 
         // Verify the results
+        bo.flush();
+        String allWrittenLines = bo.toString();
+        assertTrue(allWrittenLines.contains(""));
     }
 
     @Test

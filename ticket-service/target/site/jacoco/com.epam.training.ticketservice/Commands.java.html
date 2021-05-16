@@ -220,12 +220,12 @@ public class Commands {
     @ShellMethod(value = &quot;Login&quot;, key = &quot;sign in&quot;)
     public void logIn(String userName, String password) {
 <span class="pc bpc" id="L222" title="1 of 2 branches missed.">        if (!this.user.getLoggedIn()) {</span>
-<span class="pc bpc" id="L223" title="1 of 2 branches missed.">            if (userContorller.logIn(userName, password)) {</span>
-<span class="nc" id="L224">                this.user = userContorller.getUser(userName);</span>
-<span class="nc bnc" id="L225" title="All 2 branches missed.">                if (!this.user.getAdmin()) {</span>
-<span class="nc" id="L226">                    this.user.setLoggedIn(true);</span>
-<span class="nc" id="L227">                    this.user.setAdmin(false);</span>
-<span class="nc" id="L228">                    System.out.println(&quot;Login successful&quot;);</span>
+<span class="fc bfc" id="L223" title="All 2 branches covered.">            if (userContorller.logIn(userName, password)) {</span>
+<span class="fc" id="L224">                this.user = userContorller.getUser(userName);</span>
+<span class="pc bpc" id="L225" title="1 of 2 branches missed.">                if (!this.user.getAdmin()) {</span>
+<span class="fc" id="L226">                    this.user.setLoggedIn(true);</span>
+<span class="fc" id="L227">                    this.user.setAdmin(false);</span>
+<span class="fc" id="L228">                    System.out.println(&quot;Login successful&quot;);</span>
                 } else {
 <span class="nc" id="L230">                    System.out.println(&quot;Admins can sing in only with sign in privileged&quot;);</span>
 <span class="nc" id="L231">                    this.user = new User();</span>
@@ -243,17 +243,17 @@ public class Commands {
     public void adminLogIn(String userName, String password) {
 <span class="pc bpc" id="L244" title="1 of 2 branches missed.">        if (!this.user.getLoggedIn()) {</span>
 <span class="pc bpc" id="L245" title="1 of 2 branches missed.">            if (userContorller.logIn(userName, password)) {</span>
-<span class="nc" id="L246">                this.user = userContorller.getUser(userName);</span>
-<span class="nc bnc" id="L247" title="All 2 branches missed.">                if (this.user.getAdmin()) {</span>
-<span class="nc" id="L248">                    this.user.setLoggedIn(true);</span>
-<span class="nc" id="L249">                    System.out.println(&quot;Login successful&quot;);</span>
+<span class="fc" id="L246">                this.user = userContorller.getUser(userName);</span>
+<span class="pc bpc" id="L247" title="1 of 2 branches missed.">                if (this.user.getAdmin()) {</span>
+<span class="fc" id="L248">                    this.user.setLoggedIn(true);</span>
+<span class="fc" id="L249">                    System.out.println(&quot;Login successful&quot;);</span>
                 } else {
 <span class="nc" id="L251">                    System.out.println(&quot;Users can sing in only with sign in&quot;);</span>
 <span class="nc" id="L252">                    this.user = new User();</span>
 <span class="nc" id="L253">                    this.user.setLoggedIn(false);</span>
                 }
             } else {
-<span class="fc" id="L256">                System.out.println(&quot;Login failed due to incorrect credentials&quot;);</span>
+<span class="nc" id="L256">                System.out.println(&quot;Login failed due to incorrect credentials&quot;);</span>
             }
         } else {
 <span class="nc" id="L259">            System.out.println(&quot;You are already logged in&quot;);</span>
@@ -262,7 +262,7 @@ public class Commands {
 
     @ShellMethod(value = &quot;Account description.&quot;, key = &quot;describe account&quot;)
     public void describeAccount() {
-<span class="pc bpc" id="L265" title="2 of 4 branches missed.">        if (!this.user.getAdmin() &amp;&amp; this.user.getLoggedIn()) {</span>
+<span class="pc bpc" id="L265" title="1 of 4 branches missed.">        if (!this.user.getAdmin() &amp;&amp; this.user.getLoggedIn()) {</span>
 <span class="nc" id="L266">            List&lt;Book&gt; books = bookController.listBooks(this.user.getUserName());</span>
 <span class="nc" id="L267">            System.out.printf(&quot;Signed in with account %s%n&quot;, this.user.getUserName());</span>
 <span class="nc bnc" id="L268" title="All 2 branches missed.">            if (books.isEmpty()) {</span>
@@ -280,8 +280,8 @@ public class Commands {
 <span class="nc" id="L280">                }</span>
             }
 
-<span class="pc bpc" id="L283" title="3 of 4 branches missed.">        } else if (this.user.getAdmin() &amp;&amp; this.user.getLoggedIn()) {</span>
-<span class="nc" id="L284">            System.out.println(String.format(&quot;Signed in with privileged account '%s'&quot;, this.user.getUserName()));</span>
+<span class="pc bpc" id="L283" title="1 of 4 branches missed.">        } else if (this.user.getAdmin() &amp;&amp; this.user.getLoggedIn()) {</span>
+<span class="fc" id="L284">            System.out.println(String.format(&quot;Signed in with privileged account '%s'&quot;, this.user.getUserName()));</span>
         } else {
 <span class="fc" id="L286">            System.out.println(&quot;You are not signed in&quot;);</span>
         }
@@ -305,8 +305,8 @@ public class Commands {
 
     @ShellMethod(value = &quot;Update base price&quot;, key = &quot;update base price&quot;)
     public void updatePrice(int price) {
-<span class="pc bpc" id="L308" title="1 of 2 branches missed.">        if (this.user.getAdmin()) {</span>
-<span class="nc" id="L309">            this.price.setPrice(price);</span>
+<span class="fc bfc" id="L308" title="All 2 branches covered.">        if (this.user.getAdmin()) {</span>
+<span class="fc" id="L309">            this.price.setPrice(price);</span>
         } else {
 <span class="fc" id="L311">            System.out.println(&quot;This command is for admins&quot;);</span>
         }
